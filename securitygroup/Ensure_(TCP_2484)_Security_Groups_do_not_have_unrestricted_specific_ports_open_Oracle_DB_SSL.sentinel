@@ -18,16 +18,16 @@ aws_security_group_rules = filter tfplan.resource_changes as _, resource_changes
 
 rdp_security_groups = filter aws_security_groups as _, asg {
 	any asg.change.after.ingress as _, ingress {
-		ingress.to_port is 7001 or
-			(ingress.from_port <= 7001 and
-				ingress.to_port >= 7001)
+		ingress.to_port is 2484 or
+			(ingress.from_port <= 2484 and
+				ingress.to_port >= 2484)
 	}
 }
 
 rdp_security_group_rules = filter aws_security_group_rules as _, asgr {
-	asgr.change.after.to_port is 7001 or
-		(asgr.change.after.from_port <= 7001 and
-			asgr.change.after.to_port >= 7001)
+	asgr.change.after.to_port is 2484 or
+		(asgr.change.after.from_port <= 2484 and
+			asgr.change.after.to_port >= 2484)
 }
 
 protocol_security_groups = filter aws_security_groups as _, asg {
@@ -71,16 +71,16 @@ deny_all_open_protocol_security_group_rules = rule {
 
 
 // --------------------------------------------------------
-// Name:        deny-public-rdp-acl-rules.sentinel
+// Name:        Ensure_(TCP_2484)_Security_Groups_do_not_have_unrestricted_specific_ports_open_Oracle_DB_SSL.sentinel
 // Category:    Networking
 // Provider:    hashicorp/aws
 // Resource:    aws_security_group
 //              aws_security_group_rule
 // Check:       cidr_blocks does not contain "0.0.0.0/0"
-//              when port is "7001" or protocl is "-1"
+//              when port is "2484" or protocl is "-1"
 // --------------------------------------------------------
 // Ensure no security groups allow ingress from 0.0.0.0/0
-// to port 7001.
+// to port 2484.
 // --------------------------------------------------------
 main = rule {
 	deny_public_rdp_security_groups and
