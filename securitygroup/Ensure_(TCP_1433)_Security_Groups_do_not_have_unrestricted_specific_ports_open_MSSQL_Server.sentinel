@@ -16,7 +16,7 @@ aws_security_group_rules = filter tfplan.resource_changes as _, resource_changes
 		resource_changes.change.after.type is "ingress"
 }
 
-rdp_security_groups = filter aws_security_groups as _, asg {
+port_security_groups = filter aws_security_groups as _, asg {
 	any asg.change.after.ingress as _, ingress {
 		ingress.to_port is 1433 or
 			(ingress.from_port <= 1433 and
@@ -24,7 +24,7 @@ rdp_security_groups = filter aws_security_groups as _, asg {
 	}
 }
 
-rdp_security_group_rules = filter aws_security_group_rules as _, asgr {
+port_security_group_rules = filter aws_security_group_rules as _, asgr {
 	asgr.change.after.to_port is 1433 or
 		(asgr.change.after.from_port <= 1433 and
 			asgr.change.after.to_port >= 1433)
@@ -40,16 +40,16 @@ protocol_security_group_rules = filter aws_security_group_rules as _, asgr {
 	asgr.change.after.protocol is "-1"
 }
 
-deny_public_rdp_security_groups = rule {
-	all rdp_security_groups as _, rsg {
+deny_public_port_security_groups = rule {
+	all port_security_groups as _, rsg {
 		all rsg.change.after.ingress as _, ingress {
 			ingress.cidr_blocks not contains "0.0.0.0/0"
 		}
 	}
 }
 
-deny_public_rdp_security_group_rules = rule {
-	all rdp_security_group_rules as _, rsgr {
+deny_public_port_security_group_rules = rule {
+	all port_security_group_rules as _, rsgr {
 		rsgr.change.after.cidr_blocks not contains "0.0.0.0/0"
 	}
 }
@@ -83,8 +83,8 @@ deny_all_open_protocol_security_group_rules = rule {
 // to port 1433.
 // --------------------------------------------------------
 main = rule {
-	deny_public_rdp_security_groups and
-	deny_public_rdp_security_group_rules and
+	deny_public_port_security_groups and
+	deny_public_port_security_group_rules and
 	deny_all_open_protocol_security_groups and
 	deny_all_open_protocol_security_group_rules
 }

@@ -18,16 +18,16 @@ aws_security_group_rules = filter tfplan.resource_changes as _, resource_changes
 
 port_security_groups = filter aws_security_groups as _, asg {
 	any asg.change.after.ingress as _, ingress {
-		ingress.to_port is 9200 or
-			(ingress.from_port <= 9200 and
-				ingress.to_port >= 9200)
+		ingress.to_port is 161 or
+			(ingress.from_port <= 161 and
+				ingress.to_port >= 161)
 	}
 }
 
 port_security_group_rules = filter aws_security_group_rules as _, asgr {
-	asgr.change.after.to_port is 9200 or
-		(asgr.change.after.from_port <= 9200 and
-			asgr.change.after.to_port >= 9200)
+	asgr.change.after.to_port is 161 or
+		(asgr.change.after.from_port <= 161 and
+			asgr.change.after.to_port >= 161)
 }
 
 protocol_security_groups = filter aws_security_groups as _, asg {
@@ -71,16 +71,16 @@ deny_all_open_protocol_security_group_rules = rule {
 
 
 // --------------------------------------------------------
-// Name:        Ensure_(TCP_9200)_Security_Groups_do_not_have_unrestricted_specific_ports_open_Elasticsearch.sentinel
+// Name:        Ensure_(UDP_161)_Security_Groups_do_not_have_unrestricted_specific_ports_open_SNMP.sentinel
 // Category:    Networking
 // Provider:    hashicorp/aws
 // Resource:    aws_security_group
 //              aws_security_group_rule
 // Check:       cidr_blocks does not contain "0.0.0.0/0"
-//              when port is "9200" or protocl is "-1"
+//              when port is "161" or protocl is "-1"
 // --------------------------------------------------------
 // Ensure no security groups allow ingress from 0.0.0.0/0
-// to port 9200.
+// to port TCP161.
 // --------------------------------------------------------
 main = rule {
 	deny_public_port_security_groups and
