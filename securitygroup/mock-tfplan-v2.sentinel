@@ -15,6 +15,7 @@ planned_values = {
 			"tainted":        false,
 			"type":           "aws_security_group",
 			"values": {
+				"arn":         "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
 				"description": "sentinel_22_added_sg",
 				"egress": [
 					{
@@ -31,12 +32,26 @@ planned_values = {
 						"to_port":          0,
 					},
 				],
+				"id": "sg-07702bf720a65158b",
 				"ingress": [
 					{
 						"cidr_blocks": [
 							"10.3.0.0/16",
 						],
 						"description":      "",
+						"from_port":        100,
+						"ipv6_cidr_blocks": [],
+						"prefix_list_ids":  [],
+						"protocol":         "-1",
+						"security_groups":  [],
+						"self":             true,
+						"to_port":          100,
+					},
+					{
+						"cidr_blocks": [
+							"10.3.0.0/16",
+						],
+						"description":      null,
 						"from_port":        22,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
@@ -46,7 +61,9 @@ planned_values = {
 						"to_port":          22,
 					},
 				],
-				"name": "sentinel_22_added_sg",
+				"name":                   "sentinel_22_added_sg",
+				"name_prefix":            "",
+				"owner_id":               "726344936127",
 				"revoke_rules_on_delete": false,
 				"tags": {
 					"Name":          "sentinel_22_added_sg",
@@ -95,7 +112,7 @@ planned_values = {
 						"cidr_blocks": [
 							"0.0.0.0/0",
 						],
-						"description":      null,
+						"description":      "",
 						"from_port":        22,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
@@ -121,7 +138,7 @@ planned_values = {
 						"cidr_blocks": [
 							"10.2.0.0/16",
 						],
-						"description":      "",
+						"description":      null,
 						"from_port":        22,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
@@ -145,6 +162,34 @@ planned_values = {
 				},
 				"timeouts": null,
 				"vpc_id":   "vpc-03076f7a654c4dbf4",
+			},
+		},
+		"aws_security_group_rule.just_test": {
+			"address":        "aws_security_group_rule.just_test",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "just_test",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_security_group_rule",
+			"values": {
+				"cidr_blocks": [
+					"0.0.0.0/0",
+					"10.3.0.0/24",
+				],
+				"description":       null,
+				"from_port":         161,
+				"ipv6_cidr_blocks":  null,
+				"prefix_list_ids":   null,
+				"protocol":          "tcp",
+				"security_group_id": "sg-07702bf720a65158b",
+				"self":              false,
+				"timeouts":          null,
+				"to_port":           161,
+				"type":              "ingress",
 			},
 		},
 		"aws_subnet.tf_a_new": {
@@ -293,9 +338,10 @@ resource_changes = {
 		"address": "aws_security_group.sentinel_22_added_sg",
 		"change": {
 			"actions": [
-				"create",
+				"update",
 			],
 			"after": {
+				"arn":         "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
 				"description": "sentinel_22_added_sg",
 				"egress": [
 					{
@@ -303,31 +349,47 @@ resource_changes = {
 							"0.0.0.0/0",
 						],
 						"description":      "",
-						"from_port":        3306,
+						"from_port":        0,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
 						"protocol":         "-1",
 						"security_groups":  [],
 						"self":             false,
-						"to_port":          3306,
+						"to_port":          0,
 					},
 				],
+				"id": "sg-07702bf720a65158b",
 				"ingress": [
 					{
 						"cidr_blocks": [
 							"0.0.0.0/0",
 						],
 						"description":      "",
-						"from_port":        161,
+						"from_port":        100,
+						"ipv6_cidr_blocks": [],
+						"prefix_list_ids":  [],
+						"protocol":         "-1",
+						"security_groups":  [],
+						"self":             true,
+						"to_port":          160,
+					},
+					{
+						"cidr_blocks": [
+							"10.3.0.0/16",
+						],
+						"description":      null,
+						"from_port":        22,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
 						"protocol":         "tcp",
 						"security_groups":  [],
 						"self":             true,
-						"to_port":          161,
+						"to_port":          22,
 					},
 				],
-				"name": "sentinel_22_added_sg",
+				"name":                   "sentinel_22_added_sg",
+				"name_prefix":            "",
+				"owner_id":               "726344936127",
 				"revoke_rules_on_delete": false,
 				"tags": {
 					"Name":          "sentinel_22_added_sg",
@@ -340,35 +402,56 @@ resource_changes = {
 				"timeouts": null,
 				"vpc_id":   "vpc-03076f7a654c4dbf4",
 			},
-			"after_unknown": {
-				"arn": true,
+			"after_unknown": {},
+			"before": {
+				"arn":         "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
+				"description": "sentinel_22_added_sg",
 				"egress": [
 					{
 						"cidr_blocks": [
-							false,
+							"0.0.0.0/0",
 						],
+						"description":      "",
+						"from_port":        0,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
+						"protocol":         "-1",
 						"security_groups":  [],
+						"self":             false,
+						"to_port":          0,
 					},
 				],
-				"id": true,
+				"id": "sg-07702bf720a65158b",
 				"ingress": [
 					{
 						"cidr_blocks": [
-							false,
+							"10.3.0.0/16",
 						],
+						"description":      "",
+						"from_port":        22,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
+						"protocol":         "tcp",
 						"security_groups":  [],
+						"self":             true,
+						"to_port":          22,
 					},
 				],
-				"name_prefix": true,
-				"owner_id":    true,
-				"tags":        {},
-				"tags_all":    {},
+				"name":                   "sentinel_22_added_sg",
+				"name_prefix":            "",
+				"owner_id":               "726344936127",
+				"revoke_rules_on_delete": false,
+				"tags": {
+					"Name":          "sentinel_22_added_sg",
+					"business-line": "test",
+				},
+				"tags_all": {
+					"Name":          "sentinel_22_added_sg",
+					"business-line": "test",
+				},
+				"timeouts": null,
+				"vpc_id":   "vpc-03076f7a654c4dbf4",
 			},
-			"before": null,
 		},
 		"deposed":        "",
 		"index":          null,
@@ -408,7 +491,7 @@ resource_changes = {
 						"cidr_blocks": [
 							"0.0.0.0/0",
 						],
-						"description":      null,
+						"description":      "",
 						"from_port":        22,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
@@ -434,14 +517,14 @@ resource_changes = {
 						"cidr_blocks": [
 							"10.2.0.0/16",
 						],
-						"description":      "",
+						"description":      null,
 						"from_port":        22,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
 						"protocol":         "tcp",
 						"security_groups":  [],
 						"self":             true,
-						"to_port":          77,
+						"to_port":          22,
 					},
 				],
 				"name":                   "endpoint_shared",
@@ -490,7 +573,7 @@ resource_changes = {
 						"prefix_list_ids":  [],
 						"protocol":         "tcp",
 						"security_groups":  [],
-						"self":             true,
+						"self":             false,
 						"to_port":          22,
 					},
 					{
@@ -505,6 +588,19 @@ resource_changes = {
 						"security_groups":  [],
 						"self":             true,
 						"to_port":          80,
+					},
+					{
+						"cidr_blocks": [
+							"10.2.0.0/16",
+						],
+						"description":      "",
+						"from_port":        22,
+						"ipv6_cidr_blocks": [],
+						"prefix_list_ids":  [],
+						"protocol":         "tcp",
+						"security_groups":  [],
+						"self":             true,
+						"to_port":          22,
 					},
 				],
 				"name":                   "endpoint_shared",
@@ -530,6 +626,47 @@ resource_changes = {
 		"name":           "tf_test",
 		"provider_name":  "registry.terraform.io/hashicorp/aws",
 		"type":           "aws_security_group",
+	},
+	"aws_security_group_rule.just_test": {
+		"address": "aws_security_group_rule.just_test",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"cidr_blocks": [
+					"0.0.0.0/0",
+					"10.3.0.0/24",
+				],
+				"description":       null,
+				"from_port":         162,
+				"ipv6_cidr_blocks":  null,
+				"prefix_list_ids":   null,
+				"protocol":          "udp",
+				"security_group_id": "sg-07702bf720a65158b",
+				"self":              false,
+				"timeouts":          null,
+				"to_port":           162,
+				"type":              "ingress",
+			},
+			"after_unknown": {
+				"cidr_blocks": [
+					false,
+					false,
+				],
+				"id": true,
+				"security_group_rule_id":   true,
+				"source_security_group_id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "just_test",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_security_group_rule",
 	},
 	"aws_subnet.tf_a_new": {
 		"address": "aws_subnet.tf_a_new",
@@ -812,6 +949,19 @@ raw = {
 									"self":             true,
 									"to_port":          22,
 								},
+								{
+									"cidr_blocks": [
+										"10.3.0.0/16",
+									],
+									"description":      null,
+									"from_port":        100,
+									"ipv6_cidr_blocks": null,
+									"prefix_list_ids":  null,
+									"protocol":         "-1",
+									"security_groups":  null,
+									"self":             true,
+									"to_port":          100,
+								},
 							],
 						},
 						"name": {
@@ -923,6 +1073,40 @@ raw = {
 					"provider_config_key": "aws",
 					"schema_version":      1,
 					"type":                "aws_security_group",
+				},
+				{
+					"address": "aws_security_group_rule.just_test",
+					"expressions": {
+						"cidr_blocks": {
+							"constant_value": [
+								"0.0.0.0/0",
+								"10.3.0.0/24",
+							],
+						},
+						"from_port": {
+							"constant_value": 161,
+						},
+						"protocol": {
+							"constant_value": "tcp",
+						},
+						"security_group_id": {
+							"references": [
+								"aws_security_group.sentinel_22_added_sg.id",
+								"aws_security_group.sentinel_22_added_sg",
+							],
+						},
+						"to_port": {
+							"constant_value": 161,
+						},
+						"type": {
+							"constant_value": "ingress",
+						},
+					},
+					"mode":                "managed",
+					"name":                "just_test",
+					"provider_config_key": "aws",
+					"schema_version":      2,
+					"type":                "aws_security_group_rule",
 				},
 				{
 					"address": "aws_subnet.tf_a_new",
@@ -1052,12 +1236,21 @@ raw = {
 								"prefix_list_ids":  [],
 								"security_groups":  [],
 							},
+							{
+								"cidr_blocks": [
+									false,
+								],
+								"ipv6_cidr_blocks": [],
+								"prefix_list_ids":  [],
+								"security_groups":  [],
+							},
 						],
 						"tags":     {},
 						"tags_all": {},
 					},
 					"type": "aws_security_group",
 					"values": {
+						"arn":         "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
 						"description": "sentinel_22_added_sg",
 						"egress": [
 							{
@@ -1074,12 +1267,26 @@ raw = {
 								"to_port":          0,
 							},
 						],
+						"id": "sg-07702bf720a65158b",
 						"ingress": [
 							{
 								"cidr_blocks": [
 									"10.3.0.0/16",
 								],
 								"description":      "",
+								"from_port":        100,
+								"ipv6_cidr_blocks": [],
+								"prefix_list_ids":  [],
+								"protocol":         "-1",
+								"security_groups":  [],
+								"self":             true,
+								"to_port":          100,
+							},
+							{
+								"cidr_blocks": [
+									"10.3.0.0/16",
+								],
+								"description":      null,
 								"from_port":        22,
 								"ipv6_cidr_blocks": [],
 								"prefix_list_ids":  [],
@@ -1089,7 +1296,9 @@ raw = {
 								"to_port":          22,
 							},
 						],
-						"name": "sentinel_22_added_sg",
+						"name":                   "sentinel_22_added_sg",
+						"name_prefix":            "",
+						"owner_id":               "726344936127",
 						"revoke_rules_on_delete": false,
 						"tags": {
 							"Name":          "sentinel_22_added_sg",
@@ -1174,7 +1383,7 @@ raw = {
 								"cidr_blocks": [
 									"0.0.0.0/0",
 								],
-								"description":      null,
+								"description":      "",
 								"from_port":        22,
 								"ipv6_cidr_blocks": [],
 								"prefix_list_ids":  [],
@@ -1200,7 +1409,7 @@ raw = {
 								"cidr_blocks": [
 									"10.2.0.0/16",
 								],
-								"description":      "",
+								"description":      null,
 								"from_port":        22,
 								"ipv6_cidr_blocks": [],
 								"prefix_list_ids":  [],
@@ -1224,6 +1433,36 @@ raw = {
 						},
 						"timeouts": null,
 						"vpc_id":   "vpc-03076f7a654c4dbf4",
+					},
+				},
+				{
+					"address":        "aws_security_group_rule.just_test",
+					"mode":           "managed",
+					"name":           "just_test",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 2,
+					"sensitive_values": {
+						"cidr_blocks": [
+							false,
+							false,
+						],
+					},
+					"type": "aws_security_group_rule",
+					"values": {
+						"cidr_blocks": [
+							"0.0.0.0/0",
+							"10.3.0.0/24",
+						],
+						"description":       null,
+						"from_port":         161,
+						"ipv6_cidr_blocks":  null,
+						"prefix_list_ids":   null,
+						"protocol":          "tcp",
+						"security_group_id": "sg-07702bf720a65158b",
+						"self":              false,
+						"timeouts":          null,
+						"to_port":           161,
+						"type":              "ingress",
 					},
 				},
 				{
@@ -1359,6 +1598,90 @@ raw = {
 			"root_module": {
 				"resources": [
 					{
+						"address": "aws_security_group.sentinel_22_added_sg",
+						"depends_on": [
+							"aws_vpc.tf_vpc2",
+						],
+						"mode":           "managed",
+						"name":           "sentinel_22_added_sg",
+						"provider_name":  "registry.terraform.io/hashicorp/aws",
+						"schema_version": 1,
+						"sensitive_values": {
+							"egress": [
+								{
+									"cidr_blocks": [
+										false,
+									],
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"security_groups":  [],
+								},
+							],
+							"ingress": [
+								{
+									"cidr_blocks": [
+										false,
+									],
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"security_groups":  [],
+								},
+							],
+							"tags":     {},
+							"tags_all": {},
+						},
+						"type": "aws_security_group",
+						"values": {
+							"arn":         "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
+							"description": "sentinel_22_added_sg",
+							"egress": [
+								{
+									"cidr_blocks": [
+										"0.0.0.0/0",
+									],
+									"description":      "",
+									"from_port":        0,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "-1",
+									"security_groups":  [],
+									"self":             false,
+									"to_port":          0,
+								},
+							],
+							"id": "sg-07702bf720a65158b",
+							"ingress": [
+								{
+									"cidr_blocks": [
+										"10.3.0.0/16",
+									],
+									"description":      "",
+									"from_port":        22,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "tcp",
+									"security_groups":  [],
+									"self":             true,
+									"to_port":          22,
+								},
+							],
+							"name":                   "sentinel_22_added_sg",
+							"name_prefix":            "",
+							"owner_id":               "726344936127",
+							"revoke_rules_on_delete": false,
+							"tags": {
+								"Name":          "sentinel_22_added_sg",
+								"business-line": "test",
+							},
+							"tags_all": {
+								"Name":          "sentinel_22_added_sg",
+								"business-line": "test",
+							},
+							"timeouts": null,
+							"vpc_id":   "vpc-03076f7a654c4dbf4",
+						},
+					},
+					{
 						"address": "aws_security_group.tf_test",
 						"depends_on": [
 							"aws_vpc.tf_vpc2",
@@ -1379,6 +1702,14 @@ raw = {
 								},
 							],
 							"ingress": [
+								{
+									"cidr_blocks": [
+										false,
+									],
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"security_groups":  [],
+								},
 								{
 									"cidr_blocks": [
 										false,
@@ -1430,7 +1761,7 @@ raw = {
 									"prefix_list_ids":  [],
 									"protocol":         "tcp",
 									"security_groups":  [],
-									"self":             true,
+									"self":             false,
 									"to_port":          22,
 								},
 								{
@@ -1445,6 +1776,19 @@ raw = {
 									"security_groups":  [],
 									"self":             true,
 									"to_port":          80,
+								},
+								{
+									"cidr_blocks": [
+										"10.2.0.0/16",
+									],
+									"description":      "",
+									"from_port":        22,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "tcp",
+									"security_groups":  [],
+									"self":             true,
+									"to_port":          22,
 								},
 							],
 							"name":                   "endpoint_shared",
@@ -1603,15 +1947,22 @@ raw = {
 			],
 			"resource": "aws_vpc.tf_vpc2",
 		},
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_security_group.sentinel_22_added_sg",
+		},
 	],
 	"resource_changes": [
 		{
 			"address": "aws_security_group.sentinel_22_added_sg",
 			"change": {
 				"actions": [
-					"create",
+					"update",
 				],
 				"after": {
+					"arn":         "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
 					"description": "sentinel_22_added_sg",
 					"egress": [
 						{
@@ -1628,12 +1979,26 @@ raw = {
 							"to_port":          0,
 						},
 					],
+					"id": "sg-07702bf720a65158b",
 					"ingress": [
 						{
 							"cidr_blocks": [
 								"10.3.0.0/16",
 							],
 							"description":      "",
+							"from_port":        100,
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"protocol":         "-1",
+							"security_groups":  [],
+							"self":             true,
+							"to_port":          100,
+						},
+						{
+							"cidr_blocks": [
+								"10.3.0.0/16",
+							],
+							"description":      null,
 							"from_port":        22,
 							"ipv6_cidr_blocks": [],
 							"prefix_list_ids":  [],
@@ -1643,7 +2008,9 @@ raw = {
 							"to_port":          22,
 						},
 					],
-					"name": "sentinel_22_added_sg",
+					"name":                   "sentinel_22_added_sg",
+					"name_prefix":            "",
+					"owner_id":               "726344936127",
 					"revoke_rules_on_delete": false,
 					"tags": {
 						"Name":          "sentinel_22_added_sg",
@@ -1676,12 +2043,69 @@ raw = {
 							"prefix_list_ids":  [],
 							"security_groups":  [],
 						},
+						{
+							"cidr_blocks": [
+								false,
+							],
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"security_groups":  [],
+						},
 					],
 					"tags":     {},
 					"tags_all": {},
 				},
-				"after_unknown": {
-					"arn": true,
+				"after_unknown": {},
+				"before": {
+					"arn":         "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
+					"description": "sentinel_22_added_sg",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0",
+							],
+							"description":      "",
+							"from_port":        0,
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"protocol":         "-1",
+							"security_groups":  [],
+							"self":             false,
+							"to_port":          0,
+						},
+					],
+					"id": "sg-07702bf720a65158b",
+					"ingress": [
+						{
+							"cidr_blocks": [
+								"10.3.0.0/16",
+							],
+							"description":      "",
+							"from_port":        22,
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"protocol":         "tcp",
+							"security_groups":  [],
+							"self":             true,
+							"to_port":          22,
+						},
+					],
+					"name":                   "sentinel_22_added_sg",
+					"name_prefix":            "",
+					"owner_id":               "726344936127",
+					"revoke_rules_on_delete": false,
+					"tags": {
+						"Name":          "sentinel_22_added_sg",
+						"business-line": "test",
+					},
+					"tags_all": {
+						"Name":          "sentinel_22_added_sg",
+						"business-line": "test",
+					},
+					"timeouts": null,
+					"vpc_id":   "vpc-03076f7a654c4dbf4",
+				},
+				"before_sensitive": {
 					"egress": [
 						{
 							"cidr_blocks": [
@@ -1692,7 +2116,6 @@ raw = {
 							"security_groups":  [],
 						},
 					],
-					"id": true,
 					"ingress": [
 						{
 							"cidr_blocks": [
@@ -1703,13 +2126,9 @@ raw = {
 							"security_groups":  [],
 						},
 					],
-					"name_prefix": true,
-					"owner_id":    true,
-					"tags":        {},
-					"tags_all":    {},
+					"tags":     {},
+					"tags_all": {},
 				},
-				"before":           null,
-				"before_sensitive": false,
 			},
 			"mode":          "managed",
 			"name":          "sentinel_22_added_sg",
@@ -1746,7 +2165,7 @@ raw = {
 							"cidr_blocks": [
 								"0.0.0.0/0",
 							],
-							"description":      null,
+							"description":      "",
 							"from_port":        22,
 							"ipv6_cidr_blocks": [],
 							"prefix_list_ids":  [],
@@ -1772,7 +2191,7 @@ raw = {
 							"cidr_blocks": [
 								"10.2.0.0/16",
 							],
-							"description":      "",
+							"description":      null,
 							"from_port":        22,
 							"ipv6_cidr_blocks": [],
 							"prefix_list_ids":  [],
@@ -1868,7 +2287,7 @@ raw = {
 							"prefix_list_ids":  [],
 							"protocol":         "tcp",
 							"security_groups":  [],
-							"self":             true,
+							"self":             false,
 							"to_port":          22,
 						},
 						{
@@ -1883,6 +2302,19 @@ raw = {
 							"security_groups":  [],
 							"self":             true,
 							"to_port":          80,
+						},
+						{
+							"cidr_blocks": [
+								"10.2.0.0/16",
+							],
+							"description":      "",
+							"from_port":        22,
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"protocol":         "tcp",
+							"security_groups":  [],
+							"self":             true,
+							"to_port":          22,
 						},
 					],
 					"name":                   "endpoint_shared",
@@ -1928,6 +2360,14 @@ raw = {
 							"prefix_list_ids":  [],
 							"security_groups":  [],
 						},
+						{
+							"cidr_blocks": [
+								false,
+							],
+							"ipv6_cidr_blocks": [],
+							"prefix_list_ids":  [],
+							"security_groups":  [],
+						},
 					],
 					"tags":     {},
 					"tags_all": {},
@@ -1937,6 +2377,51 @@ raw = {
 			"name":          "tf_test",
 			"provider_name": "registry.terraform.io/hashicorp/aws",
 			"type":          "aws_security_group",
+		},
+		{
+			"address": "aws_security_group_rule.just_test",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"cidr_blocks": [
+						"0.0.0.0/0",
+						"10.3.0.0/24",
+					],
+					"description":       null,
+					"from_port":         161,
+					"ipv6_cidr_blocks":  null,
+					"prefix_list_ids":   null,
+					"protocol":          "tcp",
+					"security_group_id": "sg-07702bf720a65158b",
+					"self":              false,
+					"timeouts":          null,
+					"to_port":           161,
+					"type":              "ingress",
+				},
+				"after_sensitive": {
+					"cidr_blocks": [
+						false,
+						false,
+					],
+				},
+				"after_unknown": {
+					"cidr_blocks": [
+						false,
+						false,
+					],
+					"id": true,
+					"security_group_rule_id":   true,
+					"source_security_group_id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "just_test",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_security_group_rule",
 		},
 		{
 			"address": "aws_subnet.tf_a_new",

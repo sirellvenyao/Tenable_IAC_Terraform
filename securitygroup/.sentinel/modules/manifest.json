@@ -1,0 +1,28 @@
+{
+	"records": [
+		{
+			"key": "tfstate-functions",
+			"source": "../common-functions/tfstate-functions/tfstate-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/Users/ellvenyao/Github/Tenable_IAC_Terraform/Tenable_IAC_Terraform/common-functions/tfstate-functions/tfstate-functions.sentinel"
+		},
+		{
+			"key": "aws-functions",
+			"source": "./aws-functions/aws-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/Users/ellvenyao/Github/Tenable_IAC_Terraform/Tenable_IAC_Terraform/securitygroup/aws-functions/aws-functions.sentinel"
+		},
+		{
+			"key": "tfconfig-functions",
+			"source": "../common-functions/tfconfig-functions/tfconfig-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/Users/ellvenyao/Github/Tenable_IAC_Terraform/Tenable_IAC_Terraform/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
+		},
+		{
+			"key": "tfplan-functions",
+			"source": "../common-functions/tfplan-functions/tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/Users/ellvenyao/Github/Tenable_IAC_Terraform/Tenable_IAC_Terraform/common-functions/tfplan-functions/tfplan-functions.sentinel"
+		}
+	]
+}
