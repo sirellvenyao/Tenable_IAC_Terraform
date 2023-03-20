@@ -67,7 +67,7 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
 
 
 // --------------------------------------------------------
-// Name:        Ensure Security Groups do not have unrestricted specific ports open - Memcached SSL (TCP,11215)
+// Name:        Ensure Security Groups do not have unrestricted specific ports open - Memcached SSL (TCP/UDP,11215)
 // Category:    Networking
 // Provider:    kc/cybersec
 // Resource:    aws_security_group

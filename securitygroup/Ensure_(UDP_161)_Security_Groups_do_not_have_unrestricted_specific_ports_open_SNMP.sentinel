@@ -67,7 +67,7 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
 
 
 // --------------------------------------------------------
-// Name:        Ensure_(UDP_161)_Security_Groups_do_not_have_unrestricted_specific_ports_open_SNMP.sentinel
+// Name:        Ensure Security Groups do not have unrestricted specific ports open - SNMP (UDP,161)
 // Category:    Networking
 // Provider:    kc/cybersec
 // Resource:    aws_security_group

@@ -67,7 +67,7 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
 
 
 // --------------------------------------------------------
-// Ensure Security Groups do not have unrestricted specific ports open - MSSQL Admin (TCP,1434)
+// Ensure Security Groups do not have unrestricted specific ports open - MSSQL Admin (TCP/UDP,1434)
 // Category:    Networking
 // Provider:    kc/cybersec
 // Resource:    aws_security_group

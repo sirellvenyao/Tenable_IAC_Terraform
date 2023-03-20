@@ -67,7 +67,7 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
 
 
 // --------------------------------------------------------
-// Name:        Ensure Security Groups do not have unrestricted specific ports open - Oracle DB SSL (TCP,2484)
+// Name:        Ensure Security Groups do not have unrestricted specific ports open - Oracle DB SSL (TCP/UDP,2484)
 // Category:    Networking
 // Provider:    kc/cybersec
 // Resource:    aws_security_group
