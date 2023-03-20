@@ -1,0 +1,85 @@
+import "tfplan/v2" as tfplan
+//import "strings"
+
+aws_security_groups = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_security_group" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) and
+		(resource_changes.change.after.ingress else []) is not empty
+}
+
+aws_security_group_rules = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_security_group_rule" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) and
+		resource_changes.change.after.type is "ingress"
+}
+
+
+NetworkSecurityGroupPortCompliance = func(groups) {
+	mapSecurityRules = []
+    if length(groups) > 0 {   
+        //print(groups)
+        for groups as _, group {
+            securitygroupname = group.change.after.name
+            for group.change.after.ingress as sgr {
+                if  (sgr.to_port is 11211 or (sgr.from_port <= 11211 and sgr.to_port >= 11211)) {
+                    if sgr.cidr_blocks contains "0.0.0.0/0"{
+                        if sgr.protocol in ["-1","udp","tcp"] {
+                            append(mapSecurityRules,sgr)
+                        }
+                    }                
+                }
+            }
+        }
+        print("NonCompliant security_group is: ",mapSecurityRules)
+        print("NonCompliant security_group count is: ", length(mapSecurityRules))
+        return length(mapSecurityRules)
+    }
+
+}
+
+NetworkSecurityGroupRulesPortCompliance = func(groups) {
+    mapSecurityGroupRules = []
+    if length(groups) > 0 {
+        //print(groups)
+        for groups as _, group {
+            securitygrouprulename = group.address
+            //print(securitygrouprulename)
+            if (group.change.after.to_port is 11211 or (group.change.after.from_port <=11211 and group.change.after.to_port >=11211)){
+                if group.change.after.cidr_blocks contains "0.0.0.0/0" {
+                    if group.change.after.protocol in ["-1","udp","tcp"] {
+                        append(mapSecurityGroupRules,securitygrouprulename)
+                    }
+                }
+            }
+        }
+        print("NonCompliant security_group_rule is: ",mapSecurityGroupRules)
+        print("NonCompliant security_group_rule count is: ", length(mapSecurityGroupRules))
+        return length(mapSecurityGroupRules)
+
+    }
+}
+
+
+
+
+// --------------------------------------------------------
+// Name:        Ensure Memcached SSL (TCP/UDP11211) is not exposed to entire internet
+// Category:    Networking
+// Provider:    kc/cybersec
+// Resource:    aws_security_group
+//              aws_security_group_rule
+// Check:       cidr_blocks does not contain "0.0.0.0/0"
+//              when port is "11211" or protocl is "-1,udp,tcp"
+// --------------------------------------------------------
+// Ensure no security groups allow ingress from 0.0.0.0/0
+// to port TCP/UDP11211.
+// --------------------------------------------------------
+main = rule {
+    NetworkSecurityGroupRulesPortCompliance(aws_security_group_rules) == 0 and
+	NetworkSecurityGroupPortCompliance(aws_security_groups) == 0 
+
+}
