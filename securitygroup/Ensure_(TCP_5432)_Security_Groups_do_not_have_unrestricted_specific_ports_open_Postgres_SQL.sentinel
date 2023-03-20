@@ -67,7 +67,7 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
 
 
 // --------------------------------------------------------
-// Name:        Ensure Security Groups do not have unrestricted specific ports open - Postgres SQL (TCP,5432)
+// Name:        Ensure Security Groups do not have unrestricted specific ports open - Postgres SQL (TCP/UDP,5432)
 // Category:    Networking
 // Provider:    kc/cybersec
 // Resource:    aws_security_group

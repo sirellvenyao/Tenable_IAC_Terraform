@@ -67,7 +67,7 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
 
 
 // --------------------------------------------------------
-// Name:        Ensure Security Groups do not have unrestricted specific ports open - NetBIOS Name Service (TCP,137)
+// Name:        Ensure Security Groups do not have unrestricted specific ports open - NetBIOS Name Service (TCP/UDP,137)
 // Category:    Networking
 // Provider:    kc/cybersec
 // Resource:    aws_security_group
