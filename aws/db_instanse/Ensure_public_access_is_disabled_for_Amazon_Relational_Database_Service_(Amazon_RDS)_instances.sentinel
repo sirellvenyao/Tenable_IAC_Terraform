@@ -1,0 +1,42 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+
+aws_db_instance = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_db_instance" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) 
+}
+
+
+
+DBPubliclyAccessibleCheck = func(dbinstances){
+    listDBPubliclyAccessible= []
+    //print(lbtargetgroups)
+    if length(dbinstances) > 0 {
+        //print(length(dbinstances))
+        for dbinstances as _, db {
+            if (db.change.after.publicly_accessible) or (db.change.after_unknown.publicly_accessible){
+                append(listDBPubliclyAccessible,db.change.after.identifier)
+                print("This DB Instance(identifier)",db.change.after.identifier,"has public accessibility")
+            }
+        }
+    }    
+    return length(listDBPubliclyAccessible)
+}
+
+// --------------------------------------------------------
+// Name:        Ensure public access is disabled for Amazon 
+//              Relational Database Service (Amazon RDS) instances
+// Category:    AWS DB Instance
+// Provider:    kc/cybersec
+// Resource:    aws_db_instance
+// Check:       check DB Instances do not open to public internet
+// --------------------------------------------------------
+// check aws_db_instance.publicly_accessible does 
+// not set to false
+// --------------------------------------------------------
+main = rule{
+    DBPubliclyAccessibleCheck(aws_db_instance) == 0 
+}
