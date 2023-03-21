@@ -47,7 +47,7 @@ EC2InstanceMetadataCompliance = func(instances){
                 }
             }
             if "http_endpoint" not in metadata_options_keys or "http_tokens" not in metadata_options_keys{
-                print("This instance->",instance.name,"<-miss the configuration of metadata_options.http_endpoint or metadata_options.http_tokens")
+                print("This instance",instance.name,"miss the configuration of metadata_options.http_endpoint or metadata_options.http_tokens")
                 append(EC2InstanceMetadata,instance.name)
             }
         }
@@ -58,6 +58,9 @@ EC2InstanceMetadataCompliance = func(instances){
     }
     return 1
 }
+
+
+
 
 // --------------------------------------------------------
 // Name:        Ensure IMDSv1 is disabled for AWS EC2 instances in AWS Launch Configuration
