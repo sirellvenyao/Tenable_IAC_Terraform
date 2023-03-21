@@ -26,7 +26,7 @@ NoMetadaEC2InstanceMetadataCompliance = func(instances){
             append(listNoMetadaEC2InstanceMetadata,instance.name)
         }
     }
-    print("return:",length(listNoMetadaEC2InstanceMetadata))
+    //print("return:",length(listNoMetadaEC2InstanceMetadata))
     return length(listNoMetadaEC2InstanceMetadata)
 
 }
@@ -51,7 +51,7 @@ EC2InstanceMetadataCompliance = func(instances){
                 append(EC2InstanceMetadata,instance.name)
             }
         }
-        print(EC2InstanceMetadata)
+        //print(EC2InstanceMetadata)
         return length(EC2InstanceMetadata)
 
 
