@@ -703,7 +703,7 @@ resource_changes = {
 						"protocol":         "-1",
 						"security_groups":  [],
 						"self":             false,
-						"to_port":          0,
+						"to_port":          60000,
 					},
 				],
 				"id": "sg-07702bf720a65158b",
@@ -719,7 +719,7 @@ resource_changes = {
 						"protocol":         "-1",
 						"security_groups":  [],
 						"self":             true,
-						"to_port":          100,
+						"to_port":          60000,
 					},
 					{
 						"cidr_blocks": [
@@ -846,7 +846,7 @@ resource_changes = {
 						"protocol":         "tcp",
 						"security_groups":  [],
 						"self":             true,
-						"to_port":          22,
+						"to_port":          60000,
 					},
 					{
 						"cidr_blocks": [

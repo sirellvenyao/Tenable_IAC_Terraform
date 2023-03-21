@@ -67,7 +67,8 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
 
 
 // --------------------------------------------------------
-// Name:        Ensure Cassandra Internode Communication (TCP9042) is not exposed to entire internet
+// Name:        Ensure Cassandra Client (TCP:9042) is not exposed to more than 32 private hosts
+
 // Category:    Networking
 // Provider:    kc/cybersec
 // Resource:    aws_security_group
