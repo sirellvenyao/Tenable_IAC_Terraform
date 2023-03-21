@@ -450,10 +450,11 @@ resource_changes = {
 				"timeouts":                    null,
 				"user_data_replace_on_change": false,
 				"volume_tags":                 null,
+				"associate_public_ip_address": true,
+
 			},
 			"after_unknown": {
 				"arn": true,
-				"associate_public_ip_address":        true,
 				"availability_zone":                  true,
 				"capacity_reservation_specification": true,
 				"cpu_core_count":                     true,

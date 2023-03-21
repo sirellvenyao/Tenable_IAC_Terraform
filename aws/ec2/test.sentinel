@@ -2,75 +2,40 @@ import "tfplan/v2" as tfplan
 import "types"
 import "strings"
 
-no_metadaconfigure_aws_instance = filter tfplan.resource_changes as _, resource_changes {
-	resource_changes.mode is "managed" and
-		resource_changes.type is "aws_instance" and
-		(resource_changes.change.actions contains "create" or
-			resource_changes.change.actions is ["update"]) and ((resource_changes.change.after_unknown.metadata_options is true) )
-}
-
 aws_instance = filter tfplan.resource_changes as _, resource_changes {
 	resource_changes.mode is "managed" and
 		resource_changes.type is "aws_instance" and
 		(resource_changes.change.actions contains "create" or
-			resource_changes.change.actions is ["update"]) and resource_changes.change.after_unknown.metadata_options is not true
+			resource_changes.change.actions is ["update"]) 
 }
 
-NoMetadaEC2InstanceMetadataCompliance = func(instances){
-    listNoMetadaEC2InstanceMetadata= []
-    //print(instances)
+
+
+EC2InstanceAssociatePublicIP = func(instances){
+    EC2InstancePublicIP = []
+    //print(length(instances))
     if length(instances) > 0 {
         for instances as _, instance{
-            print("Tis instance",instance.name,"has no Metadata configure content")
-            //print(instance.name)
-            append(listNoMetadaEC2InstanceMetadata,instance.name)
-        }
-    }
-    print("return:",length(listNoMetadaEC2InstanceMetadata))
-    return length(listNoMetadaEC2InstanceMetadata)
-
-}
-
-EC2InstanceMetadataCompliance = func(instances){
-    EC2InstanceMetadata = []
-    //print(instances)
-    if length(instances) > 0 {
-        //print(length(instances))
-        for instances as _, instance{
-            //print("keys is ",keys(instance.change.after.metadata_options[0]))
-            metadata_options_keys = keys(instance.change.after.metadata_options[0])
-            if "http_endpoint" in metadata_options_keys and "http_tokens" in metadata_options_keys{
-                if instance.change.after.metadata_options[0].http_endpoint is not "enabled" or
-                instance.change.after.metadata_options[0].http_tokens is not "required" {
-                    print("This instance",instance.name,"has the wrong setting")
-                    append(EC2InstanceMetadata,instance.name)
+            associate_public_ip_address_key = keys(instance.change.after_unknown)
+            if "associate_public_ip_address" in associate_public_ip_address_key {
+                if instance.change.after_unknown.associate_public_ip_address is true {
+                    append(EC2InstancePublicIP,instance.name)
+                    print("This instance",instance.name,"should not enable the associate_public_ip_address (default configuration)")
                 }
             }
-            if "http_endpoint" not in metadata_options_keys or "http_tokens" not in metadata_options_keys{
-                print("This instance->",instance.name,"<-miss the configuration of metadata_options.http_endpoint or metadata_options.http_tokens")
-                append(EC2InstanceMetadata,instance.name)
+            associate_public_ip_address_key = keys(instance.change.after)
+            if "associate_public_ip_address" in associate_public_ip_address_key {
+                if instance.change.after.associate_public_ip_address is true {
+                    append(EC2InstancePublicIP,instance.name)
+                    print("This instance",instance.name,"should not enable the associate_public_ip_address")
+                }
             }
         }
-        print(EC2InstanceMetadata)
-        return length(EC2InstanceMetadata)
-
-
     }
-    return 1
+    return length(EC2InstancePublicIP)
 }
 
-// --------------------------------------------------------
-// Name:        Ensure IMDSv1 is disabled for AWS EC2 instances in AWS Launch Configuration
-// Category:    EC2 Instance
-// Provider:    kc/cybersec
-// Resource:    aws_instance
-// Check:       metadata_options.http_endpoint is disabled, 
-//              metadata_options.http_tokens is required.
-// --------------------------------------------------------
-// Set the metadata_options.http_endpoint field to disabled, 
-// and set the metadata_options.http_tokens field to required.
-// --------------------------------------------------------
+
 main = rule{
-    EC2InstanceMetadataCompliance(aws_instance) == 0 and 
-    NoMetadaEC2InstanceMetadataCompliance(no_metadaconfigure_aws_instance) == 0
+    EC2InstanceAssociatePublicIP(aws_instance) == 0 
 }

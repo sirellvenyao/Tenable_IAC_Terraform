@@ -52,11 +52,11 @@ EC2InstanceMetadataCompliance = func(instances){
             }
         }
         //print(EC2InstanceMetadata)
-        return length(EC2InstanceMetadata)
+        
 
 
     }
-    return 1
+    return length(EC2InstanceMetadata)
 }
 
 
