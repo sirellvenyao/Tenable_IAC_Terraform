@@ -1,0 +1,2022 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"aws_instance": {
+				"No_metadata_instance": {
+					0: {
+						"applied": {
+							"ami": "ami-09d56f8956ab235b3",
+							"credit_specification":        [],
+							"get_password_data":           false,
+							"hibernation":                 null,
+							"instance_type":               "t2.micro",
+							"key_name":                    "tomcat",
+							"launch_template":             [],
+							"source_dest_check":           true,
+							"subnet_id":                   "subnet-03930fd6d040f7546",
+							"tags":                        null,
+							"timeouts":                    null,
+							"user_data_replace_on_change": false,
+							"volume_tags":                 null,
+						},
+						"destroy": false,
+						"diff": {
+							"ami": {
+								"computed": false,
+								"new":      "ami-09d56f8956ab235b3",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"associate_public_ip_address": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"availability_zone": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"capacity_reservation_specification.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cpu_core_count": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cpu_threads_per_core": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"credit_specification.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"disable_api_stop": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"disable_api_termination": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ebs_block_device.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ebs_optimized": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"enclave_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ephemeral_block_device.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"get_password_data": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"hibernation": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"host_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"host_resource_group_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"iam_instance_profile": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_initiated_shutdown_behavior": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_state": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_type": {
+								"computed": false,
+								"new":      "t2.micro",
+								"old":      "",
+							},
+							"ipv6_address_count": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ipv6_addresses.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"key_name": {
+								"computed": false,
+								"new":      "tomcat",
+								"old":      "",
+							},
+							"launch_template.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"maintenance_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"metadata_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"monitoring": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"network_interface.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"outpost_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"password_data": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"placement_group": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"placement_partition_number": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_network_interface_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_dns": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_dns_name_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_ip": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"public_dns": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"public_ip": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"root_block_device.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_private_ips.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"security_groups.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"source_dest_check": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"subnet_id": {
+								"computed": false,
+								"new":      "subnet-03930fd6d040f7546",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tenancy": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"user_data": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"user_data_base64": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"user_data_replace_on_change": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"volume_tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"vpc_security_group_ids.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"correct_instance": {
+					0: {
+						"applied": {
+							"ami": "ami-09d56f8956ab235b3",
+							"credit_specification": [],
+							"get_password_data":    false,
+							"hibernation":          null,
+							"instance_type":        "t2.micro",
+							"key_name":             "tomcat",
+							"launch_template":      [],
+							"metadata_options": [
+								{
+									"http_endpoint":               "enabled",
+									"http_put_response_hop_limit": 5,
+									"http_tokens":                 "required",
+									"instance_metadata_tags":      "enabled",
+								},
+							],
+							"source_dest_check":           true,
+							"subnet_id":                   "subnet-03930fd6d040f7546",
+							"tags":                        null,
+							"timeouts":                    null,
+							"user_data_replace_on_change": false,
+							"volume_tags":                 null,
+						},
+						"destroy": false,
+						"diff": {
+							"ami": {
+								"computed": false,
+								"new":      "ami-09d56f8956ab235b3",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"associate_public_ip_address": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"availability_zone": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"capacity_reservation_specification.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cpu_core_count": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cpu_threads_per_core": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"credit_specification.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"disable_api_stop": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"disable_api_termination": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ebs_block_device.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ebs_optimized": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"enclave_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ephemeral_block_device.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"get_password_data": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"hibernation": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"host_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"host_resource_group_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"iam_instance_profile": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_initiated_shutdown_behavior": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_state": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_type": {
+								"computed": false,
+								"new":      "t2.micro",
+								"old":      "",
+							},
+							"ipv6_address_count": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ipv6_addresses.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"key_name": {
+								"computed": false,
+								"new":      "tomcat",
+								"old":      "",
+							},
+							"launch_template.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"maintenance_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"metadata_options.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"metadata_options.0.%": {
+								"computed": false,
+								"new":      "4",
+								"old":      "",
+							},
+							"metadata_options.0.http_endpoint": {
+								"computed": false,
+								"new":      "enabled",
+								"old":      "",
+							},
+							"metadata_options.0.http_put_response_hop_limit": {
+								"computed": false,
+								"new":      "5",
+								"old":      "",
+							},
+							"metadata_options.0.http_tokens": {
+								"computed": false,
+								"new":      "required",
+								"old":      "",
+							},
+							"metadata_options.0.instance_metadata_tags": {
+								"computed": false,
+								"new":      "enabled",
+								"old":      "",
+							},
+							"monitoring": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"network_interface.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"outpost_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"password_data": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"placement_group": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"placement_partition_number": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_network_interface_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_dns": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_dns_name_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_ip": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"public_dns": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"public_ip": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"root_block_device.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_private_ips.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"security_groups.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"source_dest_check": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"subnet_id": {
+								"computed": false,
+								"new":      "subnet-03930fd6d040f7546",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tenancy": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"user_data": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"user_data_base64": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"user_data_replace_on_change": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"volume_tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"vpc_security_group_ids.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"missed_file_instance": {
+					0: {
+						"applied": {
+							"ami": "ami-09d56f8956ab235b3",
+							"credit_specification": [],
+							"get_password_data":    false,
+							"hibernation":          null,
+							"instance_type":        "t2.micro",
+							"key_name":             "tomcat",
+							"launch_template":      [],
+							"metadata_options": [
+								{
+									"http_endpoint":               "enabled",
+									"http_put_response_hop_limit": 5,
+									"instance_metadata_tags":      "enabled",
+								},
+							],
+							"source_dest_check":           true,
+							"subnet_id":                   "subnet-03930fd6d040f7546",
+							"tags":                        null,
+							"timeouts":                    null,
+							"user_data_replace_on_change": false,
+							"volume_tags":                 null,
+						},
+						"destroy": false,
+						"diff": {
+							"ami": {
+								"computed": false,
+								"new":      "ami-09d56f8956ab235b3",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"associate_public_ip_address": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"availability_zone": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"capacity_reservation_specification.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cpu_core_count": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cpu_threads_per_core": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"credit_specification.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"disable_api_stop": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"disable_api_termination": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ebs_block_device.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ebs_optimized": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"enclave_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ephemeral_block_device.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"get_password_data": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"hibernation": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"host_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"host_resource_group_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"iam_instance_profile": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_initiated_shutdown_behavior": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_state": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_type": {
+								"computed": false,
+								"new":      "t2.micro",
+								"old":      "",
+							},
+							"ipv6_address_count": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ipv6_addresses.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"key_name": {
+								"computed": false,
+								"new":      "tomcat",
+								"old":      "",
+							},
+							"launch_template.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"maintenance_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"metadata_options.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"metadata_options.0.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"metadata_options.0.http_endpoint": {
+								"computed": false,
+								"new":      "enabled",
+								"old":      "",
+							},
+							"metadata_options.0.http_put_response_hop_limit": {
+								"computed": false,
+								"new":      "5",
+								"old":      "",
+							},
+							"metadata_options.0.http_tokens": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"metadata_options.0.instance_metadata_tags": {
+								"computed": false,
+								"new":      "enabled",
+								"old":      "",
+							},
+							"monitoring": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"network_interface.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"outpost_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"password_data": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"placement_group": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"placement_partition_number": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_network_interface_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_dns": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_dns_name_options.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_ip": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"public_dns": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"public_ip": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"root_block_device.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_private_ips.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"security_groups.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"source_dest_check": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"subnet_id": {
+								"computed": false,
+								"new":      "subnet-03930fd6d040f7546",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tenancy": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"user_data": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"user_data_base64": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"user_data_replace_on_change": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"volume_tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"vpc_security_group_ids.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_network_acl": {
+				"tf_nacl": {
+					0: {
+						"applied": {
+							"egress": [
+								{
+									"action":          "allow",
+									"cidr_block":      "10.3.0.0/18",
+									"from_port":       443,
+									"icmp_code":       null,
+									"icmp_type":       null,
+									"ipv6_cidr_block": "",
+									"protocol":        "tcp",
+									"rule_no":         200,
+									"to_port":         443,
+								},
+							],
+							"ingress": [
+								{
+									"action":          "allow",
+									"cidr_block":      "10.3.0.0/18",
+									"from_port":       80,
+									"icmp_code":       null,
+									"icmp_type":       null,
+									"ipv6_cidr_block": "",
+									"protocol":        "tcp",
+									"rule_no":         100,
+									"to_port":         80,
+								},
+							],
+							"tags": {
+								"Name": "main",
+							},
+							"tags_all": {
+								"Name": "main",
+							},
+							"vpc_id": "vpc-03076f7a654c4dbf4",
+						},
+						"destroy": false,
+						"diff": {
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"egress.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"egress.0.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "",
+							},
+							"egress.0.action": {
+								"computed": false,
+								"new":      "allow",
+								"old":      "",
+							},
+							"egress.0.cidr_block": {
+								"computed": false,
+								"new":      "10.3.0.0/18",
+								"old":      "",
+							},
+							"egress.0.from_port": {
+								"computed": false,
+								"new":      "443",
+								"old":      "",
+							},
+							"egress.0.icmp_code": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"egress.0.icmp_type": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"egress.0.ipv6_cidr_block": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"egress.0.protocol": {
+								"computed": false,
+								"new":      "tcp",
+								"old":      "",
+							},
+							"egress.0.rule_no": {
+								"computed": false,
+								"new":      "200",
+								"old":      "",
+							},
+							"egress.0.to_port": {
+								"computed": false,
+								"new":      "443",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ingress.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"ingress.0.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "",
+							},
+							"ingress.0.action": {
+								"computed": false,
+								"new":      "allow",
+								"old":      "",
+							},
+							"ingress.0.cidr_block": {
+								"computed": false,
+								"new":      "10.3.0.0/18",
+								"old":      "",
+							},
+							"ingress.0.from_port": {
+								"computed": false,
+								"new":      "80",
+								"old":      "",
+							},
+							"ingress.0.icmp_code": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ingress.0.icmp_type": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ingress.0.ipv6_cidr_block": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ingress.0.protocol": {
+								"computed": false,
+								"new":      "tcp",
+								"old":      "",
+							},
+							"ingress.0.rule_no": {
+								"computed": false,
+								"new":      "100",
+								"old":      "",
+							},
+							"ingress.0.to_port": {
+								"computed": false,
+								"new":      "80",
+								"old":      "",
+							},
+							"owner_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"subnet_ids.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"tags.Name": {
+								"computed": false,
+								"new":      "main",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"tags_all.Name": {
+								"computed": false,
+								"new":      "main",
+								"old":      "",
+							},
+							"vpc_id": {
+								"computed": false,
+								"new":      "vpc-03076f7a654c4dbf4",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_security_group": {
+				"sentinel_22_added_sg": {
+					0: {
+						"applied": {
+							"arn":         "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
+							"description": "sentinel_22_added_sg",
+							"egress": [
+								{
+									"cidr_blocks": [
+										"0.0.0.0/0",
+									],
+									"description":      "",
+									"from_port":        0,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "-1",
+									"security_groups":  [],
+									"self":             false,
+									"to_port":          0,
+								},
+							],
+							"id": "sg-07702bf720a65158b",
+							"ingress": [
+								{
+									"cidr_blocks": [
+										"10.3.0.0/16",
+									],
+									"description":      "",
+									"from_port":        100,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "-1",
+									"security_groups":  [],
+									"self":             true,
+									"to_port":          100,
+								},
+								{
+									"cidr_blocks": [
+										"10.3.0.0/16",
+									],
+									"description":      null,
+									"from_port":        22,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "tcp",
+									"security_groups":  [],
+									"self":             true,
+									"to_port":          22,
+								},
+							],
+							"name":                   "sentinel_22_added_sg",
+							"name_prefix":            "",
+							"owner_id":               "726344936127",
+							"revoke_rules_on_delete": false,
+							"tags": {
+								"Name":          "sentinel_22_added_sg",
+								"business-line": "test",
+							},
+							"tags_all": {
+								"Name":          "sentinel_22_added_sg",
+								"business-line": "test",
+							},
+							"timeouts": null,
+							"vpc_id":   "vpc-03076f7a654c4dbf4",
+						},
+						"destroy": false,
+						"diff": {
+							"arn": {
+								"computed": false,
+								"new":      "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
+								"old":      "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-07702bf720a65158b",
+							},
+							"description": {
+								"computed": false,
+								"new":      "sentinel_22_added_sg",
+								"old":      "sentinel_22_added_sg",
+							},
+							"egress.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "1",
+							},
+							"egress.0.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "9",
+							},
+							"egress.0.cidr_blocks.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "1",
+							},
+							"egress.0.cidr_blocks.0": {
+								"computed": false,
+								"new":      "0.0.0.0/0",
+								"old":      "0.0.0.0/0",
+							},
+							"egress.0.description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"egress.0.from_port": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"egress.0.ipv6_cidr_blocks.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"egress.0.prefix_list_ids.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"egress.0.protocol": {
+								"computed": false,
+								"new":      "-1",
+								"old":      "-1",
+							},
+							"egress.0.security_groups.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"egress.0.self": {
+								"computed": false,
+								"new":      "false",
+								"old":      "false",
+							},
+							"egress.0.to_port": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"id": {
+								"computed": false,
+								"new":      "sg-07702bf720a65158b",
+								"old":      "sg-07702bf720a65158b",
+							},
+							"ingress.#": {
+								"computed": false,
+								"new":      "2",
+								"old":      "1",
+							},
+							"ingress.0.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "9",
+							},
+							"ingress.0.cidr_blocks.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "1",
+							},
+							"ingress.0.cidr_blocks.0": {
+								"computed": false,
+								"new":      "10.3.0.0/16",
+								"old":      "10.3.0.0/16",
+							},
+							"ingress.0.description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ingress.0.from_port": {
+								"computed": false,
+								"new":      "100",
+								"old":      "22",
+							},
+							"ingress.0.ipv6_cidr_blocks.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.0.prefix_list_ids.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.0.protocol": {
+								"computed": false,
+								"new":      "-1",
+								"old":      "tcp",
+							},
+							"ingress.0.security_groups.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.0.self": {
+								"computed": false,
+								"new":      "true",
+								"old":      "true",
+							},
+							"ingress.0.to_port": {
+								"computed": false,
+								"new":      "100",
+								"old":      "22",
+							},
+							"ingress.1.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "",
+							},
+							"ingress.1.cidr_blocks.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"ingress.1.cidr_blocks.0": {
+								"computed": false,
+								"new":      "10.3.0.0/16",
+								"old":      "",
+							},
+							"ingress.1.description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ingress.1.from_port": {
+								"computed": false,
+								"new":      "22",
+								"old":      "",
+							},
+							"ingress.1.ipv6_cidr_blocks.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"ingress.1.prefix_list_ids.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"ingress.1.protocol": {
+								"computed": false,
+								"new":      "tcp",
+								"old":      "",
+							},
+							"ingress.1.security_groups.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"ingress.1.self": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"ingress.1.to_port": {
+								"computed": false,
+								"new":      "22",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "sentinel_22_added_sg",
+								"old":      "sentinel_22_added_sg",
+							},
+							"name_prefix": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"owner_id": {
+								"computed": false,
+								"new":      "726344936127",
+								"old":      "726344936127",
+							},
+							"revoke_rules_on_delete": {
+								"computed": false,
+								"new":      "false",
+								"old":      "false",
+							},
+							"tags.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "2",
+							},
+							"tags.Name": {
+								"computed": false,
+								"new":      "sentinel_22_added_sg",
+								"old":      "sentinel_22_added_sg",
+							},
+							"tags.business-line": {
+								"computed": false,
+								"new":      "test",
+								"old":      "test",
+							},
+							"tags_all.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "2",
+							},
+							"tags_all.Name": {
+								"computed": false,
+								"new":      "sentinel_22_added_sg",
+								"old":      "sentinel_22_added_sg",
+							},
+							"tags_all.business-line": {
+								"computed": false,
+								"new":      "test",
+								"old":      "test",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"vpc_id": {
+								"computed": false,
+								"new":      "vpc-03076f7a654c4dbf4",
+								"old":      "vpc-03076f7a654c4dbf4",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"tf_test": {
+					0: {
+						"applied": {
+							"arn":         "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-0a4cdf7d9fcea6d49",
+							"description": "Common endpoints security group.",
+							"egress": [
+								{
+									"cidr_blocks": [
+										"0.0.0.0/0",
+									],
+									"description":      "",
+									"from_port":        0,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "-1",
+									"security_groups":  [],
+									"self":             false,
+									"to_port":          0,
+								},
+							],
+							"id": "sg-0a4cdf7d9fcea6d49",
+							"ingress": [
+								{
+									"cidr_blocks": [
+										"0.0.0.0/0",
+									],
+									"description":      "",
+									"from_port":        22,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "tcp",
+									"security_groups":  [],
+									"self":             true,
+									"to_port":          22,
+								},
+								{
+									"cidr_blocks": [
+										"10.0.0.0/16",
+									],
+									"description":      null,
+									"from_port":        80,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "tcp",
+									"security_groups":  [],
+									"self":             true,
+									"to_port":          80,
+								},
+								{
+									"cidr_blocks": [
+										"10.2.0.0/16",
+									],
+									"description":      null,
+									"from_port":        22,
+									"ipv6_cidr_blocks": [],
+									"prefix_list_ids":  [],
+									"protocol":         "tcp",
+									"security_groups":  [],
+									"self":             true,
+									"to_port":          22,
+								},
+							],
+							"name":                   "endpoint_shared",
+							"name_prefix":            "",
+							"owner_id":               "726344936127",
+							"revoke_rules_on_delete": false,
+							"tags": {
+								"Name":          "endpoint_shared",
+								"business-line": "test",
+							},
+							"tags_all": {
+								"Name":          "endpoint_shared",
+								"business-line": "test",
+							},
+							"timeouts": null,
+							"vpc_id":   "vpc-03076f7a654c4dbf4",
+						},
+						"destroy": false,
+						"diff": {
+							"arn": {
+								"computed": false,
+								"new":      "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-0a4cdf7d9fcea6d49",
+								"old":      "arn:aws:ec2:ap-east-1:726344936127:security-group/sg-0a4cdf7d9fcea6d49",
+							},
+							"description": {
+								"computed": false,
+								"new":      "Common endpoints security group.",
+								"old":      "Common endpoints security group.",
+							},
+							"egress.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "1",
+							},
+							"egress.0.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "9",
+							},
+							"egress.0.cidr_blocks.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "1",
+							},
+							"egress.0.cidr_blocks.0": {
+								"computed": false,
+								"new":      "0.0.0.0/0",
+								"old":      "0.0.0.0/0",
+							},
+							"egress.0.description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"egress.0.from_port": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"egress.0.ipv6_cidr_blocks.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"egress.0.prefix_list_ids.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"egress.0.protocol": {
+								"computed": false,
+								"new":      "-1",
+								"old":      "-1",
+							},
+							"egress.0.security_groups.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"egress.0.self": {
+								"computed": false,
+								"new":      "false",
+								"old":      "false",
+							},
+							"egress.0.to_port": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"id": {
+								"computed": false,
+								"new":      "sg-0a4cdf7d9fcea6d49",
+								"old":      "sg-0a4cdf7d9fcea6d49",
+							},
+							"ingress.#": {
+								"computed": false,
+								"new":      "3",
+								"old":      "3",
+							},
+							"ingress.0.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "9",
+							},
+							"ingress.0.cidr_blocks.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "1",
+							},
+							"ingress.0.cidr_blocks.0": {
+								"computed": false,
+								"new":      "0.0.0.0/0",
+								"old":      "0.0.0.0/0",
+							},
+							"ingress.0.description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ingress.0.from_port": {
+								"computed": false,
+								"new":      "22",
+								"old":      "22",
+							},
+							"ingress.0.ipv6_cidr_blocks.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.0.prefix_list_ids.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.0.protocol": {
+								"computed": false,
+								"new":      "tcp",
+								"old":      "tcp",
+							},
+							"ingress.0.security_groups.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.0.self": {
+								"computed": false,
+								"new":      "true",
+								"old":      "false",
+							},
+							"ingress.0.to_port": {
+								"computed": false,
+								"new":      "22",
+								"old":      "22",
+							},
+							"ingress.1.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "9",
+							},
+							"ingress.1.cidr_blocks.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "1",
+							},
+							"ingress.1.cidr_blocks.0": {
+								"computed": false,
+								"new":      "10.0.0.0/16",
+								"old":      "10.0.0.0/16",
+							},
+							"ingress.1.description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ingress.1.from_port": {
+								"computed": false,
+								"new":      "80",
+								"old":      "80",
+							},
+							"ingress.1.ipv6_cidr_blocks.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.1.prefix_list_ids.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.1.protocol": {
+								"computed": false,
+								"new":      "tcp",
+								"old":      "tcp",
+							},
+							"ingress.1.security_groups.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.1.self": {
+								"computed": false,
+								"new":      "true",
+								"old":      "true",
+							},
+							"ingress.1.to_port": {
+								"computed": false,
+								"new":      "80",
+								"old":      "80",
+							},
+							"ingress.2.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "9",
+							},
+							"ingress.2.cidr_blocks.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "1",
+							},
+							"ingress.2.cidr_blocks.0": {
+								"computed": false,
+								"new":      "10.2.0.0/16",
+								"old":      "10.2.0.0/16",
+							},
+							"ingress.2.description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ingress.2.from_port": {
+								"computed": false,
+								"new":      "22",
+								"old":      "22",
+							},
+							"ingress.2.ipv6_cidr_blocks.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.2.prefix_list_ids.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.2.protocol": {
+								"computed": false,
+								"new":      "tcp",
+								"old":      "tcp",
+							},
+							"ingress.2.security_groups.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "0",
+							},
+							"ingress.2.self": {
+								"computed": false,
+								"new":      "true",
+								"old":      "true",
+							},
+							"ingress.2.to_port": {
+								"computed": false,
+								"new":      "22",
+								"old":      "22",
+							},
+							"name": {
+								"computed": false,
+								"new":      "endpoint_shared",
+								"old":      "endpoint_shared",
+							},
+							"name_prefix": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"owner_id": {
+								"computed": false,
+								"new":      "726344936127",
+								"old":      "726344936127",
+							},
+							"revoke_rules_on_delete": {
+								"computed": false,
+								"new":      "false",
+								"old":      "false",
+							},
+							"tags.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "2",
+							},
+							"tags.Name": {
+								"computed": false,
+								"new":      "endpoint_shared",
+								"old":      "endpoint_shared",
+							},
+							"tags.business-line": {
+								"computed": false,
+								"new":      "test",
+								"old":      "test",
+							},
+							"tags_all.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "2",
+							},
+							"tags_all.Name": {
+								"computed": false,
+								"new":      "endpoint_shared",
+								"old":      "endpoint_shared",
+							},
+							"tags_all.business-line": {
+								"computed": false,
+								"new":      "test",
+								"old":      "test",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"vpc_id": {
+								"computed": false,
+								"new":      "vpc-03076f7a654c4dbf4",
+								"old":      "vpc-03076f7a654c4dbf4",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_security_group_rule": {
+				"just_test": {
+					0: {
+						"applied": {
+							"cidr_blocks": [
+								"0.0.0.0/0",
+								"10.3.0.0/24",
+							],
+							"description":       null,
+							"from_port":         161,
+							"ipv6_cidr_blocks":  null,
+							"prefix_list_ids":   null,
+							"protocol":          "tcp",
+							"security_group_id": "sg-07702bf720a65158b",
+							"self":              false,
+							"timeouts":          null,
+							"to_port":           161,
+							"type":              "ingress",
+						},
+						"destroy": false,
+						"diff": {
+							"cidr_blocks.#": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"cidr_blocks.0": {
+								"computed": false,
+								"new":      "0.0.0.0/0",
+								"old":      "",
+							},
+							"cidr_blocks.1": {
+								"computed": false,
+								"new":      "10.3.0.0/24",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"from_port": {
+								"computed": false,
+								"new":      "161",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ipv6_cidr_blocks": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"prefix_list_ids": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"protocol": {
+								"computed": false,
+								"new":      "tcp",
+								"old":      "",
+							},
+							"security_group_id": {
+								"computed": false,
+								"new":      "sg-07702bf720a65158b",
+								"old":      "",
+							},
+							"security_group_rule_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"self": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"source_security_group_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"to_port": {
+								"computed": false,
+								"new":      "161",
+								"old":      "",
+							},
+							"type": {
+								"computed": false,
+								"new":      "ingress",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.4.0"
+
+variables = {
+	"aws":        "ap-east-1",
+	"aws_region": "ap-east-1",
+	"region":     "ap-east-1",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

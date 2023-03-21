@@ -1,0 +1,61 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+
+aws_network_acl = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_network_acl" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) 
+}
+
+
+
+NetworkACLIngressPortCompliance = func(nacls){
+    NetworkACLIngressPort = []
+    //print(nacls)
+    if length(nacls) > 0 {
+        for nacls as _, nacl{
+            for (nacl.change.after.ingress) as _, ingress_nacl{
+                if ingress_nacl.action is "allow" {
+                    if ingress_nacl.cidr_block contains "0.0.0.0/0"{
+                        if ingress_nacl.from_port == 80 and ingress_nacl.to_port == 80 {
+                            append(NetworkACLIngressPort,nacl.change.after.tags.Name)
+                        }
+                        if ingress_nacl.from_port == 22 and ingress_nacl.to_port == 22 {
+                            append(NetworkACLIngressPort,nacl.change.after.tags.Name)
+                        }
+                        if ingress_nacl.from_port == 3389 and ingress_nacl.to_port == 3389 {
+                            append(NetworkACLIngressPort,nacl.change.after.tags.Name)
+                        }
+                        if ingress_nacl.from_port == 0 and ingress_nacl.to_port == 1024 {
+                            append(NetworkACLIngressPort,nacl.change.after.tags.Name)
+                        }
+
+                    }
+                }
+            }
+        }
+    if length(NetworkACLIngressPort) > 0{
+        print("Please make sure no ports in following list are going to be allowed in network acl-- [ 22,80,3389,0-1024 ]")
+    }
+        
+    }
+    return (length(NetworkACLIngressPort))
+}
+
+// --------------------------------------------------------
+// Name:        Ensure no Network ACLs allow ingress from 0.0.0.0/0 to 
+//              remote server administration ports
+// Category:    EC2 Instance
+// Provider:    kc/cybersec
+// Resource:    aws_network_acl
+// Check:       check aws_network_acl.ingress.from/to_port does 
+//              not include 22,80,3389,0-1024
+// --------------------------------------------------------
+// check aws_network_acl.ingress.from/to_port does 
+// not include 22,80,3389,0-1024c
+// --------------------------------------------------------
+main = rule{
+    NetworkACLIngressPortCompliance(aws_network_acl) == 0 
+}

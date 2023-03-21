@@ -1,0 +1,439 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data":    {},
+		"modules": {},
+		"outputs": {},
+		"providers": {
+			"aws": {
+				"alias": {
+					"": {
+						"config": {},
+						"references": {
+							"region": [
+								"var.region",
+							],
+						},
+						"version": "",
+					},
+				},
+				"config": {},
+				"references": {
+					"region": [
+						"var.region",
+					],
+				},
+				"version": "",
+			},
+		},
+		"resources": {
+			"aws_instance": {
+				"No_metadata_instance": {
+					"config": {
+						"ami":           "ami-09d56f8956ab235b3",
+						"instance_type": "t2.micro",
+						"key_name":      "tomcat",
+					},
+					"provisioners": null,
+					"references": {
+						"ami":           [],
+						"instance_type": [],
+						"key_name":      [],
+						"subnet_id": [
+							"aws_subnet.tf_a_new.id",
+							"aws_subnet.tf_a_new",
+						],
+					},
+				},
+				"correct_instance": {
+					"config": {
+						"ami":           "ami-09d56f8956ab235b3",
+						"instance_type": "t2.micro",
+						"key_name":      "tomcat",
+						"metadata_options": [
+							{
+								"http_endpoint":               "enabled",
+								"http_put_response_hop_limit": 5,
+								"http_tokens":                 "required",
+								"instance_metadata_tags":      "enabled",
+							},
+						],
+					},
+					"provisioners": null,
+					"references": {
+						"ami":           [],
+						"instance_type": [],
+						"key_name":      [],
+						"metadata_options": [
+							{
+								"http_endpoint":               [],
+								"http_put_response_hop_limit": [],
+								"http_tokens":                 [],
+								"instance_metadata_tags":      [],
+							},
+						],
+						"subnet_id": [
+							"aws_subnet.tf_a_new.id",
+							"aws_subnet.tf_a_new",
+						],
+					},
+				},
+				"missed_file_instance": {
+					"config": {
+						"ami":           "ami-09d56f8956ab235b3",
+						"instance_type": "t2.micro",
+						"key_name":      "tomcat",
+						"metadata_options": [
+							{
+								"http_endpoint":               "enabled",
+								"http_put_response_hop_limit": 5,
+								"instance_metadata_tags":      "enabled",
+							},
+						],
+					},
+					"provisioners": null,
+					"references": {
+						"ami":           [],
+						"instance_type": [],
+						"key_name":      [],
+						"metadata_options": [
+							{
+								"http_endpoint":               [],
+								"http_put_response_hop_limit": [],
+								"instance_metadata_tags":      [],
+							},
+						],
+						"subnet_id": [
+							"aws_subnet.tf_a_new.id",
+							"aws_subnet.tf_a_new",
+						],
+					},
+				},
+			},
+			"aws_network_acl": {
+				"tf_nacl": {
+					"config": {
+						"egress": [
+							{
+								"action":          "allow",
+								"cidr_block":      "10.3.0.0/18",
+								"from_port":       443,
+								"icmp_code":       null,
+								"icmp_type":       null,
+								"ipv6_cidr_block": null,
+								"protocol":        "tcp",
+								"rule_no":         200,
+								"to_port":         443,
+							},
+						],
+						"ingress": [
+							{
+								"action":          "allow",
+								"cidr_block":      "10.3.0.0/18",
+								"from_port":       80,
+								"icmp_code":       null,
+								"icmp_type":       null,
+								"ipv6_cidr_block": null,
+								"protocol":        "tcp",
+								"rule_no":         100,
+								"to_port":         80,
+							},
+						],
+						"tags": {
+							"Name": "main",
+						},
+					},
+					"provisioners": null,
+					"references": {
+						"egress":  [],
+						"ingress": [],
+						"tags":    [],
+						"vpc_id": [
+							"aws_vpc.tf_vpc2.id",
+							"aws_vpc.tf_vpc2",
+						],
+					},
+				},
+			},
+			"aws_security_group": {
+				"sentinel_22_added_sg": {
+					"config": {
+						"description": "sentinel_22_added_sg",
+						"egress": [
+							{
+								"cidr_blocks": [
+									"0.0.0.0/0",
+								],
+								"description":      null,
+								"from_port":        0,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "-1",
+								"security_groups":  null,
+								"self":             null,
+								"to_port":          0,
+							},
+						],
+						"ingress": [
+							{
+								"cidr_blocks": [
+									"10.3.0.0/16",
+								],
+								"description":      null,
+								"from_port":        22,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "tcp",
+								"security_groups":  null,
+								"self":             true,
+								"to_port":          22,
+							},
+							{
+								"cidr_blocks": [
+									"10.3.0.0/16",
+								],
+								"description":      null,
+								"from_port":        100,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "-1",
+								"security_groups":  null,
+								"self":             true,
+								"to_port":          100,
+							},
+						],
+						"name": "sentinel_22_added_sg",
+						"tags": {
+							"Name":          "sentinel_22_added_sg",
+							"business-line": "test",
+						},
+					},
+					"provisioners": null,
+					"references": {
+						"description": [],
+						"egress":      [],
+						"ingress":     [],
+						"name":        [],
+						"tags":        [],
+						"vpc_id": [
+							"aws_vpc.tf_vpc2.id",
+							"aws_vpc.tf_vpc2",
+						],
+					},
+				},
+				"tf_test": {
+					"config": {
+						"description": "Common endpoints security group.",
+						"egress": [
+							{
+								"cidr_blocks": [
+									"0.0.0.0/0",
+								],
+								"description":      null,
+								"from_port":        0,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "-1",
+								"security_groups":  null,
+								"self":             null,
+								"to_port":          0,
+							},
+						],
+						"ingress": [
+							{
+								"cidr_blocks": [
+									"0.0.0.0/0",
+								],
+								"description":      null,
+								"from_port":        22,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "tcp",
+								"security_groups":  null,
+								"self":             true,
+								"to_port":          22,
+							},
+							{
+								"cidr_blocks": [
+									"10.0.0.0/16",
+								],
+								"description":      null,
+								"from_port":        80,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "tcp",
+								"security_groups":  null,
+								"self":             true,
+								"to_port":          80,
+							},
+							{
+								"cidr_blocks": [
+									"10.2.0.0/16",
+								],
+								"description":      null,
+								"from_port":        22,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "tcp",
+								"security_groups":  null,
+								"self":             true,
+								"to_port":          22,
+							},
+						],
+						"name": "endpoint_shared",
+						"tags": {
+							"Name":          "endpoint_shared",
+							"business-line": "test",
+						},
+					},
+					"provisioners": null,
+					"references": {
+						"description": [],
+						"egress":      [],
+						"ingress":     [],
+						"name":        [],
+						"tags":        [],
+						"vpc_id": [
+							"aws_vpc.tf_vpc2.id",
+							"aws_vpc.tf_vpc2",
+						],
+					},
+				},
+			},
+			"aws_security_group_rule": {
+				"just_test": {
+					"config": {
+						"cidr_blocks": [
+							"0.0.0.0/0",
+							"10.3.0.0/24",
+						],
+						"from_port": 161,
+						"protocol":  "tcp",
+						"to_port":   161,
+						"type":      "ingress",
+					},
+					"provisioners": null,
+					"references": {
+						"cidr_blocks": [],
+						"from_port":   [],
+						"protocol":    [],
+						"security_group_id": [
+							"aws_security_group.sentinel_22_added_sg.id",
+							"aws_security_group.sentinel_22_added_sg",
+						],
+						"to_port": [],
+						"type":    [],
+					},
+				},
+			},
+			"aws_subnet": {
+				"tf_a_new": {
+					"config": {
+						"availability_zone":       "ap-east-1c",
+						"cidr_block":              "10.222.11.0/24",
+						"map_public_ip_on_launch": false,
+						"tags": {
+							"Name": "tf_a_new_one",
+						},
+					},
+					"provisioners": null,
+					"references": {
+						"availability_zone":       [],
+						"cidr_block":              [],
+						"map_public_ip_on_launch": [],
+						"tags": [],
+						"vpc_id": [
+							"aws_vpc.tf_vpc2.id",
+							"aws_vpc.tf_vpc2",
+						],
+					},
+				},
+				"tf_a_new_one": {
+					"config": {
+						"availability_zone":       "ap-east-1c",
+						"cidr_block":              "10.222.10.0/26",
+						"map_public_ip_on_launch": false,
+						"tags": {
+							"Name": "tf_a_new_one",
+						},
+					},
+					"provisioners": null,
+					"references": {
+						"availability_zone":       [],
+						"cidr_block":              [],
+						"map_public_ip_on_launch": [],
+						"tags": [],
+						"vpc_id": [
+							"aws_vpc.tf_vpc2.id",
+							"aws_vpc.tf_vpc2",
+						],
+					},
+				},
+			},
+			"aws_vpc": {
+				"tf_vpc2": {
+					"config": {
+						"cidr_block":           "10.222.0.0/16",
+						"enable_dns_hostnames": true,
+						"enable_dns_support":   true,
+						"tags": {
+							"Name": "tf_test",
+						},
+					},
+					"provisioners": null,
+					"references": {
+						"cidr_block":           [],
+						"enable_dns_hostnames": [],
+						"enable_dns_support":   [],
+						"tags":                 [],
+					},
+				},
+			},
+		},
+		"variables": {
+			"aws": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+			"aws_region": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+			"region": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs
