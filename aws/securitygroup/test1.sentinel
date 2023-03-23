@@ -1,76 +1,66 @@
 import "tfplan/v2" as tfplan
-import "types"
-import "strings"
+//import "strings"
 
-no_metadaconfigure_aws_instance = filter tfplan.resource_changes as _, resource_changes {
+
+
+aws_security_groups = filter tfplan.resource_changes as _, resource_changes {
 	resource_changes.mode is "managed" and
-		resource_changes.type is "aws_instance" and
+		resource_changes.type is "aws_security_group" and
 		(resource_changes.change.actions contains "create" or
-			resource_changes.change.actions is ["update"]) and ((resource_changes.change.after_unknown.metadata_options is true) )
+			resource_changes.change.actions is ["update"]) and
+		(resource_changes.change.after.ingress else []) is not empty
 }
 
-aws_instance = filter tfplan.resource_changes as _, resource_changes {
+aws_security_group_rules = filter tfplan.resource_changes as _, resource_changes {
 	resource_changes.mode is "managed" and
-		resource_changes.type is "aws_instance" and
+		resource_changes.type is "aws_security_group_rule" and
 		(resource_changes.change.actions contains "create" or
-			resource_changes.change.actions is ["update"]) and resource_changes.change.after_unknown.metadata_options is not true
+			resource_changes.change.actions is ["update"]) and
+		resource_changes.change.after.type is "ingress"
 }
 
-NoMetadaEC2InstanceMetadataCompliance = func(instances){
-    listNoMetadaEC2InstanceMetadata= []
-    //print(instances)
-    if length(instances) > 0 {
-        for instances as _, instance{
-            print("Tis instance",instance.name,"has no Metadata configure content")
-            //print(instance.name)
-            append(listNoMetadaEC2InstanceMetadata,instance.name)
-        }
-    }
-    print("return:",length(listNoMetadaEC2InstanceMetadata))
-    return length(listNoMetadaEC2InstanceMetadata)
 
-}
-
-EC2InstanceMetadataCompliance = func(instances){
-    EC2InstanceMetadata = []
-    //print(instances)
-    if length(instances) > 0 {
-        //print(length(instances))
-        for instances as _, instance{
-            //print("keys is ",keys(instance.change.after.metadata_options[0]))
-            metadata_options_keys = keys(instance.change.after.metadata_options[0])
-            if "http_endpoint" in metadata_options_keys and "http_tokens" in metadata_options_keys{
-                if instance.change.after.metadata_options[0].http_endpoint is not "enabled" or
-                instance.change.after.metadata_options[0].http_tokens is not "required" {
-                    print("This instance",instance.name,"has the wrong setting")
-                    append(EC2InstanceMetadata,instance.name)
+NetworkSecurityGroupPortCompliance = func(groups) {
+	mapSecurityRules = []
+    if length(groups) > 0 {   
+        //print(groups)
+        for groups as _, group {
+            securitygroupname = group.change.after.name
+            for group.change.after.ingress as sgr {
+                for (sgr.cidr_blocks) as address {
+                    if address matches ".*" {
+                        print(address)
+                    }
                 }
             }
-            if "http_endpoint" not in metadata_options_keys or "http_tokens" not in metadata_options_keys{
-                print("This instance->",instance.name,"<-miss the configuration of metadata_options.http_endpoint or metadata_options.http_tokens")
-                append(EC2InstanceMetadata,instance.name)
-            }
         }
-        print(EC2InstanceMetadata)
-        return length(EC2InstanceMetadata)
-
-
+        //print("NonCompliant security_group is: ",mapSecurityRules)
+        //print("NonCompliant security_group count is: ", length(mapSecurityRules))
+        return 1
     }
-    return 1
+
 }
 
+
+
+
+
 // --------------------------------------------------------
-// Name:        Ensure IMDSv1 is disabled for AWS EC2 instances in AWS Launch Configuration
-// Category:    EC2 Instance
+// Name:        Ensure_(tcp_25)_Security_Groups_do_not_have_unrestricted_specific_ports_open_SNMP.sentinel
+// Category:    Networking
 // Provider:    kc/cybersec
-// Resource:    aws_instance
-// Check:       metadata_options.http_endpoint is disabled, 
-//              metadata_options.http_tokens is required.
+// Resource:    aws_security_group
+//              aws_security_group_rule
+// Check:       cidr_blocks does not contain "0.0.0.0/0"
+//              when port is "25" or protocl is "-1,tcp"
 // --------------------------------------------------------
-// Set the metadata_options.http_endpoint field to disabled, 
-// and set the metadata_options.http_tokens field to required.
+// Ensure no security groups allow ingress from 0.0.0.0/0
+// to port tcp25.
 // --------------------------------------------------------
-main = rule{
-    EC2InstanceMetadataCompliance(aws_instance) == 0 and 
-    NoMetadaEC2InstanceMetadataCompliance(no_metadaconfigure_aws_instance) == 0
+
+
+
+main = rule {
+	NetworkSecurityGroupPortCompliance(aws_security_groups) == 0 
+
 }
