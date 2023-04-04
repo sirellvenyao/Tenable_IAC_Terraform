@@ -1,0 +1,85 @@
+#import "strings"
+import "tfplan/v2" as tfplan
+
+# regex for ipv4 private subnet
+regex_private_subnet_ipv4 = "((10)(.([2]([0-5][0-5]|[01234][6-9])|[1][0-9][0-9]|[1-9][0-9]|[0-9])){3})|((172).(1[6-9]|2[0-9]|3[0-1])(.(2[0-4][0-9]|25[0-5]|[1][0-9][0-9]|[1-9][0-9]|[0-9])){2})|((192).(168)(.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])){2})"
+
+aws_security_groups = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_security_group" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) and
+		(resource_changes.change.after.ingress else []) is not empty
+}
+
+aws_security_group_rules = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_security_group_rule" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) and
+		resource_changes.change.after.type is "ingress"
+}
+
+NetworkSecurityGroupPortCompliance = func(groups) {
+	mapSecurityRules = []
+    if length(groups) > 0 {   
+        //print(groups)
+        for groups as _, group {
+            securitygroupname = group.change.after.name
+            for group.change.after.ingress as sgr {
+                if  (sgr.to_port is 1434 or (sgr.from_port <= 1434 and sgr.to_port >= 1434)) {
+                    for sgr.cidr_blocks as sgr_cidr {
+                        if sgr_cidr not matches regex_private_subnet_ipv4{
+                            if sgr.protocol in ["-1","tcp"] {
+                                append(mapSecurityRules,sgr)
+                            }
+                        }
+                    }
+                }
+            }
+        print("NonCompliant security_group is: ",mapSecurityRules)
+        print("NonCompliant security_group count is: ", length(mapSecurityRules))
+        return length(mapSecurityRules)
+        }
+    }
+}
+
+NetworkSecurityGroupRulesPortCompliance = func(groups) {
+    mapSecurityGroupRules = []
+    if length(groups) > 0 {
+        //print(groups)
+        for groups as _, group {
+            securitygrouprulename = group.address
+            //print(securitygrouprulename)
+            if (group.change.after.to_port is 1434 or (group.change.after.from_port <=1434 and group.change.after.to_port >=1434)){
+                for group.change.after.cidr_blocks as sgr_cidr {
+                    if sgr_cidr not matches regex_private_subnet_ipv4{
+                        if group.change.after.protocol in ["-1","tcp"] {
+                             append(mapSecurityGroupRules,securitygrouprulename)
+                        }
+                    }
+                }
+            }
+        }
+        print("NonCompliant security_group_rule is: ",mapSecurityGroupRules)
+        print("NonCompliant security_group_rule count is: ", length(mapSecurityGroupRules))
+        return length(mapSecurityGroupRules)
+    }
+}
+
+
+// --------------------------------------------------------
+// Name:        Ensure MSSQL Admin (TCP,1434) is not accessible by a public CIDR block range
+// Category:    Networking
+// Provider:    kc/cybersec
+// Resource:    aws_security_group
+//              aws_security_group_rule
+// Check:       cidr_blocks does not contain public ips except for ipv4 private subnets
+//              when port is "1434" and protocl is "-1,tcp"
+// --------------------------------------------------------
+// Ensure MSSQL Admin (TCP,1434) is not accessible by a public CIDR block range
+// --------------------------------------------------------
+main = rule {
+    NetworkSecurityGroupRulesPortCompliance(aws_security_group_rules) == 0 and
+	NetworkSecurityGroupPortCompliance(aws_security_groups) == 0 
+}
