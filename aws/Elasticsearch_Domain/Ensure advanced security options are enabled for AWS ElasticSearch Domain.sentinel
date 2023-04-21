@@ -1,0 +1,45 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+
+default_advanced_security_option_aws_elasticsearch_domain = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_elasticsearch_domain" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) 
+}
+
+DefaultAdvancedSecurityOptionsCompliance = func(elasticsearchdomains){
+    //print(elasticsearchdomains)
+    DefaultAdvancedSecurityOptionsCompliancelist = []
+    //print(types.type_of(elasticsearchdomains))
+    for elasticsearchdomains as _, elasticsearchdomain{
+        if elasticsearchdomain.change.after_unknown.advanced_options is not true {
+            //print(elasticsearchdomain.name)
+            append(DefaultAdvancedSecurityOptionsCompliancelist,elasticsearchdomain.name)
+            print("Tis elasticsearchdomain",elasticsearchdomain.name,"hasn't enable advanced secuirty options")
+        }
+        if elasticsearchdomain.change.after.advanced_options is not true {
+            append(DefaultAdvancedSecurityOptionsCompliancelist,elasticsearchdomain.name)
+            print("Tis elasticsearchdomain",elasticsearchdomain.name,"hasn't enable advanced secuirty options")            
+        }
+        
+    }
+    print(length(DefaultAdvancedSecurityOptionsCompliancelist))
+    return length(elasticseDefaultAdvancedSecurityOptionsCompliancelistarchdomains)
+}
+
+
+// --------------------------------------------------------
+// Name:        Ensure advanced security options are enabled for 
+//              AWS ElasticSearch Domain
+// Category:    EC2 Instance
+// Provider:    kc/cybersec
+// Resource:    aws_elasticsearch_domain
+// Check:       advanced_options is true, 
+// --------------------------------------------------------
+// Set the advanced_options field to true, 
+// --------------------------------------------------------
+main = rule{
+    DefaultAdvancedSecurityOptionsCompliance(default_advanced_security_option_aws_elasticsearch_domain) == 0 
+}
