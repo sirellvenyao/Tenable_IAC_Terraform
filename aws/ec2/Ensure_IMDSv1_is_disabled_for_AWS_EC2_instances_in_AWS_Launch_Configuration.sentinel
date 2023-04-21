@@ -16,7 +16,7 @@ aws_instance = filter tfplan.resource_changes as _, resource_changes {
 			resource_changes.change.actions is ["update"]) and resource_changes.change.after_unknown.metadata_options is not true
 }
 
-NoMetadaEC2InstanceMetadataCompliance = func(instances){
+NoMetadaEC2InstanceMetadataCompliance = func(instances) {
     listNoMetadaEC2InstanceMetadata= []
     //print(instances)
     if length(instances) > 0 {
@@ -31,7 +31,7 @@ NoMetadaEC2InstanceMetadataCompliance = func(instances){
 
 }
 
-EC2InstanceMetadataCompliance = func(instances){
+EC2InstanceMetadataCompliance = func(instances) {
     EC2InstanceMetadata = []
     //print(instances)
     if length(instances) > 0 {
@@ -39,14 +39,14 @@ EC2InstanceMetadataCompliance = func(instances){
         for instances as _, instance{
             //print("keys is ",keys(instance.change.after.metadata_options[0]))
             metadata_options_keys = keys(instance.change.after.metadata_options[0])
-            if "http_endpoint" in metadata_options_keys and "http_tokens" in metadata_options_keys{
+            if "http_endpoint" in metadata_options_keys and "http_tokens" in metadata_options_keys {
                 if instance.change.after.metadata_options[0].http_endpoint is not "enabled" or
                 instance.change.after.metadata_options[0].http_tokens is not "required" {
                     print("This instance",instance.name,"has the wrong setting")
                     append(EC2InstanceMetadata,instance.name)
                 }
             }
-            if "http_endpoint" not in metadata_options_keys or "http_tokens" not in metadata_options_keys{
+            if "http_endpoint" not in metadata_options_keys or "http_tokens" not in metadata_options_keys {
                 print("This instance",instance.name,"miss the configuration of metadata_options.http_endpoint or metadata_options.http_tokens")
                 append(EC2InstanceMetadata,instance.name)
             }
