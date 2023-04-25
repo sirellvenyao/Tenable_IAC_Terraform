@@ -1,0 +1,51 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+
+aws_ecs_task_definition = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_ecs_task_definition" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) 
+}
+
+ECSTaskDefinitionAWSNetworkMode = func(ecss) {
+    ecstaskdefinitionlist = []
+    for ecss as _, ecs {
+        ecsName = ecs.name
+        ecsAfterUnKnownKeys = keys(ecs.change.after_unknown)
+        if "network_mode" in ecsAfterUnKnownKeys{
+            if (ecs.change.after_unknown.network_mode) is not "awsvpc"{
+                append(ecstaskdefinitionlist,ecsName)
+                print("This ECS Task Configuration", ecsName, "has not set network_mode as awsvpc")
+            }
+        }
+        ecsAfterKeys = keys(ecs.change.after)
+        //print(ecsAfterKeys)
+        if "network_mode" in ecsAfterKeys{
+            if (ecs.change.after.network_mode) is not "awsvpc"{
+                append(ecstaskdefinitionlist,ecsName)
+                print("This ECS Task Configuration", ecsName, "has not set network_mode as awsvpc")
+            }
+        }
+        
+        
+    }
+    return(length(ecstaskdefinitionlist))    
+}
+
+
+// --------------------------------------------------------
+// Name:        Ensure Amazon Elastic Container Service (ECS)
+//              clusters are placed in a VPC
+// Category:    ECS
+// Provider:    kc/cybersec
+// Resource:    aws_ecs_task_definition
+// Check:       network_mode is awsvpc, 
+// --------------------------------------------------------
+// Set the network_mode.http_endpoint field to awsvpc
+// --------------------------------------------------------
+main = rule {
+    ECSTaskDefinitionAWSNetworkMode(aws_ecs_task_definition) == 0
+
+}

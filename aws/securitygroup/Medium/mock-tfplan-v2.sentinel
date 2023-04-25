@@ -840,13 +840,13 @@ resource_changes = {
 							"0.0.0.0/0",
 						],
 						"description":      "",
-						"from_port":        26,
+						"from_port":        1433,
 						"ipv6_cidr_blocks": [],
 						"prefix_list_ids":  [],
 						"protocol":         "tcp",
 						"security_groups":  [],
 						"self":             true,
-						"to_port":          29,
+						"to_port":          1434,
 					},
 					{
 						"cidr_blocks": [
