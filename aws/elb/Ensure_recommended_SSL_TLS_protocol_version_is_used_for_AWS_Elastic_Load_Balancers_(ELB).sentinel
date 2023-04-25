@@ -1,0 +1,48 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+
+aws_load_balancer_policy = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_load_balancer_policy" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) 
+}
+
+ELBProtocolSSLTLSCompliance = func(elbs) {
+    ELBProtocolSSLTLSList = []
+    print(elbs)
+    print(length(elbs))
+    if length(elbs) > 0 {
+        for elbs as _, elb {            
+            //print(elb_key)
+            print(types.type_of(elb.change.after.policy_attribute))
+            print(elb.change.after.policy_attribute)
+            for elb.change.after.policy_attribute as _, attribute {
+                if (attribute["name"]) is "Protocol-TLSv1.2" {
+                    if (attribute["value"]) is not "true" {
+                        print(elb.name)
+                        append(ELBProtocolSSLTLSList,elb.name)
+                    }
+                }
+            }
+            if 
+        }
+    }
+    return 1
+}
+
+// --------------------------------------------------------
+// Name:        Ensure IMDSv1 is disabled for AWS EC2 instances in AWS Launch Configuration
+// Category:    EC2 Instance
+// Provider:    kc/cybersec
+// Resource:    aws_instance
+// Check:       metadata_options.http_endpoint is disabled, 
+//              metadata_options.http_tokens is required.
+// --------------------------------------------------------
+// Set the metadata_options.http_endpoint field to disabled, 
+// and set the metadata_options.http_tokens field to required.
+// --------------------------------------------------------
+main = rule{
+    ELBProtocolSSLTLSCompliance(aws_load_balancer_policy) == 0 
+}
