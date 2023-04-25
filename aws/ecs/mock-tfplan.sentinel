@@ -433,6 +433,197 @@ _modules = {
 					},
 				},
 			},
+			"aws_ecs_service": {
+				"bar": {
+					0: {
+						"applied": {
+							"alarms":                             [],
+							"capacity_provider_strategy":         [],
+							"deployment_circuit_breaker":         [],
+							"deployment_controller":              [],
+							"deployment_maximum_percent":         null,
+							"deployment_minimum_healthy_percent": null,
+							"desired_count":                      null,
+							"enable_ecs_managed_tags":            false,
+							"enable_execute_command":             false,
+							"force_new_deployment":               null,
+							"health_check_grace_period_seconds":  null,
+							"load_balancer":                      [],
+							"name":                               "bar",
+							"network_configuration":              [],
+							"ordered_placement_strategy":         [],
+							"placement_constraints":              [],
+							"propagate_tags":                     null,
+							"scheduling_strategy":                "DAEMON",
+							"service_connect_configuration":      [],
+							"service_registries":                 [],
+							"tags":                               null,
+							"task_definition":                    null,
+							"timeouts":                           null,
+							"wait_for_steady_state":              false,
+						},
+						"destroy": false,
+						"diff": {
+							"alarms.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"capacity_provider_strategy.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"cluster": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"deployment_circuit_breaker.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"deployment_controller.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"deployment_maximum_percent": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"deployment_minimum_healthy_percent": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"desired_count": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"enable_ecs_managed_tags": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"enable_execute_command": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"force_new_deployment": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"health_check_grace_period_seconds": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"iam_role": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"launch_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"load_balancer.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "bar",
+								"old":      "",
+							},
+							"network_configuration.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"ordered_placement_strategy.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"placement_constraints.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"platform_version": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"propagate_tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"scheduling_strategy": {
+								"computed": false,
+								"new":      "DAEMON",
+								"old":      "",
+							},
+							"service_connect_configuration.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"service_registries.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"task_definition": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"triggers.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"wait_for_steady_state": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
 			"aws_ecs_task_definition": {
 				"ellventest": {
 					0: {
@@ -3264,9 +3455,10 @@ module_paths = [
 terraform_version = "1.4.0"
 
 variables = {
-	"aws":        "ap-east-1",
-	"aws_region": "ap-east-1",
-	"region":     "ap-east-1",
+	"aws":                      "ap-east-1",
+	"aws_region":               "ap-east-1",
+	"awsvpc_service_subnetids": [],
+	"region":                   "ap-east-1",
 }
 
 module = func(path) {

@@ -63,6 +63,26 @@ resources = {
 		"provisioners":        [],
 		"type":                "aws_db_instance",
 	},
+	"aws_ecs_service.bar": {
+		"address": "aws_ecs_service.bar",
+		"config": {
+			"name": {
+				"constant_value": "bar",
+			},
+			"scheduling_strategy": {
+				"constant_value": "DAEMON",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "bar",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_ecs_service",
+	},
 	"aws_ecs_task_definition.ellventest": {
 		"address": "aws_ecs_task_definition.ellventest",
 		"config": {
@@ -765,6 +785,12 @@ variables = {
 		"description":    "",
 		"module_address": "",
 		"name":           "aws_region",
+	},
+	"awsvpc_service_subnetids": {
+		"default":        [],
+		"description":    "List of subnet ids to which a service is deployed in fargate mode.",
+		"module_address": "",
+		"name":           "awsvpc_service_subnetids",
 	},
 	"region": {
 		"default":        "ap-east-1",

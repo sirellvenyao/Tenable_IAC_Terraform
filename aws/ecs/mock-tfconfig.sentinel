@@ -58,6 +58,19 @@ _modules = {
 					},
 				},
 			},
+			"aws_ecs_service": {
+				"bar": {
+					"config": {
+						"name":                "bar",
+						"scheduling_strategy": "DAEMON",
+					},
+					"provisioners": null,
+					"references": {
+						"name":                [],
+						"scheduling_strategy": [],
+					},
+				},
+			},
 			"aws_ecs_task_definition": {
 				"ellventest": {
 					"config": {
@@ -594,6 +607,10 @@ _modules = {
 			"aws_region": {
 				"default":     "ap-east-1",
 				"description": "",
+			},
+			"awsvpc_service_subnetids": {
+				"default":     [],
+				"description": "List of subnet ids to which a service is deployed in fargate mode.",
 			},
 			"region": {
 				"default":     "ap-east-1",
