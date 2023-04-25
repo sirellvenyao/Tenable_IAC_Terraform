@@ -58,6 +58,7 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
         }
         print("NonCompliant security_group_rule is: ",mapSecurityGroupRules)
         print("NonCompliant security_group_rule count is: ", length(mapSecurityGroupRules))
+        
         return length(mapSecurityGroupRules)
 
     }
@@ -78,6 +79,7 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
 // Ensure no security groups allow ingress from 0.0.0.0/0
 // to port tcp25.
 // --------------------------------------------------------
+
 main = rule {
     NetworkSecurityGroupRulesPortCompliance(aws_security_group_rules) == 0 and
 	NetworkSecurityGroupPortCompliance(aws_security_groups) == 0 
