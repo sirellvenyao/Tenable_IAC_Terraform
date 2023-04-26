@@ -83,6 +83,33 @@ resources = {
 		"provisioners":        [],
 		"type":                "aws_ecs_service",
 	},
+	"aws_ecs_service.test": {
+		"address": "aws_ecs_service.test",
+		"config": {
+			"name": {
+				"constant_value": "test",
+			},
+			"ordered_placement_strategy": [
+				{
+					"type": {
+						"constant_value": "binpack",
+					},
+				},
+			],
+			"scheduling_strategy": {
+				"constant_value": "DAEMON",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_ecs_service",
+	},
 	"aws_ecs_task_definition.ellventest": {
 		"address": "aws_ecs_task_definition.ellventest",
 		"config": {

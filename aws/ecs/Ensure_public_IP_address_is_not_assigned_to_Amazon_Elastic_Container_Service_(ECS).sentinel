@@ -1,0 +1,54 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+
+aws_ecs_service = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_ecs_service" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) 
+}
+
+ECSServiceNetworkConfiguration = func(ecss) {
+    ecsservicelist = []
+    for ecss as _, ecs {
+        ecsName = ecs.name        
+        ecsKey = keys(ecs.change.after)
+        if length(ecs.change.after.network_configuration) == 0{
+            append(ecsservicelist,ecsName)
+            print("This ECS",ecsName,"has not set the network_configuration as false")
+        }
+
+        if length(ecs.change.after.network_configuration) != 0{
+            ecsKey = keys(ecs.change.after.network_configuration[0])
+            if "assign_public_ip" not in ecsKey{
+                append(ecsservicelist,ecsName)
+                print("This ECS",ecsName,"has not set the network_configuration as false")
+            }
+            if "assign_public_ip" in ecsKey{
+                if ecs.change.after.network_configuration[0].assign_public_ip != false {
+                    append(ecsservicelist,ecsName)
+                    print("This ECS",ecsName,"has not set the network_configuration as false")
+                }
+            }
+        }
+    }
+    print(ecsservicelist)
+    return(length(ecsservicelist))    
+}
+
+
+// --------------------------------------------------------
+// Name:        Ensure public IP address is not assigned to Amazon 
+//              Elastic Container Service (ECS)
+// Category:    ECS
+// Provider:    kc/cybersec
+// Resource:    aws_ecs_service
+// Check:       network_configuration.assign_public_ip is false, 
+// --------------------------------------------------------
+// Set the network_configuration.assign_public_ip is false
+// --------------------------------------------------------
+main = rule {
+    ECSServiceNetworkConfiguration(aws_ecs_service) == 0
+
+}

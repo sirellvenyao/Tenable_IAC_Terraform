@@ -70,6 +70,27 @@ _modules = {
 						"scheduling_strategy": [],
 					},
 				},
+				"test": {
+					"config": {
+						"name": "test",
+						"ordered_placement_strategy": [
+							{
+								"type": "binpack",
+							},
+						],
+						"scheduling_strategy": "DAEMON",
+					},
+					"provisioners": null,
+					"references": {
+						"name": [],
+						"ordered_placement_strategy": [
+							{
+								"type": [],
+							},
+						],
+						"scheduling_strategy": [],
+					},
+				},
 			},
 			"aws_ecs_task_definition": {
 				"ellventest": {
