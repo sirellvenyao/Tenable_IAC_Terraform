@@ -50,8 +50,6 @@ ECSServiceNetworkConfiguration = func(ecss) {
     return(length(ecsservicelist))    
 }
 
-
-
 main = rule {
     ECSServiceNetworkConfiguration(aws_ecs_service) == 0
 }
