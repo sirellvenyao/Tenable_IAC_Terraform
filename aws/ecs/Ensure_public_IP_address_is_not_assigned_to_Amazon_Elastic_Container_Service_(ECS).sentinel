@@ -34,10 +34,15 @@ ECSServiceNetworkConfiguration = func(ecss) {
         }
     }
     print(ecsservicelist)
+    
     return(length(ecsservicelist))    
 }
 
 
+
+main = rule {
+    ECSServiceNetworkConfiguration(aws_ecs_service) == 0
+}
 // --------------------------------------------------------
 // Name:        Ensure public IP address is not assigned to Amazon 
 //              Elastic Container Service (ECS)
@@ -48,7 +53,3 @@ ECSServiceNetworkConfiguration = func(ecss) {
 // --------------------------------------------------------
 // Set the network_configuration.assign_public_ip is false
 // --------------------------------------------------------
-main = rule {
-    ECSServiceNetworkConfiguration(aws_ecs_service) == 0
-
-}
