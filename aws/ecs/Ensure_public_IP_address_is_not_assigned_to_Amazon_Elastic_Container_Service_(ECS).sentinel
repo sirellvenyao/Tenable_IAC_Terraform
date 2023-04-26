@@ -16,7 +16,7 @@ ECSServiceNetworkConfiguration = func(ecss) {
         ecsKey = keys(ecs.change.after)
         if length(ecs.change.after.network_configuration) == 0{
             append(ecsservicelist,ecsName)
-            print("This ECS",ecsName,"has not set the network_configuration as false")
+            print("This ECS",ecsName,"has not set the network_configuration as false")         
         }
 
         if length(ecs.change.after.network_configuration) != 0{
@@ -33,8 +33,20 @@ ECSServiceNetworkConfiguration = func(ecss) {
             }
         }
     }
-    print(ecsservicelist)
-    
+    //print(ecsservicelist)
+    if length(ecsservicelist) !=0{
+        print("")
+        print("// -----------------------Policy Details-----------------------")
+        print("// Name:        Ensure public IP address is not assigned to Amazon ")
+        print("//              Elastic Container Service (ECS)")
+        print("// Category:    ECS")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_ecs_service")
+        print("// Check:       network_configuration.assign_public_ip is false, ")
+        print("// ------------------------------------------------------------")
+        print("// Set the network_configuration.assign_public_ip is false")
+        print("// ------------------------------------------------------------")        
+    }
     return(length(ecsservicelist))    
 }
 
@@ -43,13 +55,3 @@ ECSServiceNetworkConfiguration = func(ecss) {
 main = rule {
     ECSServiceNetworkConfiguration(aws_ecs_service) == 0
 }
-// --------------------------------------------------------
-// Name:        Ensure public IP address is not assigned to Amazon 
-//              Elastic Container Service (ECS)
-// Category:    ECS
-// Provider:    kc/cybersec
-// Resource:    aws_ecs_service
-// Check:       network_configuration.assign_public_ip is false, 
-// --------------------------------------------------------
-// Set the network_configuration.assign_public_ip is false
-// --------------------------------------------------------
