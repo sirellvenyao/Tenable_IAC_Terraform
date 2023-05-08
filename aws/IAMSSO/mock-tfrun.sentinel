@@ -1,0 +1,38 @@
+id = "run-1EGfSgy4GSbkeJ94"
+created_at = "2023-05-08T03:09:39.580Z"
+message = "Merge branch 'main' of ssh://bitbucket.kucoin.net/opstf/aws-iam-payer into main"
+commit_sha = "cd72b240e0c1b0757daca74da2198000cc5dd03f"
+speculative = false
+is_destroy = false
+refresh = true
+refresh_only = false
+replace_addrs = null
+target_addrs = null
+
+variables = {}
+
+organization = {
+	"name": "kucoin",
+}
+
+workspace = {
+	"auto_apply":  false,
+	"created_at":  "2023-05-04T09:06:16.426Z",
+	"description": "SSO permission management for 875537689616/555625778301/891189580005",
+	"id":          "ws-9VK9crjGiA64xgSu",
+	"name":        "aws-iam-payer",
+	"tags":        [],
+	"vcs_repo": {
+		"branch":             "",
+		"display_identifier": "OPSTF/aws-iam-payer",
+		"identifier":         "OPSTF/aws-iam-payer",
+		"ingress_submodules": false,
+	},
+	"working_directory": "",
+}
+
+cost_estimate = {
+	"delta_monthly_cost":    "0.0",
+	"prior_monthly_cost":    "0.0",
+	"proposed_monthly_cost": "0.0",
+}

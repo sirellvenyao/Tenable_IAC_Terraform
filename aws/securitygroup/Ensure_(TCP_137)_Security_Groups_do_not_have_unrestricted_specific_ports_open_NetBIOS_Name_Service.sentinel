@@ -1,5 +1,5 @@
 import "tfplan/v2" as tfplan
-//import "strings"
+import "strings"
 
 aws_security_groups = filter tfplan.resource_changes as _, resource_changes {
 	resource_changes.mode is "managed" and
@@ -36,8 +36,25 @@ NetworkSecurityGroupPortCompliance = func(groups) {
         }
         print("NonCompliant security_group is: ",mapSecurityRules)
         print("NonCompliant security_group count is: ", length(mapSecurityRules))
-        return length(mapSecurityRules)
+        
     }
+    if length(mapSecurityRules) !=0 {
+        print("")
+        print("// --------------------------------------------------------")
+        print("// Name:        Ensure Security Groups do not have unrestricted ")
+        print("//              specific ports open - NetBIOS Name Service (TCP/UDP,137)")
+        print("// Category:    Networking")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_security_group")
+        print("//              aws_security_group_rule")
+        print("// Check:       cidr_blocks does not contain 0.0.0.0/0")
+        print("//              when port is 137 or protocl is -1,tcp,udp")
+        print("// --------------------------------------------------------")
+        print("// Ensure no security groups allow ingress from 0.0.0.0/0")
+        print("// to port tcp/udp137.")
+        print("// --------------------------------------------------------")
+    }
+    return length(mapSecurityRules)
 
 }
 
@@ -58,26 +75,27 @@ NetworkSecurityGroupRulesPortCompliance = func(groups) {
         }
         print("NonCompliant security_group_rule is: ",mapSecurityGroupRules)
         print("NonCompliant security_group_rule count is: ", length(mapSecurityGroupRules))
-        return length(mapSecurityGroupRules)
-
     }
+    if length(mapSecurityGroupRules) !=0 {
+        print("")
+        print("// --------------------------------------------------------")
+        print("// Name:        Ensure Security Groups do not have unrestricted ")
+        print("//              specific ports open - NetBIOS Name Service (TCP/UDP,137)")
+        print("// Category:    Networking")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_security_group")
+        print("//              aws_security_group_rule")
+        print("// Check:       cidr_blocks does not contain 0.0.0.0/0")
+        print("//              when port is 137 or protocl is -1,tcp,udp")
+        print("// --------------------------------------------------------")
+        print("// Ensure no security groups allow ingress from 0.0.0.0/0")
+        print("// to port tcp/udp137.")
+        print("// --------------------------------------------------------")
+    }
+    return length(mapSecurityGroupRules)
+
 }
 
-
-
-
-// --------------------------------------------------------
-// Name:        Ensure Security Groups do not have unrestricted specific ports open - NetBIOS Name Service (TCP/UDP,137)
-// Category:    Networking
-// Provider:    kc/cybersec
-// Resource:    aws_security_group
-//              aws_security_group_rule
-// Check:       cidr_blocks does not contain "0.0.0.0/0"
-//              when port is "137" or protocl is "-1,tcp,udp"
-// --------------------------------------------------------
-// Ensure no security groups allow ingress from 0.0.0.0/0
-// to port tcp/udp137.
-// --------------------------------------------------------
 main = rule {
     NetworkSecurityGroupRulesPortCompliance(aws_security_group_rules) == 0 and
 	NetworkSecurityGroupPortCompliance(aws_security_groups) == 0 
