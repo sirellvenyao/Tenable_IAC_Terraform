@@ -1,0 +1,51 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+import "json"
+
+aws_ssoadmin_permission_set_inline_policy = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_ssoadmin_permission_set_inline_policy" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) 
+}
+
+ssoadminpolicycheck = func(ssoadmins) {
+    ssoadminpolicycheckList = []
+    //print(length(ssoadmins))
+    for ssoadmins as _, ssoadmin {
+        instanceARN = ssoadmin.change.after.instance_arn
+        //print(ssoadmin.change.after.inline_policy)
+        IAMPolicyLineJson = json.unmarshal(ssoadmin.change.after.inline_policy)
+        for IAMPolicyLineJson.Statement as _, policyline{
+            iamAction = policyline.Action
+            iamEffect = policyline.Effect
+            iamResource = policyline.Resource
+            if "iam:Passrole/*" in iamAction and "Allow" in iamEffect and "*" in iamResource {
+                append(ssoadminpolicycheckList,instanceARN)
+                print("This Instance ARN", instanceARN , "has not compliant IAM right")
+            }
+        }
+    }
+    if length(ssoadminpolicycheckList) !=0{
+        print("")
+        print("// --------------------------------------------------------")
+        print("// Name:        Ensure policy with iam:Passrole/* action and")
+        print("//              NotResource attributes is not used")
+        print("// Category:    SSOIAM")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_ssoadmin_permission_set_inline_policy")
+        print("// Check:       when iam policy grants right of 'iam:PassRole/*'")
+        print("//              to Resource * and Effect is 'allow' is not compliant")
+        print("// --------------------------------------------------------")
+        print("// Ensure policy with iam:Passrole/* action and NotResource")
+        print("// attributes is not used")
+        print("// --------------------------------------------------------")        
+    }
+    return length(ssoadminpolicycheckList)
+}
+
+
+main = rule{
+    ssoadminpolicycheck(aws_ssoadmin_permission_set_inline_policy) == 0 
+}
