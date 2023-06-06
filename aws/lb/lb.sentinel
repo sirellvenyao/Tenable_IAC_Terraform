@@ -1,0 +1,51 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+import "json"
+
+aws_lb = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_lb" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) 
+}
+
+lbDelectionProtectionCheck = func(lbs) {
+    lbDelectionProtectionList = []
+    for lbs as _, lb {
+        if "enable_deletion_protection" not in (keys(lb.change.after)){
+            append(lbDelectionProtectionList,lb.name)
+            print("This aws_lb",lb.name,"has not enable deletion protect")
+        }
+
+        if "enable_deletion_protection" in (keys(lb.change.after)){
+            if (lb.change.after.enable_deletion_protection) is not true {
+                append(lbDelectionProtectionList,lb.name)
+                print("This aws_lb",lb.name,"has not enable deletion protect")
+
+            }
+        }
+
+    }
+
+    if length(lbDelectionProtectionList) != 0 {
+        print("")
+        print("// --------------------------------------------------------")
+        print("// Name:        Ensure deletion protection is enabled for ")
+        print("//              AWS LB (Load Balancer)")
+        print("// Category:    network infrastructure")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_lb")
+        print("// Check:       if enable_deletion_protection has been set true")
+        print("// --------------------------------------------------------")
+        print("// Ensure deletion protection is enabled for AWS LB ")
+        print("// --------------------------------------------------------") 
+
+    }
+    return length(lbDelectionProtectionList)
+}
+
+
+main = rule{
+    lbDelectionProtectionCheck(aws_lb) == 0 
+}

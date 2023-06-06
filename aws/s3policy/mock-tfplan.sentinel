@@ -1,0 +1,386 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {
+			"aws_iam_policy_document": {
+				"allow_access_from_another_account": {
+					0: {
+						"applied": {
+							"override_policy_documents": null,
+							"policy_id":                 null,
+							"source_policy_documents":   null,
+							"statement": [
+								{
+									"actions": [
+										"s3:GetObject",
+										"s3:ListBucket",
+									],
+									"condition":      [],
+									"effect":         "Allow",
+									"not_actions":    null,
+									"not_principals": [],
+									"not_resources":  null,
+									"principals": [
+										{
+											"identifiers": [
+												"*",
+											],
+											"type": "AWS",
+										},
+									],
+									"resources": [
+										null,
+										null,
+									],
+									"sid": null,
+								},
+							],
+							"version": null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"json": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"override_policy_documents": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"policy_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"source_policy_documents": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"statement.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"statement.0.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "",
+							},
+							"statement.0.actions.#": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"statement.0.actions.0": {
+								"computed": false,
+								"new":      "s3:GetObject",
+								"old":      "",
+							},
+							"statement.0.actions.1": {
+								"computed": false,
+								"new":      "s3:ListBucket",
+								"old":      "",
+							},
+							"statement.0.condition.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"statement.0.effect": {
+								"computed": false,
+								"new":      "Allow",
+								"old":      "",
+							},
+							"statement.0.not_actions": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"statement.0.not_principals.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"statement.0.not_resources": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"statement.0.principals.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"statement.0.principals.0.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"statement.0.principals.0.identifiers.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"statement.0.principals.0.identifiers.0": {
+								"computed": false,
+								"new":      "*",
+								"old":      "",
+							},
+							"statement.0.principals.0.type": {
+								"computed": false,
+								"new":      "AWS",
+								"old":      "",
+							},
+							"statement.0.resources.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"statement.0.sid": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"version": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+		"path": [],
+		"resources": {
+			"aws_s3_bucket": {
+				"example": {
+					0: {
+						"applied": {
+							"bucket":        "my-tf-test-bucket",
+							"force_destroy": false,
+							"tags":          null,
+							"timeouts":      null,
+						},
+						"destroy": false,
+						"diff": {
+							"acceleration_status": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"acl": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket": {
+								"computed": false,
+								"new":      "my-tf-test-bucket",
+								"old":      "",
+							},
+							"bucket_domain_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket_prefix": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket_regional_domain_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cors_rule.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"force_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"grant.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"hosted_zone_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"lifecycle_rule.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"logging.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"object_lock_configuration.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"object_lock_enabled": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"policy": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"region": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"replication_configuration.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"request_payer": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"server_side_encryption_configuration.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"versioning.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website_domain": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_s3_bucket_policy": {
+				"allow_access_from_another_account": {
+					0: {
+						"applied": {},
+						"destroy": false,
+						"diff": {
+							"bucket": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"policy": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.4.6"
+
+variables = {
+	"aws":                      "ap-east-1",
+	"aws_region":               "ap-east-1",
+	"awsvpc_service_subnetids": [],
+	"region":                   "ap-east-1",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

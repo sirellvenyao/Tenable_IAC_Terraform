@@ -1,0 +1,154 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"references": [
+					"var.region",
+				],
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_s3_bucket.example": {
+		"address": "aws_s3_bucket.example",
+		"config": {
+			"bucket": {
+				"constant_value": "my-tf-test-bucket",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket_policy.allow_access_from_another_account": {
+		"address": "aws_s3_bucket_policy.allow_access_from_another_account",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.example.id",
+					"aws_s3_bucket.example",
+				],
+			},
+			"policy": {
+				"references": [
+					"data.aws_iam_policy_document.allow_access_from_another_account.json",
+					"data.aws_iam_policy_document.allow_access_from_another_account",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "allow_access_from_another_account",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_policy",
+	},
+	"data.aws_iam_policy_document.allow_access_from_another_account": {
+		"address": "data.aws_iam_policy_document.allow_access_from_another_account",
+		"config": {
+			"statement": [
+				{
+					"actions": {
+						"constant_value": [
+							"s3:GetObject",
+							"s3:ListBucket",
+						],
+					},
+					"effect": {
+						"constant_value": "Allow",
+					},
+					"principals": [
+						{
+							"identifiers": {
+								"constant_value": [
+									"*",
+								],
+							},
+							"type": {
+								"constant_value": "AWS",
+							},
+						},
+					],
+					"resources": {
+						"references": [
+							"aws_s3_bucket.example.arn",
+							"aws_s3_bucket.example",
+							"aws_s3_bucket.example.arn",
+							"aws_s3_bucket.example",
+						],
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "allow_access_from_another_account",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_policy_document",
+	},
+}
+
+provisioners = {}
+
+variables = {
+	"aws": {
+		"default":        "ap-east-1",
+		"description":    "",
+		"module_address": "",
+		"name":           "aws",
+	},
+	"aws_region": {
+		"default":        "ap-east-1",
+		"description":    "",
+		"module_address": "",
+		"name":           "aws_region",
+	},
+	"awsvpc_service_subnetids": {
+		"default":        [],
+		"description":    "List of subnet ids to which a service is deployed in fargate mode.",
+		"module_address": "",
+		"name":           "awsvpc_service_subnetids",
+	},
+	"region": {
+		"default":        "ap-east-1",
+		"description":    "",
+		"module_address": "",
+		"name":           "region",
+	},
+}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

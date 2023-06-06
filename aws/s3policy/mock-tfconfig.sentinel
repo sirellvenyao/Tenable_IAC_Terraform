@@ -1,0 +1,153 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {
+			"aws_iam_policy_document": {
+				"allow_access_from_another_account": {
+					"config": {
+						"statement": [
+							{
+								"actions": [
+									"s3:GetObject",
+									"s3:ListBucket",
+								],
+								"effect": "Allow",
+								"principals": [
+									{
+										"identifiers": [
+											"*",
+										],
+										"type": "AWS",
+									},
+								],
+							},
+						],
+					},
+					"provisioners": null,
+					"references": {
+						"statement": [
+							{
+								"actions": [],
+								"effect":  [],
+								"principals": [
+									{
+										"identifiers": [],
+										"type":        [],
+									},
+								],
+								"resources": [
+									"aws_s3_bucket.example.arn",
+									"aws_s3_bucket.example",
+									"aws_s3_bucket.example.arn",
+									"aws_s3_bucket.example",
+								],
+							},
+						],
+					},
+				},
+			},
+		},
+		"modules": {},
+		"outputs": {},
+		"providers": {
+			"aws": {
+				"alias": {
+					"": {
+						"config": {},
+						"references": {
+							"region": [
+								"var.region",
+							],
+						},
+						"version": "",
+					},
+				},
+				"config": {},
+				"references": {
+					"region": [
+						"var.region",
+					],
+				},
+				"version": "",
+			},
+		},
+		"resources": {
+			"aws_s3_bucket": {
+				"example": {
+					"config": {
+						"bucket": "my-tf-test-bucket",
+					},
+					"provisioners": null,
+					"references": {
+						"bucket": [],
+					},
+				},
+			},
+			"aws_s3_bucket_policy": {
+				"allow_access_from_another_account": {
+					"config":       {},
+					"provisioners": null,
+					"references": {
+						"bucket": [
+							"aws_s3_bucket.example.id",
+							"aws_s3_bucket.example",
+						],
+						"policy": [
+							"data.aws_iam_policy_document.allow_access_from_another_account.json",
+							"data.aws_iam_policy_document.allow_access_from_another_account",
+						],
+					},
+				},
+			},
+		},
+		"variables": {
+			"aws": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+			"aws_region": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+			"awsvpc_service_subnetids": {
+				"default":     [],
+				"description": "List of subnet ids to which a service is deployed in fargate mode.",
+			},
+			"region": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs

@@ -1,0 +1,678 @@
+terraform_version = "1.4.6"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_iam_policy_document.allow_access_from_another_account": {
+			"address":        "aws_iam_policy_document.allow_access_from_another_account",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "data",
+			"module_address": "",
+			"name":           "allow_access_from_another_account",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_policy_document",
+			"values": {
+				"override_policy_documents": null,
+				"policy_id":                 null,
+				"source_policy_documents":   null,
+				"statement": [
+					{
+						"actions": [
+							"s3:GetObject",
+							"s3:ListBucket",
+						],
+						"condition":      [],
+						"effect":         "Allow",
+						"not_actions":    null,
+						"not_principals": [],
+						"not_resources":  null,
+						"principals": [
+							{
+								"identifiers": [
+									"*",
+								],
+								"type": "AWS",
+							},
+						],
+						"resources": [
+							null,
+							null,
+						],
+						"sid": null,
+					},
+				],
+				"version": null,
+			},
+		},
+		"aws_s3_bucket.example": {
+			"address":        "aws_s3_bucket.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket",
+			"values": {
+				"bucket":        "my-tf-test-bucket",
+				"force_destroy": false,
+				"tags":          null,
+				"timeouts":      null,
+			},
+		},
+		"aws_s3_bucket_policy.allow_access_from_another_account": {
+			"address":        "aws_s3_bucket_policy.allow_access_from_another_account",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "allow_access_from_another_account",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_policy",
+			"values":         {},
+		},
+	},
+}
+
+variables = {
+	"aws": {
+		"name":  "aws",
+		"value": "ap-east-1",
+	},
+	"aws_region": {
+		"name":  "aws_region",
+		"value": "ap-east-1",
+	},
+	"awsvpc_service_subnetids": {
+		"name":  "awsvpc_service_subnetids",
+		"value": [],
+	},
+	"region": {
+		"name":  "region",
+		"value": "ap-east-1",
+	},
+}
+
+resource_changes = {
+	"aws_s3_bucket.example": {
+		"address": "aws_s3_bucket.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bucket":        "my-tf-test-bucket",
+				"force_destroy": false,
+				"tags":          null,
+				"timeouts":      null,
+			},
+			"after_unknown": {
+				"acceleration_status": true,
+				"acl":                                  true,
+				"arn":                                  true,
+				"bucket_domain_name":                   true,
+				"bucket_prefix":                        true,
+				"bucket_regional_domain_name":          true,
+				"cors_rule":                            true,
+				"grant":                                true,
+				"hosted_zone_id":                       true,
+				"id":                                   true,
+				"lifecycle_rule":                       true,
+				"logging":                              true,
+				"object_lock_configuration":            true,
+				"object_lock_enabled":                  true,
+				"policy":                               true,
+				"region":                               true,
+				"replication_configuration":            true,
+				"request_payer":                        true,
+				"server_side_encryption_configuration": true,
+				"tags_all":                             true,
+				"versioning":                           true,
+				"website":                              true,
+				"website_domain":                       true,
+				"website_endpoint":                     true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket",
+	},
+	"aws_s3_bucket_policy.allow_access_from_another_account": {
+		"address": "aws_s3_bucket_policy.allow_access_from_another_account",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {},
+			"after_unknown": {
+				"bucket": true,
+				"id":     true,
+				"policy": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "allow_access_from_another_account",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_policy",
+	},
+	"data.aws_iam_policy_document.allow_access_from_another_account": {
+		"address": "data.aws_iam_policy_document.allow_access_from_another_account",
+		"change": {
+			"actions": [
+				"read",
+			],
+			"after": {
+				"override_policy_documents": null,
+				"policy_id":                 null,
+				"source_policy_documents":   null,
+				"statement": [
+					{
+						"actions": [
+							"s3:GetObjectAcl",
+						],
+						"condition":      [],
+						"effect":         "Allow",
+						"not_actions":    null,
+						"not_principals": [],
+						"not_resources":  null,
+						"principals": [
+							{
+								"identifiers": [
+									"*",
+								],
+								"type": "AWS",
+							},
+						],
+						"resources": [
+							null,
+							null,
+						],
+						"sid": null,
+					},
+				],
+				"version": null,
+			},
+			"after_unknown": {
+				"id":   true,
+				"json": true,
+				"statement": [
+					{
+						"actions": [
+							false,
+							false,
+						],
+						"condition":      [],
+						"not_principals": [],
+						"principals": [
+							{
+								"identifiers": [
+									false,
+								],
+							},
+						],
+						"resources": [
+							true,
+							true,
+						],
+					},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "data",
+		"module_address": "",
+		"name":           "allow_access_from_another_account",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_policy_document",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"references": [
+							"var.region",
+						],
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_s3_bucket.example",
+					"expressions": {
+						"bucket": {
+							"constant_value": "my-tf-test-bucket",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket",
+				},
+				{
+					"address": "aws_s3_bucket_policy.allow_access_from_another_account",
+					"expressions": {
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.example.id",
+								"aws_s3_bucket.example",
+							],
+						},
+						"policy": {
+							"references": [
+								"data.aws_iam_policy_document.allow_access_from_another_account.json",
+								"data.aws_iam_policy_document.allow_access_from_another_account",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "allow_access_from_another_account",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_policy",
+				},
+				{
+					"address": "data.aws_iam_policy_document.allow_access_from_another_account",
+					"expressions": {
+						"statement": [
+							{
+								"actions": {
+									"constant_value": [
+										"s3:GetObject",
+										"s3:ListBucket",
+									],
+								},
+								"effect": {
+									"constant_value": "Allow",
+								},
+								"principals": [
+									{
+										"identifiers": {
+											"constant_value": [
+												"*",
+											],
+										},
+										"type": {
+											"constant_value": "AWS",
+										},
+									},
+								],
+								"resources": {
+									"references": [
+										"aws_s3_bucket.example.arn",
+										"aws_s3_bucket.example",
+										"aws_s3_bucket.example.arn",
+										"aws_s3_bucket.example",
+									],
+								},
+							},
+						],
+					},
+					"mode":                "data",
+					"name":                "allow_access_from_another_account",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_policy_document",
+				},
+			],
+			"variables": {
+				"aws": {
+					"default": "ap-east-1",
+				},
+				"aws_region": {
+					"default": "ap-east-1",
+				},
+				"awsvpc_service_subnetids": {
+					"default":     [],
+					"description": "List of subnet ids to which a service is deployed in fargate mode.",
+				},
+				"region": {
+					"default": "ap-east-1",
+				},
+			},
+		},
+	},
+	"format_version": "1.1",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_s3_bucket.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cors_rule":                            [],
+						"grant":                                [],
+						"lifecycle_rule":                       [],
+						"logging":                              [],
+						"object_lock_configuration":            [],
+						"replication_configuration":            [],
+						"server_side_encryption_configuration": [],
+						"tags_all":                             {},
+						"versioning":                           [],
+						"website":                              [],
+					},
+					"type": "aws_s3_bucket",
+					"values": {
+						"bucket":        "my-tf-test-bucket",
+						"force_destroy": false,
+						"tags":          null,
+						"timeouts":      null,
+					},
+				},
+				{
+					"address":          "aws_s3_bucket_policy.allow_access_from_another_account",
+					"mode":             "managed",
+					"name":             "allow_access_from_another_account",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_s3_bucket_policy",
+				},
+				{
+					"address":        "data.aws_iam_policy_document.allow_access_from_another_account",
+					"mode":           "data",
+					"name":           "allow_access_from_another_account",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"statement": [
+							{
+								"actions": [
+									false,
+									false,
+								],
+								"condition":      [],
+								"not_principals": [],
+								"principals": [
+									{
+										"identifiers": [
+											false,
+										],
+									},
+								],
+								"resources": [
+									false,
+									false,
+								],
+							},
+						],
+					},
+					"type": "aws_iam_policy_document",
+					"values": {
+						"override_policy_documents": null,
+						"policy_id":                 null,
+						"source_policy_documents":   null,
+						"statement": [
+							{
+								"actions": [
+									"s3:GetObject",
+									"s3:ListBucket",
+								],
+								"condition":      [],
+								"effect":         "Allow",
+								"not_actions":    null,
+								"not_principals": [],
+								"not_resources":  null,
+								"principals": [
+									{
+										"identifiers": [
+											"*",
+										],
+										"type": "AWS",
+									},
+								],
+								"resources": [
+									null,
+									null,
+								],
+								"sid": null,
+							},
+						],
+						"version": null,
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"arn",
+			],
+			"resource": "aws_s3_bucket.example",
+		},
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_s3_bucket.example",
+		},
+		{
+			"attribute": [
+				"json",
+			],
+			"resource": "data.aws_iam_policy_document.allow_access_from_another_account",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "data.aws_iam_policy_document.allow_access_from_another_account",
+			"change": {
+				"actions": [
+					"read",
+				],
+				"after": {
+					"override_policy_documents": null,
+					"policy_id":                 null,
+					"source_policy_documents":   null,
+					"statement": [
+						{
+							"actions": [
+								"s3:GetObject",
+								"s3:ListBucket",
+							],
+							"condition":      [],
+							"effect":         "Allow",
+							"not_actions":    null,
+							"not_principals": [],
+							"not_resources":  null,
+							"principals": [
+								{
+									"identifiers": [
+										"*",
+									],
+									"type": "AWS",
+								},
+							],
+							"resources": [
+								null,
+								null,
+							],
+							"sid": null,
+						},
+					],
+					"version": null,
+				},
+				"after_sensitive": {
+					"statement": [
+						{
+							"actions": [
+								false,
+								false,
+							],
+							"condition":      [],
+							"not_principals": [],
+							"principals": [
+								{
+									"identifiers": [
+										false,
+									],
+								},
+							],
+							"resources": [
+								false,
+								false,
+							],
+						},
+					],
+				},
+				"after_unknown": {
+					"id":   true,
+					"json": true,
+					"statement": [
+						{
+							"actions": [
+								false,
+								false,
+							],
+							"condition":      [],
+							"not_principals": [],
+							"principals": [
+								{
+									"identifiers": [
+										false,
+									],
+								},
+							],
+							"resources": [
+								true,
+								true,
+							],
+						},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "data",
+			"name":          "allow_access_from_another_account",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_policy_document",
+		},
+		{
+			"address": "aws_s3_bucket.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bucket":        "my-tf-test-bucket",
+					"force_destroy": false,
+					"tags":          null,
+					"timeouts":      null,
+				},
+				"after_sensitive": {
+					"cors_rule":                            [],
+					"grant":                                [],
+					"lifecycle_rule":                       [],
+					"logging":                              [],
+					"object_lock_configuration":            [],
+					"replication_configuration":            [],
+					"server_side_encryption_configuration": [],
+					"tags_all":                             {},
+					"versioning":                           [],
+					"website":                              [],
+				},
+				"after_unknown": {
+					"acceleration_status": true,
+					"acl":                                  true,
+					"arn":                                  true,
+					"bucket_domain_name":                   true,
+					"bucket_prefix":                        true,
+					"bucket_regional_domain_name":          true,
+					"cors_rule":                            true,
+					"grant":                                true,
+					"hosted_zone_id":                       true,
+					"id":                                   true,
+					"lifecycle_rule":                       true,
+					"logging":                              true,
+					"object_lock_configuration":            true,
+					"object_lock_enabled":                  true,
+					"policy":                               true,
+					"region":                               true,
+					"replication_configuration":            true,
+					"request_payer":                        true,
+					"server_side_encryption_configuration": true,
+					"tags_all":                             true,
+					"versioning":                           true,
+					"website":                              true,
+					"website_domain":                       true,
+					"website_endpoint":                     true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket",
+		},
+		{
+			"address": "aws_s3_bucket_policy.allow_access_from_another_account",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after":           {},
+				"after_sensitive": {},
+				"after_unknown": {
+					"bucket": true,
+					"id":     true,
+					"policy": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "allow_access_from_another_account",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_policy",
+		},
+	],
+	"terraform_version": "1.4.6",
+	"variables": {
+		"aws": {
+			"value": "ap-east-1",
+		},
+		"aws_region": {
+			"value": "ap-east-1",
+		},
+		"awsvpc_service_subnetids": {
+			"value": [],
+		},
+		"region": {
+			"value": "ap-east-1",
+		},
+	},
+}

@@ -1,0 +1,63 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+import "json"
+
+aws_iam_policy_document = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_iam_policy_document" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) or
+			resource_changes.change.actions contains "read"
+}
+
+aws_s3_bucket_policy = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_s3_bucket_policy" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"])
+}
+
+iamPolicyDocuCheckname = func(iampolicydocuments,s3bucketPolicies){
+    iamPolicyDocuCheckList = []
+    for s3bucketPolicies as _, s3bucketPolicy{
+        S3BucketPolicyName = s3bucketPolicy.name
+        for iampolicydocuments as _, iampolicydocument{
+            if S3BucketPolicyName == iampolicydocument.name{
+                iamStatement = iampolicydocument.change.after.statement
+                for iamStatement as _, policy{
+                    for policy.principals as _, principals{
+                        for policy.actions as _, checkaction{
+                            print(checkaction)
+                            if checkaction contains "GetObjectAcl" and principals.identifiers is ["*"]{
+                                append(iamPolicyDocuCheckList,S3BucketPolicyName)
+                                print("This S3 IAM Policy >>",S3BucketPolicyName,"<< is not compliant")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if length(iamPolicyDocuCheckList) !=0{
+        print("")
+        print("// --------------------------------------------------------")
+        print("// Name:        Ensure 'allow getAcl actions from all principals'")
+        print("//              is disabled for AWS S3 Buckets")
+        print("// Category:    S3IAM")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_iam_policy_document && aws_s3_bucket_policy ")
+        print("// Check:       S3 can not be granted iam policy with principals * and")
+        print("//              actions GetObjectAcl")
+        print("// --------------------------------------------------------")
+        print("// Ensure 'allow GetObjectAcl actions from all principals' is disabled ")
+        print("// for AWS S3 Buckets")
+        print("// --------------------------------------------------------")        
+    }
+    return(length(iamPolicyDocuCheckList))
+
+}
+
+main = rule{
+    iamPolicyDocuCheckname(aws_iam_policy_document,aws_s3_bucket_policy) == 0
+}
