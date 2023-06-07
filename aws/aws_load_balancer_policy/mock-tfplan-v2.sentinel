@@ -1,0 +1,696 @@
+terraform_version = "1.4.6"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_elb.wu-tang": {
+			"address":        "aws_elb.wu-tang",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "wu-tang",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_elb",
+			"values": {
+				"access_logs": [],
+				"availability_zones": [
+					"us-east-1a",
+				],
+				"connection_draining":         false,
+				"connection_draining_timeout": 300,
+				"cross_zone_load_balancing":   true,
+				"desync_mitigation_mode":      "defensive",
+				"idle_timeout":                60,
+				"listener": [
+					{
+						"instance_port":      443,
+						"instance_protocol":  "http",
+						"lb_port":            443,
+						"lb_protocol":        "https",
+						"ssl_certificate_id": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+					},
+				],
+				"name":        "wu-tang",
+				"name_prefix": null,
+				"tags": {
+					"Name": "wu-tang",
+				},
+				"tags_all": {
+					"Name": "wu-tang",
+				},
+			},
+		},
+		"aws_load_balancer_listener_policy.wu-tang-listener-policies-443": {
+			"address":        "aws_load_balancer_listener_policy.wu-tang-listener-policies-443",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "wu-tang-listener-policies-443",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_load_balancer_listener_policy",
+			"values": {
+				"load_balancer_name": "wu-tang",
+				"load_balancer_port": 443,
+				"policy_names": [
+					"wu-tang-ssl",
+				],
+				"triggers": null,
+			},
+		},
+		"aws_load_balancer_policy.wu-tang-ssl": {
+			"address":        "aws_load_balancer_policy.wu-tang-ssl",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "wu-tang-ssl",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_load_balancer_policy",
+			"values": {
+				"load_balancer_name": "wu-tang",
+				"policy_attribute": [
+					{
+						"name":  "ECDHE-ECDSA-AES128-GCM-SHA256",
+						"value": "true",
+					},
+					{
+						"name":  "Protocol-TLSv1.2",
+						"value": "true",
+					},
+				],
+				"policy_name":      "wu-tang-ssl",
+				"policy_type_name": "SSLNegotiationPolicyType",
+			},
+		},
+	},
+}
+
+variables = {
+	"aws": {
+		"name":  "aws",
+		"value": "ap-east-1",
+	},
+	"aws_region": {
+		"name":  "aws_region",
+		"value": "ap-east-1",
+	},
+	"awsvpc_service_subnetids": {
+		"name":  "awsvpc_service_subnetids",
+		"value": [],
+	},
+	"region": {
+		"name":  "region",
+		"value": "ap-east-1",
+	},
+}
+
+resource_changes = {
+	"aws_elb.wu-tang": {
+		"address": "aws_elb.wu-tang",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"access_logs": [],
+				"availability_zones": [
+					"us-east-1a",
+				],
+				"connection_draining":         false,
+				"connection_draining_timeout": 300,
+				"cross_zone_load_balancing":   true,
+				"desync_mitigation_mode":      "defensive",
+				"idle_timeout":                60,
+				"listener": [
+					{
+						"instance_port":      443,
+						"instance_protocol":  "http",
+						"lb_port":            443,
+						"lb_protocol":        "https",
+						"ssl_certificate_id": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+					},
+				],
+				"name":        "wu-tang",
+				"name_prefix": null,
+				"tags": {
+					"Name": "wu-tang",
+				},
+				"tags_all": {
+					"Name": "wu-tang",
+				},
+			},
+			"after_unknown": {
+				"access_logs": [],
+				"arn":         true,
+				"availability_zones": [
+					false,
+				],
+				"dns_name":     true,
+				"health_check": true,
+				"id":           true,
+				"instances":    true,
+				"internal":     true,
+				"listener": [
+					{},
+				],
+				"security_groups":          true,
+				"source_security_group":    true,
+				"source_security_group_id": true,
+				"subnets":                  true,
+				"tags":                     {},
+				"tags_all":                 {},
+				"zone_id":                  true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "wu-tang",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_elb",
+	},
+	"aws_load_balancer_listener_policy.wu-tang-listener-policies-443": {
+		"address": "aws_load_balancer_listener_policy.wu-tang-listener-policies-443",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"load_balancer_name": "wu-tang",
+				"load_balancer_port": 443,
+				"policy_names": [
+					"wu-tang-ssl",
+				],
+				"triggers": null,
+			},
+			"after_unknown": {
+				"id": true,
+				"policy_names": [
+					false,
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "wu-tang-listener-policies-443",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_load_balancer_listener_policy",
+	},
+	"aws_load_balancer_policy.wu-tang-ssl": {
+		"address": "aws_load_balancer_policy.wu-tang-ssl",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"load_balancer_name": "wu-tang",
+				"policy_attribute": [
+					{
+						"name":  "ECDHE-ECDSA-AES128-GCM-SHA256",
+						"value": "true",
+					},
+					{
+						"name":  "Protocol-TLSv1.2",
+						"value": "true",
+					},
+				],
+				"policy_name":      "wu-tang-ssl",
+				"policy_type_name": "SSLNegotiationPolicyType",
+			},
+			"after_unknown": {
+				"id": true,
+				"policy_attribute": [
+					{},
+					{},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "wu-tang-ssl",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_load_balancer_policy",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"references": [
+							"var.region",
+						],
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_elb.wu-tang",
+					"expressions": {
+						"availability_zones": {
+							"constant_value": [
+								"us-east-1a",
+							],
+						},
+						"listener": [
+							{
+								"instance_port": {
+									"constant_value": 443,
+								},
+								"instance_protocol": {
+									"constant_value": "http",
+								},
+								"lb_port": {
+									"constant_value": 443,
+								},
+								"lb_protocol": {
+									"constant_value": "https",
+								},
+								"ssl_certificate_id": {
+									"constant_value": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+								},
+							},
+						],
+						"name": {
+							"constant_value": "wu-tang",
+						},
+						"tags": {
+							"constant_value": {
+								"Name": "wu-tang",
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "wu-tang",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_elb",
+				},
+				{
+					"address": "aws_load_balancer_listener_policy.wu-tang-listener-policies-443",
+					"expressions": {
+						"load_balancer_name": {
+							"references": [
+								"aws_elb.wu-tang.name",
+								"aws_elb.wu-tang",
+							],
+						},
+						"load_balancer_port": {
+							"constant_value": 443,
+						},
+						"policy_names": {
+							"references": [
+								"aws_load_balancer_policy.wu-tang-ssl.policy_name",
+								"aws_load_balancer_policy.wu-tang-ssl",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "wu-tang-listener-policies-443",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_load_balancer_listener_policy",
+				},
+				{
+					"address": "aws_load_balancer_policy.wu-tang-ssl",
+					"expressions": {
+						"load_balancer_name": {
+							"references": [
+								"aws_elb.wu-tang.name",
+								"aws_elb.wu-tang",
+							],
+						},
+						"policy_attribute": [
+							{
+								"name": {
+									"constant_value": "ECDHE-ECDSA-AES128-GCM-SHA256",
+								},
+								"value": {
+									"constant_value": "true",
+								},
+							},
+							{
+								"name": {
+									"constant_value": "Protocol-TLSv1.2",
+								},
+								"value": {
+									"constant_value": "true",
+								},
+							},
+						],
+						"policy_name": {
+							"constant_value": "wu-tang-ssl",
+						},
+						"policy_type_name": {
+							"constant_value": "SSLNegotiationPolicyType",
+						},
+					},
+					"mode":                "managed",
+					"name":                "wu-tang-ssl",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_load_balancer_policy",
+				},
+			],
+			"variables": {
+				"aws": {
+					"default": "ap-east-1",
+				},
+				"aws_region": {
+					"default": "ap-east-1",
+				},
+				"awsvpc_service_subnetids": {
+					"default":     [],
+					"description": "List of subnet ids to which a service is deployed in fargate mode.",
+				},
+				"region": {
+					"default": "ap-east-1",
+				},
+			},
+		},
+	},
+	"format_version": "1.1",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_elb.wu-tang",
+					"mode":           "managed",
+					"name":           "wu-tang",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"access_logs": [],
+						"availability_zones": [
+							false,
+						],
+						"health_check": [],
+						"instances":    [],
+						"listener": [
+							{},
+						],
+						"security_groups": [],
+						"subnets":         [],
+						"tags":            {},
+						"tags_all":        {},
+					},
+					"type": "aws_elb",
+					"values": {
+						"access_logs": [],
+						"availability_zones": [
+							"us-east-1a",
+						],
+						"connection_draining":         false,
+						"connection_draining_timeout": 300,
+						"cross_zone_load_balancing":   true,
+						"desync_mitigation_mode":      "defensive",
+						"idle_timeout":                60,
+						"listener": [
+							{
+								"instance_port":      443,
+								"instance_protocol":  "http",
+								"lb_port":            443,
+								"lb_protocol":        "https",
+								"ssl_certificate_id": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+							},
+						],
+						"name":        "wu-tang",
+						"name_prefix": null,
+						"tags": {
+							"Name": "wu-tang",
+						},
+						"tags_all": {
+							"Name": "wu-tang",
+						},
+					},
+				},
+				{
+					"address":        "aws_load_balancer_listener_policy.wu-tang-listener-policies-443",
+					"mode":           "managed",
+					"name":           "wu-tang-listener-policies-443",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"policy_names": [
+							false,
+						],
+					},
+					"type": "aws_load_balancer_listener_policy",
+					"values": {
+						"load_balancer_name": "wu-tang",
+						"load_balancer_port": 443,
+						"policy_names": [
+							"wu-tang-ssl",
+						],
+						"triggers": null,
+					},
+				},
+				{
+					"address":        "aws_load_balancer_policy.wu-tang-ssl",
+					"mode":           "managed",
+					"name":           "wu-tang-ssl",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"policy_attribute": [
+							{},
+							{},
+						],
+					},
+					"type": "aws_load_balancer_policy",
+					"values": {
+						"load_balancer_name": "wu-tang",
+						"policy_attribute": [
+							{
+								"name":  "ECDHE-ECDSA-AES128-GCM-SHA256",
+								"value": "true",
+							},
+							{
+								"name":  "Protocol-TLSv1.2",
+								"value": "true",
+							},
+						],
+						"policy_name":      "wu-tang-ssl",
+						"policy_type_name": "SSLNegotiationPolicyType",
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "1.0",
+		"terraform_version": "1.4.6",
+		"values": {
+			"root_module": {},
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"name",
+			],
+			"resource": "aws_elb.wu-tang",
+		},
+		{
+			"attribute": [
+				"policy_name",
+			],
+			"resource": "aws_load_balancer_policy.wu-tang-ssl",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_elb.wu-tang",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"access_logs": [],
+					"availability_zones": [
+						"us-east-1a",
+					],
+					"connection_draining":         false,
+					"connection_draining_timeout": 300,
+					"cross_zone_load_balancing":   true,
+					"desync_mitigation_mode":      "defensive",
+					"idle_timeout":                60,
+					"listener": [
+						{
+							"instance_port":      443,
+							"instance_protocol":  "http",
+							"lb_port":            443,
+							"lb_protocol":        "https",
+							"ssl_certificate_id": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+						},
+					],
+					"name":        "wu-tang",
+					"name_prefix": null,
+					"tags": {
+						"Name": "wu-tang",
+					},
+					"tags_all": {
+						"Name": "wu-tang",
+					},
+				},
+				"after_sensitive": {
+					"access_logs": [],
+					"availability_zones": [
+						false,
+					],
+					"health_check": [],
+					"instances":    [],
+					"listener": [
+						{},
+					],
+					"security_groups": [],
+					"subnets":         [],
+					"tags":            {},
+					"tags_all":        {},
+				},
+				"after_unknown": {
+					"access_logs": [],
+					"arn":         true,
+					"availability_zones": [
+						false,
+					],
+					"dns_name":     true,
+					"health_check": true,
+					"id":           true,
+					"instances":    true,
+					"internal":     true,
+					"listener": [
+						{},
+					],
+					"security_groups":          true,
+					"source_security_group":    true,
+					"source_security_group_id": true,
+					"subnets":                  true,
+					"tags":                     {},
+					"tags_all":                 {},
+					"zone_id":                  true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "wu-tang",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_elb",
+		},
+		{
+			"address": "aws_load_balancer_listener_policy.wu-tang-listener-policies-443",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"load_balancer_name": "wu-tang",
+					"load_balancer_port": 443,
+					"policy_names": [
+						"wu-tang-ssl",
+					],
+					"triggers": null,
+				},
+				"after_sensitive": {
+					"policy_names": [
+						false,
+					],
+				},
+				"after_unknown": {
+					"id": true,
+					"policy_names": [
+						false,
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "wu-tang-listener-policies-443",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_load_balancer_listener_policy",
+		},
+		{
+			"address": "aws_load_balancer_policy.wu-tang-ssl",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"load_balancer_name": "wu-tang",
+					"policy_attribute": [
+						{
+							"name":  "ECDHE-ECDSA-AES128-GCM-SHA256",
+							"value": "true",
+						},
+						{
+							"name":  "Protocol-TLSv1.2",
+							"value": "true",
+						},
+					],
+					"policy_name":      "wu-tang-ssl",
+					"policy_type_name": "SSLNegotiationPolicyType",
+				},
+				"after_sensitive": {
+					"policy_attribute": [
+						{},
+						{},
+					],
+				},
+				"after_unknown": {
+					"id": true,
+					"policy_attribute": [
+						{},
+						{},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "wu-tang-ssl",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_load_balancer_policy",
+		},
+	],
+	"terraform_version": "1.4.6",
+	"variables": {
+		"aws": {
+			"value": "ap-east-1",
+		},
+		"aws_region": {
+			"value": "ap-east-1",
+		},
+		"awsvpc_service_subnetids": {
+			"value": [],
+		},
+		"region": {
+			"value": "ap-east-1",
+		},
+	},
+}

@@ -1,0 +1,174 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data":    {},
+		"modules": {},
+		"outputs": {},
+		"providers": {
+			"aws": {
+				"alias": {
+					"": {
+						"config": {},
+						"references": {
+							"region": [
+								"var.region",
+							],
+						},
+						"version": "",
+					},
+				},
+				"config": {},
+				"references": {
+					"region": [
+						"var.region",
+					],
+				},
+				"version": "",
+			},
+		},
+		"resources": {
+			"aws_elb": {
+				"wu-tang": {
+					"config": {
+						"availability_zones": [
+							"us-east-1a",
+						],
+						"listener": [
+							{
+								"instance_port":      443,
+								"instance_protocol":  "http",
+								"lb_port":            443,
+								"lb_protocol":        "https",
+								"ssl_certificate_id": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+							},
+						],
+						"name": "wu-tang",
+						"tags": {
+							"Name": "wu-tang",
+						},
+					},
+					"provisioners": null,
+					"references": {
+						"availability_zones": [],
+						"listener": [
+							{
+								"instance_port":      [],
+								"instance_protocol":  [],
+								"lb_port":            [],
+								"lb_protocol":        [],
+								"ssl_certificate_id": [],
+							},
+						],
+						"name": [],
+						"tags": [],
+					},
+				},
+			},
+			"aws_load_balancer_listener_policy": {
+				"wu-tang-listener-policies-443": {
+					"config": {
+						"load_balancer_port": 443,
+					},
+					"provisioners": null,
+					"references": {
+						"load_balancer_name": [
+							"aws_elb.wu-tang.name",
+							"aws_elb.wu-tang",
+						],
+						"load_balancer_port": [],
+						"policy_names": [
+							"aws_load_balancer_policy.wu-tang-ssl.policy_name",
+							"aws_load_balancer_policy.wu-tang-ssl",
+						],
+					},
+				},
+			},
+			"aws_load_balancer_policy": {
+				"wu-tang-ssl": {
+					"config": {
+						"policy_attribute": [
+							{
+								"name":  "ECDHE-ECDSA-AES128-GCM-SHA256",
+								"value": "true",
+							},
+							{
+								"name":  "Protocol-TLSv1.2",
+								"value": "true",
+							},
+						],
+						"policy_name":      "wu-tang-ssl",
+						"policy_type_name": "SSLNegotiationPolicyType",
+					},
+					"provisioners": null,
+					"references": {
+						"load_balancer_name": [
+							"aws_elb.wu-tang.name",
+							"aws_elb.wu-tang",
+						],
+						"policy_attribute": [
+							{
+								"name":  [],
+								"value": [],
+							},
+							{
+								"name":  [],
+								"value": [],
+							},
+						],
+						"policy_name":      [],
+						"policy_type_name": [],
+					},
+				},
+			},
+		},
+		"variables": {
+			"aws": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+			"aws_region": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+			"awsvpc_service_subnetids": {
+				"default":     [],
+				"description": "List of subnet ids to which a service is deployed in fargate mode.",
+			},
+			"region": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs

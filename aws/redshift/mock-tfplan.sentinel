@@ -1,0 +1,310 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"aws_redshift_cluster": {
+				"example": {
+					0: {
+						"applied": {
+							"allow_version_upgrade":                true,
+							"apply_immediately":                    false,
+							"automated_snapshot_retention_period":  1,
+							"availability_zone_relocation_enabled": null,
+							"cluster_identifier":                   "tf-redshift-cluster",
+							"cluster_type":                         "single-node",
+							"cluster_version":                      "1.0",
+							"database_name":                        "mydb",
+							"elastic_ip":                           null,
+							"encrypted":                            false,
+							"final_snapshot_identifier":            null,
+							"logging":                              [],
+							"maintenance_track_name":               "current",
+							"manual_snapshot_retention_period":     -1,
+							"master_password":                      "REDACTED_SENSITIVE",
+							"master_username":                      "exampleuser",
+							"node_type":                            "dc1.large",
+							"number_of_nodes":                      1,
+							"owner_account":                        null,
+							"port":                                 5439,
+							"publicly_accessible":                  true,
+							"skip_final_snapshot":                  false,
+							"snapshot_cluster_identifier":          null,
+							"snapshot_copy":                        [],
+							"snapshot_identifier":                  null,
+							"tags":                                 null,
+							"timeouts":                             null,
+						},
+						"destroy": false,
+						"diff": {
+							"allow_version_upgrade": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"apply_immediately": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"aqua_configuration_status": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"automated_snapshot_retention_period": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"availability_zone": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"availability_zone_relocation_enabled": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"cluster_identifier": {
+								"computed": false,
+								"new":      "tf-redshift-cluster",
+								"old":      "",
+							},
+							"cluster_nodes.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cluster_parameter_group_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cluster_public_key": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cluster_revision_number": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cluster_subnet_group_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cluster_type": {
+								"computed": false,
+								"new":      "single-node",
+								"old":      "",
+							},
+							"cluster_version": {
+								"computed": false,
+								"new":      "1.0",
+								"old":      "",
+							},
+							"database_name": {
+								"computed": false,
+								"new":      "mydb",
+								"old":      "",
+							},
+							"default_iam_role_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"dns_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"elastic_ip": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"encrypted": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"enhanced_vpc_routing": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"final_snapshot_identifier": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"iam_roles.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"kms_key_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"logging.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"maintenance_track_name": {
+								"computed": false,
+								"new":      "current",
+								"old":      "",
+							},
+							"manual_snapshot_retention_period": {
+								"computed": false,
+								"new":      "-1",
+								"old":      "",
+							},
+							"master_password": {
+								"computed": false,
+								"new":      "REDACTED_SENSITIVE",
+								"old":      "",
+							},
+							"master_username": {
+								"computed": false,
+								"new":      "exampleuser",
+								"old":      "",
+							},
+							"node_type": {
+								"computed": false,
+								"new":      "dc1.large",
+								"old":      "",
+							},
+							"number_of_nodes": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"owner_account": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"port": {
+								"computed": false,
+								"new":      "5439",
+								"old":      "",
+							},
+							"preferred_maintenance_window": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"publicly_accessible": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"skip_final_snapshot": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"snapshot_cluster_identifier": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"snapshot_copy.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"snapshot_identifier": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"vpc_security_group_ids.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.4.6"
+
+variables = {
+	"aws":                      "ap-east-1",
+	"aws_region":               "ap-east-1",
+	"awsvpc_service_subnetids": [],
+	"region":                   "ap-east-1",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

@@ -1,0 +1,183 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"references": [
+					"var.region",
+				],
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_elb.wu-tang": {
+		"address": "aws_elb.wu-tang",
+		"config": {
+			"availability_zones": {
+				"constant_value": [
+					"us-east-1a",
+				],
+			},
+			"listener": [
+				{
+					"instance_port": {
+						"constant_value": 443,
+					},
+					"instance_protocol": {
+						"constant_value": "http",
+					},
+					"lb_port": {
+						"constant_value": 443,
+					},
+					"lb_protocol": {
+						"constant_value": "https",
+					},
+					"ssl_certificate_id": {
+						"constant_value": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+					},
+				},
+			],
+			"name": {
+				"constant_value": "wu-tang",
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "wu-tang",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "wu-tang",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_elb",
+	},
+	"aws_load_balancer_listener_policy.wu-tang-listener-policies-443": {
+		"address": "aws_load_balancer_listener_policy.wu-tang-listener-policies-443",
+		"config": {
+			"load_balancer_name": {
+				"references": [
+					"aws_elb.wu-tang.name",
+					"aws_elb.wu-tang",
+				],
+			},
+			"load_balancer_port": {
+				"constant_value": 443,
+			},
+			"policy_names": {
+				"references": [
+					"aws_load_balancer_policy.wu-tang-ssl.policy_name",
+					"aws_load_balancer_policy.wu-tang-ssl",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "wu-tang-listener-policies-443",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_load_balancer_listener_policy",
+	},
+	"aws_load_balancer_policy.wu-tang-ssl": {
+		"address": "aws_load_balancer_policy.wu-tang-ssl",
+		"config": {
+			"load_balancer_name": {
+				"references": [
+					"aws_elb.wu-tang.name",
+					"aws_elb.wu-tang",
+				],
+			},
+			"policy_attribute": [
+				{
+					"name": {
+						"constant_value": "ECDHE-ECDSA-AES128-GCM-SHA256",
+					},
+					"value": {
+						"constant_value": "true",
+					},
+				},
+				{
+					"name": {
+						"constant_value": "Protocol-TLSv1.2",
+					},
+					"value": {
+						"constant_value": "true",
+					},
+				},
+			],
+			"policy_name": {
+				"constant_value": "wu-tang-ssl",
+			},
+			"policy_type_name": {
+				"constant_value": "SSLNegotiationPolicyType",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "wu-tang-ssl",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_load_balancer_policy",
+	},
+}
+
+provisioners = {}
+
+variables = {
+	"aws": {
+		"default":        "ap-east-1",
+		"description":    "",
+		"module_address": "",
+		"name":           "aws",
+	},
+	"aws_region": {
+		"default":        "ap-east-1",
+		"description":    "",
+		"module_address": "",
+		"name":           "aws_region",
+	},
+	"awsvpc_service_subnetids": {
+		"default":        [],
+		"description":    "List of subnet ids to which a service is deployed in fargate mode.",
+		"module_address": "",
+		"name":           "awsvpc_service_subnetids",
+	},
+	"region": {
+		"default":        "ap-east-1",
+		"description":    "",
+		"module_address": "",
+		"name":           "region",
+	},
+}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

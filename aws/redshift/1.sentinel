@@ -1,0 +1,45 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+
+aws_redshift_cluster = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_redshift_cluster" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"])
+}
+
+RedshiftClusterPublicCheck = func(aws_redshift_clusters){
+    RedshiftClusterPublicCheckList = []
+    for aws_redshift_clusters as _, RedshiftCluster{
+        clusterName = RedshiftCluster.name
+        if "publicly_accessible" in (keys(RedshiftCluster.change.after)) {
+            if RedshiftCluster.change.after.publicly_accessible is true{
+                print("This Redshift cluster >>",clusterName,"<< is not allowed to public access")
+                append(RedshiftClusterPublicCheckList,clusterName)
+            }
+        }
+        if "publicly_accessible" not in (keys(RedshiftCluster.change.after)) {
+            print("This Redshift cluster >>",clusterName,"<< is not allowed to public access")
+            append(RedshiftClusterPublicCheckList,clusterName)            
+        }
+    }
+    if length(RedshiftClusterPublicCheckList) != 0 {
+        print("")
+        print("// --------------------------------------------------------")
+        print("// Name:        Ensure public access is disabled for AWS Redshift")
+        print("//              Clusters")
+        print("// Category:    redshift")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_redshift_cluster")
+        print("// Check:       aws_redshift_clusters.publicly_accessible is not true")
+        print("// --------------------------------------------------------")
+        print("// Set the aws_redshift_clusters.publicly_accessible field to false")
+        print("// --------------------------------------------------------")
+    }
+    return length(RedshiftClusterPublicCheckList)
+}
+
+main = rule{
+    RedshiftClusterPublicCheck(aws_redshift_cluster) == 0
+}

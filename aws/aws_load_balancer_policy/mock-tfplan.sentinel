@@ -1,0 +1,372 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"aws_elb": {
+				"wu-tang": {
+					0: {
+						"applied": {
+							"access_logs": [],
+							"availability_zones": [
+								"us-east-1a",
+							],
+							"connection_draining":         false,
+							"connection_draining_timeout": 300,
+							"cross_zone_load_balancing":   true,
+							"desync_mitigation_mode":      "defensive",
+							"idle_timeout":                60,
+							"listener": [
+								{
+									"instance_port":      443,
+									"instance_protocol":  "http",
+									"lb_port":            443,
+									"lb_protocol":        "https",
+									"ssl_certificate_id": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+								},
+							],
+							"name":        "wu-tang",
+							"name_prefix": null,
+							"tags": {
+								"Name": "wu-tang",
+							},
+							"tags_all": {
+								"Name": "wu-tang",
+							},
+						},
+						"destroy": false,
+						"diff": {
+							"access_logs.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"availability_zones.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"availability_zones.0": {
+								"computed": false,
+								"new":      "us-east-1a",
+								"old":      "",
+							},
+							"connection_draining": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"connection_draining_timeout": {
+								"computed": false,
+								"new":      "300",
+								"old":      "",
+							},
+							"cross_zone_load_balancing": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"desync_mitigation_mode": {
+								"computed": false,
+								"new":      "defensive",
+								"old":      "",
+							},
+							"dns_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"health_check.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"idle_timeout": {
+								"computed": false,
+								"new":      "60",
+								"old":      "",
+							},
+							"instances.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"internal": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"listener.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"listener.0.%": {
+								"computed": false,
+								"new":      "5",
+								"old":      "",
+							},
+							"listener.0.instance_port": {
+								"computed": false,
+								"new":      "443",
+								"old":      "",
+							},
+							"listener.0.instance_protocol": {
+								"computed": false,
+								"new":      "http",
+								"old":      "",
+							},
+							"listener.0.lb_port": {
+								"computed": false,
+								"new":      "443",
+								"old":      "",
+							},
+							"listener.0.lb_protocol": {
+								"computed": false,
+								"new":      "https",
+								"old":      "",
+							},
+							"listener.0.ssl_certificate_id": {
+								"computed": false,
+								"new":      "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "wu-tang",
+								"old":      "",
+							},
+							"name_prefix": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"security_groups.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"source_security_group": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"source_security_group_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"subnets.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"tags.Name": {
+								"computed": false,
+								"new":      "wu-tang",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"tags_all.Name": {
+								"computed": false,
+								"new":      "wu-tang",
+								"old":      "",
+							},
+							"zone_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_load_balancer_listener_policy": {
+				"wu-tang-listener-policies-443": {
+					0: {
+						"applied": {
+							"load_balancer_name": "wu-tang",
+							"load_balancer_port": 443,
+							"policy_names": [
+								"wu-tang-ssl",
+							],
+							"triggers": null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"load_balancer_name": {
+								"computed": false,
+								"new":      "wu-tang",
+								"old":      "",
+							},
+							"load_balancer_port": {
+								"computed": false,
+								"new":      "443",
+								"old":      "",
+							},
+							"policy_names.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"policy_names.0": {
+								"computed": false,
+								"new":      "wu-tang-ssl",
+								"old":      "",
+							},
+							"triggers": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_load_balancer_policy": {
+				"wu-tang-ssl": {
+					0: {
+						"applied": {
+							"load_balancer_name": "wu-tang",
+							"policy_attribute": [
+								{
+									"name":  "ECDHE-ECDSA-AES128-GCM-SHA256",
+									"value": "true",
+								},
+								{
+									"name":  "Protocol-TLSv1.2",
+									"value": "true",
+								},
+							],
+							"policy_name":      "wu-tang-ssl",
+							"policy_type_name": "SSLNegotiationPolicyType",
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"load_balancer_name": {
+								"computed": false,
+								"new":      "wu-tang",
+								"old":      "",
+							},
+							"policy_attribute.#": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"policy_attribute.0.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"policy_attribute.0.name": {
+								"computed": false,
+								"new":      "ECDHE-ECDSA-AES128-GCM-SHA256",
+								"old":      "",
+							},
+							"policy_attribute.0.value": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"policy_attribute.1.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"policy_attribute.1.name": {
+								"computed": false,
+								"new":      "Protocol-TLSv1.2",
+								"old":      "",
+							},
+							"policy_attribute.1.value": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"policy_name": {
+								"computed": false,
+								"new":      "wu-tang-ssl",
+								"old":      "",
+							},
+							"policy_type_name": {
+								"computed": false,
+								"new":      "SSLNegotiationPolicyType",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.4.6"
+
+variables = {
+	"aws":                      "ap-east-1",
+	"aws_region":               "ap-east-1",
+	"awsvpc_service_subnetids": [],
+	"region":                   "ap-east-1",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

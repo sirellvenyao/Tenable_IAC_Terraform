@@ -1,0 +1,102 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data":    {},
+		"modules": {},
+		"outputs": {},
+		"providers": {
+			"aws": {
+				"alias": {
+					"": {
+						"config": {},
+						"references": {
+							"region": [
+								"var.region",
+							],
+						},
+						"version": "",
+					},
+				},
+				"config": {},
+				"references": {
+					"region": [
+						"var.region",
+					],
+				},
+				"version": "",
+			},
+		},
+		"resources": {
+			"aws_redshift_cluster": {
+				"example": {
+					"config": {
+						"cluster_identifier": "tf-redshift-cluster",
+						"cluster_type":       "single-node",
+						"database_name":      "mydb",
+						"master_password":    "Mustbe8characters",
+						"master_username":    "exampleuser",
+						"node_type":          "dc1.large",
+					},
+					"provisioners": null,
+					"references": {
+						"cluster_identifier": [],
+						"cluster_type":       [],
+						"database_name":      [],
+						"master_password":    [],
+						"master_username":    [],
+						"node_type":          [],
+					},
+				},
+			},
+		},
+		"variables": {
+			"aws": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+			"aws_region": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+			"awsvpc_service_subnetids": {
+				"default":     [],
+				"description": "List of subnet ids to which a service is deployed in fargate mode.",
+			},
+			"region": {
+				"default":     "ap-east-1",
+				"description": "",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs
