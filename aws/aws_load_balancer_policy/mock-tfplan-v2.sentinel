@@ -223,7 +223,7 @@ resource_changes = {
 						"value": "true",
 					},
 					{
-						"name":  "Protocol-TLSv1.2",
+						"name":  "Protocol-TLSv1.1",
 						"value": "true",
 					},
 				],
@@ -244,6 +244,44 @@ resource_changes = {
 		"mode":           "managed",
 		"module_address": "",
 		"name":           "wu-tang-ssl",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_load_balancer_policy",
+	},
+	"aws_load_balancer_policy.Yao-ssl": {
+		"address": "aws_load_balancer_policy.Yao-ssl",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"load_balancer_name": "wu-tang",
+				"policy_attribute": [
+					{
+						"name":  "ECDHE-ECDSA-AES128-GCM-SHA256",
+						"value": "true",
+					},
+					{
+						"name":  "Protocol-TLSv1.2",
+						"value": "true",
+					},
+				],
+				"policy_name":      "Yao-ssl",
+				"policy_type_name": "SSLNegotiationPolicyType",
+			},
+			"after_unknown": {
+				"id": true,
+				"policy_attribute": [
+					{},
+					{},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "Yao-ssl",
 		"provider_name":  "registry.terraform.io/hashicorp/aws",
 		"type":           "aws_load_balancer_policy",
 	},

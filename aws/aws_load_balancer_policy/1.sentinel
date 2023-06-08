@@ -1,0 +1,70 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+
+aws_elb = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_elb" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"])
+}
+
+aws_load_balancer_policy = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_load_balancer_policy" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"])
+}
+
+
+ELBTLSVersionCheck = func(aws_elb,aws_load_balancer_policy){
+    ELBTLSVersionCheckList = []
+    for aws_elb as _, elb{
+        check = ""
+        for elb.change.after.listener as _, lbListener{
+            lbPort = lbListener.lb_port
+            lbProtocol = lbListener.lb_protocol
+            if lbProtocol is "https" {
+                lbName = elb.change.after.name
+                for aws_load_balancer_policy as _, elbPolicy{
+                    elbPolicyName = elbPolicy.name
+                    if elbPolicy.change.after.load_balancer_name is lbName{
+                        for elbPolicy.change.after.policy_attribute as _, policy_attribute{
+                            if policy_attribute.name is "Protocol-TLSv1.2" and policy_attribute.value is "true" {
+                                check = "TRUE"
+                            }
+                        }
+                    }
+                    if check is not "TRUE"{
+                        append(ELBTLSVersionCheckList,elbPolicyName)
+                        print("This aws_load_balancer_policy >>", elbPolicyName, "<< need enabled Protocol-TLSv1.2 in policy_attribute field")
+                    }
+                }
+            }
+        }
+    }
+    if length(ELBTLSVersionCheckList)!=0 {
+        print("")
+        print("// --------------------------------------------------------")
+        print("// Name:        Ensure recommended SSL_TLS protocol version is ")
+        print("//              used for AWS Elastic Load Balancers (ELB)")
+        print("// Category:    Infrastructure Security")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_load_balancer_policy")
+        print("//              aws_elb")
+        print("// Check:       The aws_load_balancer_policy attached to one HTTPS ELB ")
+        print("//              should set policy_attribute with name = Protocol-TLSv1.2")
+        print("//              and value = true")
+        print("// --------------------------------------------------------")
+        print("// Ensure recommended SSL_TLS protocol version is used for AWS ")
+        print("// Elastic Load Balancers (ELB)")
+        print("// --------------------------------------------------------")        
+    }
+    
+    return length(ELBTLSVersionCheckList)
+
+}
+
+main = rule{
+    ELBTLSVersionCheck(aws_elb,aws_load_balancer_policy) == 0
+}
