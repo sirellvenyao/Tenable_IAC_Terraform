@@ -6,104 +6,1478 @@ _modules = {
 		"data": {},
 		"path": [],
 		"resources": {
-			"aws_ssoadmin_permission_set_inline_policy": {
-				"admin_access_dba_inline_555625778301": {
+			"aws_iam_access_key": {
+				"lb": {
 					0: {
 						"applied": {
-							"id":                 "arn:aws:sso:::permissionSet/ssoins-77587d6298bcde93/ps-4f9b972e652c7e4d,arn:aws:sso:::instance/ssoins-77587d6298bcde93",
-							"inline_policy":      "{\"Statement\":[{\"Action\":[\"rds:*\",\"elasticache:*\",\"dms:*\",\"health:*\",\"pi:*\",\"cloudwatch:*\",\"logs:*\",\"servicequotas:*\",\"support:*\",\"sns:*\",\"lambda:*\",\"docdb-elastic:*\",\"timestream:*\",\"grafana:*\",\"kinesis:*\",\"dbqms:*\",\"ds:Get*\",\"ds:Describe*\",\"ds:List*\",\"ds:CheckAlias\",\"ds:VerifyTrust\",\"application-autoscaling:Describe*\",\"tag:GetResources\",\"tag:GetTagValues\",\"tag:DescribeReportCreation\",\"tag:GetTagKeys\",\"tag:GetComplianceSummary\",\"cloudformation:DescribeStacks\",\"cloudformation:ListStackResources\",\"ec2:Describe*\",\"ec2:Get*\",\"ec2:List*\",\"iam:GetPolicy\",\"iam:GetPolicyVersion\",\"iam:GetRole\",\"iam:GetRolePolicy\",\"iam:ListAttachedRolePolicies\",\"iam:ListRolePolicies\",\"iam:ListRoles\",\"states:DescribeStateMachine\",\"states:ListStateMachines\",\"xray:GetTraceSummaries\",\"xray:BatchGetTraces\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAfullaccess\"},{\"Action\":[\"secretsmanager:ListSecretVersionIds\",\"secretsmanager:ListSecrets\",\"secretsmanager:CreateSecret\",\"secretsmanager:GetRandomPassword\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrfull\"},{\"Action\":[\"secretsmanager:PutResourcePolicy\",\"secretsmanager:GetResourcePolicy\",\"secretsmanager:DescribeSecret\",\"secretsmanager:PutSecretValue\",\"secretsmanager:CancelRotateSecret\",\"secretsmanager:UpdateSecret\",\"secretsmanager:StopReplicationToReplica\",\"secretsmanager:ReplicateSecretToRegions\",\"secretsmanager:RotateSecret\",\"secretsmanager:UpdateSecretVersionStage\",\"secretsmanager:ValidateResourcePolicy\",\"secretsmanager:RemoveRegionsFromReplication\",\"secretsmanager:TagResource\",\"secretsmanager:UntagResource\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrlimit\"},{\"Action\":[\"kms:DescribeCustomKeyStores\",\"kms:List*\",\"kms:Get*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmsfull\"},{\"Action\":[\"kms:Decrypt\",\"kms:TagResource\",\"kms:UntagResource\",\"kms:Encrypt\",\"kms:DescribeKey\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmslimit\"},{\"Action\":[\"rds:DeleteDBCluster\",\"rds:DeleteDBClusterEndpoint\",\"rds:DeleteDBClusterParameterGroup\",\"rds:DeleteDBClusterSnapshot\",\"rds:DeleteDBInstance\",\"rds:DeleteDBInstanceAutomatedBackup\",\"rds:DeleteDBParameterGroup\",\"rds:DeleteDBProxy\",\"rds:DeleteDBSecurityGroup\",\"rds:DeleteDBSnapshot\",\"rds:DeleteDBSubnetGroup\",\"rds:DeleteEventSubscription\",\"rds:DeleteGlobalCluster\",\"rds:DeleteOptionGroup\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyrds\"},{\"Action\":[\"elasticache:DeleteReplicationGroup\",\"elasticache:DeleteUser\",\"elasticache:DeleteCacheCluster\",\"elasticache:DeleteCacheParameterGroup\",\"elasticache:DeleteCacheSubnetGroup\",\"elasticache:DeleteCacheSecurityGroup\",\"elasticache:DeleteGlobalReplicationGroup\",\"elasticache:DeleteSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyredis\"},{\"Action\":[\"docdb-elastic:DeleteCluster\",\"docdb-elastic:DeleteClusterSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydocdbelastic\"},{\"Action\":[\"dms:DeleteConnection\",\"dms:DeleteReplicationTaskAssessmentRun\",\"dms:DeleteCertificate\",\"dms:DeleteReplicationTask\",\"dms:DeleteReplicationSubnetGroup\",\"dms:DeleteEventSubscription\",\"dms:DeleteEndpoint\",\"dms:DeleteReplicationInstance\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydms\"},{\"Action\":\"iam:PassRole\",\"Condition\":{\"StringEquals\":{\"iam:PassedToService\":[\"lambda.amazonaws.com\",\"iam.amazonaws.com\"]}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAallowlambdatimestream\"}],\"Version\":\"2012-10-17\"}",
-							"instance_arn":       "arn:aws:sso:::instance/ssoins-77587d6298bcde93",
-							"permission_set_arn": "arn:aws:sso:::permissionSet/ssoins-77587d6298bcde93/ps-4f9b972e652c7e4d",
+							"pgp_key": null,
+							"status":  "Active",
+							"user":    "loadbalancer",
 						},
 						"destroy": false,
 						"diff": {
+							"create_date": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"encrypted_secret": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"encrypted_ses_smtp_password_v4": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
 							"id": {
-								"computed": false,
-								"new":      "arn:aws:sso:::permissionSet/ssoins-77587d6298bcde93/ps-4f9b972e652c7e4d,arn:aws:sso:::instance/ssoins-77587d6298bcde93",
-								"old":      "arn:aws:sso:::permissionSet/ssoins-77587d6298bcde93/ps-4f9b972e652c7e4d,arn:aws:sso:::instance/ssoins-77587d6298bcde93",
+								"computed": true,
+								"new":      "",
+								"old":      "",
 							},
-							"inline_policy": {
-								"computed": false,
-								"new":      "{\"Statement\":[{\"Action\":[\"rds:*\",\"elasticache:*\",\"dms:*\",\"health:*\",\"pi:*\",\"cloudwatch:*\",\"logs:*\",\"servicequotas:*\",\"support:*\",\"sns:*\",\"lambda:*\",\"docdb-elastic:*\",\"timestream:*\",\"grafana:*\",\"kinesis:*\",\"dbqms:*\",\"ds:Get*\",\"ds:Describe*\",\"ds:List*\",\"ds:CheckAlias\",\"ds:VerifyTrust\",\"application-autoscaling:Describe*\",\"tag:GetResources\",\"tag:GetTagValues\",\"tag:DescribeReportCreation\",\"tag:GetTagKeys\",\"tag:GetComplianceSummary\",\"cloudformation:DescribeStacks\",\"cloudformation:ListStackResources\",\"ec2:Describe*\",\"ec2:Get*\",\"ec2:List*\",\"iam:GetPolicy\",\"iam:GetPolicyVersion\",\"iam:GetRole\",\"iam:GetRolePolicy\",\"iam:ListAttachedRolePolicies\",\"iam:ListRolePolicies\",\"iam:ListRoles\",\"states:DescribeStateMachine\",\"states:ListStateMachines\",\"xray:GetTraceSummaries\",\"xray:BatchGetTraces\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAfullaccess\"},{\"Action\":[\"secretsmanager:ListSecretVersionIds\",\"secretsmanager:ListSecrets\",\"secretsmanager:CreateSecret\",\"secretsmanager:GetRandomPassword\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrfull\"},{\"Action\":[\"secretsmanager:PutResourcePolicy\",\"secretsmanager:GetResourcePolicy\",\"secretsmanager:DescribeSecret\",\"secretsmanager:PutSecretValue\",\"secretsmanager:CancelRotateSecret\",\"secretsmanager:UpdateSecret\",\"secretsmanager:StopReplicationToReplica\",\"secretsmanager:ReplicateSecretToRegions\",\"secretsmanager:RotateSecret\",\"secretsmanager:UpdateSecretVersionStage\",\"secretsmanager:ValidateResourcePolicy\",\"secretsmanager:RemoveRegionsFromReplication\",\"secretsmanager:TagResource\",\"secretsmanager:UntagResource\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrlimit\"},{\"Action\":[\"kms:DescribeCustomKeyStores\",\"kms:List*\",\"kms:Get*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmsfull\"},{\"Action\":[\"kms:Decrypt\",\"kms:TagResource\",\"kms:UntagResource\",\"kms:Encrypt\",\"kms:DescribeKey\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmslimit\"},{\"Action\":[\"rds:DeleteDBCluster\",\"rds:DeleteDBClusterEndpoint\",\"rds:DeleteDBClusterParameterGroup\",\"rds:DeleteDBClusterSnapshot\",\"rds:DeleteDBInstance\",\"rds:DeleteDBInstanceAutomatedBackup\",\"rds:DeleteDBParameterGroup\",\"rds:DeleteDBProxy\",\"rds:DeleteDBSecurityGroup\",\"rds:DeleteDBSnapshot\",\"rds:DeleteDBSubnetGroup\",\"rds:DeleteEventSubscription\",\"rds:DeleteGlobalCluster\",\"rds:DeleteOptionGroup\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyrds\"},{\"Action\":[\"elasticache:DeleteReplicationGroup\",\"elasticache:DeleteUser\",\"elasticache:DeleteCacheCluster\",\"elasticache:DeleteCacheParameterGroup\",\"elasticache:DeleteCacheSubnetGroup\",\"elasticache:DeleteCacheSecurityGroup\",\"elasticache:DeleteGlobalReplicationGroup\",\"elasticache:DeleteSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyredis\"},{\"Action\":[\"docdb-elastic:DeleteCluster\",\"docdb-elastic:DeleteClusterSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydocdbelastic\"},{\"Action\":[\"dms:DeleteConnection\",\"dms:DeleteReplicationTaskAssessmentRun\",\"dms:DeleteCertificate\",\"dms:DeleteReplicationTask\",\"dms:DeleteReplicationSubnetGroup\",\"dms:DeleteEventSubscription\",\"dms:DeleteEndpoint\",\"dms:DeleteReplicationInstance\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydms\"},{\"Action\":\"iam:PassRole\",\"Condition\":{\"StringEquals\":{\"iam:PassedToService\":[\"lambda.amazonaws.com\",\"iam.amazonaws.com\"]}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAallowlambdatimestream\"}],\"Version\":\"2012-10-17\"}",
-								"old":      "{\"Statement\":[{\"Action\":[\"rds:*\",\"elasticache:*\",\"dms:*\",\"health:*\",\"pi:*\",\"cloudwatch:*\",\"logs:*\",\"servicequotas:*\",\"support:*\",\"sns:*\",\"lambda:*\",\"docdb-elastic:*\",\"timestream:*\",\"kinesis:*\",\"dbqms:*\",\"ds:Get*\",\"ds:Describe*\",\"ds:List*\",\"ds:CheckAlias\",\"ds:VerifyTrust\",\"application-autoscaling:Describe*\",\"tag:GetResources\",\"tag:GetTagValues\",\"tag:DescribeReportCreation\",\"tag:GetTagKeys\",\"tag:GetComplianceSummary\",\"cloudformation:DescribeStacks\",\"cloudformation:ListStackResources\",\"ec2:Describe*\",\"ec2:Get*\",\"ec2:List*\",\"iam:GetPolicy\",\"iam:GetPolicyVersion\",\"iam:GetRole\",\"iam:GetRolePolicy\",\"iam:ListAttachedRolePolicies\",\"iam:ListRolePolicies\",\"iam:ListRoles\",\"states:DescribeStateMachine\",\"states:ListStateMachines\",\"xray:GetTraceSummaries\",\"xray:BatchGetTraces\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAfullaccess\"},{\"Action\":[\"secretsmanager:ListSecretVersionIds\",\"secretsmanager:ListSecrets\",\"secretsmanager:CreateSecret\",\"secretsmanager:GetRandomPassword\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrfull\"},{\"Action\":[\"secretsmanager:PutResourcePolicy\",\"secretsmanager:GetResourcePolicy\",\"secretsmanager:DescribeSecret\",\"secretsmanager:PutSecretValue\",\"secretsmanager:CancelRotateSecret\",\"secretsmanager:UpdateSecret\",\"secretsmanager:StopReplicationToReplica\",\"secretsmanager:ReplicateSecretToRegions\",\"secretsmanager:RotateSecret\",\"secretsmanager:UpdateSecretVersionStage\",\"secretsmanager:ValidateResourcePolicy\",\"secretsmanager:RemoveRegionsFromReplication\",\"secretsmanager:TagResource\",\"secretsmanager:UntagResource\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrlimit\"},{\"Action\":[\"kms:DescribeCustomKeyStores\",\"kms:List*\",\"kms:Get*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmsfull\"},{\"Action\":[\"kms:Decrypt\",\"kms:TagResource\",\"kms:UntagResource\",\"kms:Encrypt\",\"kms:DescribeKey\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmslimit\"},{\"Action\":[\"rds:DeleteDBCluster\",\"rds:DeleteDBClusterEndpoint\",\"rds:DeleteDBClusterParameterGroup\",\"rds:DeleteDBClusterSnapshot\",\"rds:DeleteDBInstance\",\"rds:DeleteDBInstanceAutomatedBackup\",\"rds:DeleteDBParameterGroup\",\"rds:DeleteDBProxy\",\"rds:DeleteDBSecurityGroup\",\"rds:DeleteDBSnapshot\",\"rds:DeleteDBSubnetGroup\",\"rds:DeleteEventSubscription\",\"rds:DeleteGlobalCluster\",\"rds:DeleteOptionGroup\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyrds\"},{\"Action\":[\"elasticache:DeleteReplicationGroup\",\"elasticache:DeleteUser\",\"elasticache:DeleteCacheCluster\",\"elasticache:DeleteCacheParameterGroup\",\"elasticache:DeleteCacheSubnetGroup\",\"elasticache:DeleteCacheSecurityGroup\",\"elasticache:DeleteGlobalReplicationGroup\",\"elasticache:DeleteSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyredis\"},{\"Action\":[\"docdb-elastic:DeleteCluster\",\"docdb-elastic:DeleteClusterSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydocdbelastic\"},{\"Action\":[\"dms:DeleteConnection\",\"dms:DeleteReplicationTaskAssessmentRun\",\"dms:DeleteCertificate\",\"dms:DeleteReplicationTask\",\"dms:DeleteReplicationSubnetGroup\",\"dms:DeleteEventSubscription\",\"dms:DeleteEndpoint\",\"dms:DeleteReplicationInstance\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydms\"},{\"Action\":\"iam:PassRole\",\"Condition\":{\"StringEquals\":{\"iam:PassedToService\":[\"lambda.amazonaws.com\",\"iam.amazonaws.com\"]}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAallowlambdatimestream\"}],\"Version\":\"2012-10-17\"}",
+							"key_fingerprint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
 							},
-							"instance_arn": {
+							"pgp_key": {
 								"computed": false,
-								"new":      "arn:aws:sso:::instance/ssoins-77587d6298bcde93",
-								"old":      "arn:aws:sso:::instance/ssoins-77587d6298bcde93",
+								"new":      "",
+								"old":      "",
 							},
-							"permission_set_arn": {
+							"secret": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ses_smtp_password_v4": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"status": {
 								"computed": false,
-								"new":      "arn:aws:sso:::permissionSet/ssoins-77587d6298bcde93/ps-4f9b972e652c7e4d",
-								"old":      "arn:aws:sso:::permissionSet/ssoins-77587d6298bcde93/ps-4f9b972e652c7e4d",
+								"new":      "Active",
+								"old":      "",
+							},
+							"user": {
+								"computed": false,
+								"new":      "loadbalancer",
+								"old":      "",
 							},
 						},
 						"requires_new": false,
 					},
 				},
-				"admin_access_dba_inline_875537689616": {
+			},
+			"aws_iam_group": {
+				"group": {
 					0: {
 						"applied": {
-							"id":                 "arn:aws:sso:::permissionSet/ssoins-775839006e0c602a/ps-26ac15e9aadfcf2b,arn:aws:sso:::instance/ssoins-775839006e0c602a",
-							"inline_policy":      "{\"Statement\":[{\"Action\":[\"rds:*\",\"elasticache:*\",\"dms:*\",\"health:*\",\"pi:*\",\"cloudwatch:*\",\"logs:*\",\"servicequotas:*\",\"support:*\",\"sns:*\",\"lambda:*\",\"docdb-elastic:*\",\"timestream:*\",\"grafana:*\",\"kinesis:*\",\"dbqms:*\",\"ds:Get*\",\"ds:Describe*\",\"ds:List*\",\"ds:CheckAlias\",\"ds:VerifyTrust\",\"application-autoscaling:Describe*\",\"tag:GetResources\",\"tag:GetTagValues\",\"tag:DescribeReportCreation\",\"tag:GetTagKeys\",\"tag:GetComplianceSummary\",\"cloudformation:DescribeStacks\",\"cloudformation:ListStackResources\",\"ec2:Describe*\",\"ec2:Get*\",\"ec2:List*\",\"iam:GetPolicy\",\"iam:GetPolicyVersion\",\"iam:GetRole\",\"iam:GetRolePolicy\",\"iam:ListAttachedRolePolicies\",\"iam:ListRolePolicies\",\"iam:ListRoles\",\"states:DescribeStateMachine\",\"states:ListStateMachines\",\"xray:GetTraceSummaries\",\"xray:BatchGetTraces\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAfullaccess\"},{\"Action\":[\"secretsmanager:ListSecretVersionIds\",\"secretsmanager:ListSecrets\",\"secretsmanager:CreateSecret\",\"secretsmanager:GetRandomPassword\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrfull\"},{\"Action\":[\"secretsmanager:PutResourcePolicy\",\"secretsmanager:GetResourcePolicy\",\"secretsmanager:DescribeSecret\",\"secretsmanager:PutSecretValue\",\"secretsmanager:CancelRotateSecret\",\"secretsmanager:UpdateSecret\",\"secretsmanager:StopReplicationToReplica\",\"secretsmanager:ReplicateSecretToRegions\",\"secretsmanager:RotateSecret\",\"secretsmanager:UpdateSecretVersionStage\",\"secretsmanager:ValidateResourcePolicy\",\"secretsmanager:RemoveRegionsFromReplication\",\"secretsmanager:TagResource\",\"secretsmanager:UntagResource\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrlimit\"},{\"Action\":[\"kms:DescribeCustomKeyStores\",\"kms:List*\",\"kms:Get*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmsfull\"},{\"Action\":[\"kms:Decrypt\",\"kms:TagResource\",\"kms:UntagResource\",\"kms:Encrypt\",\"kms:DescribeKey\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmslimit\"},{\"Action\":[\"rds:DeleteDBCluster\",\"rds:DeleteDBClusterEndpoint\",\"rds:DeleteDBClusterParameterGroup\",\"rds:DeleteDBClusterSnapshot\",\"rds:DeleteDBInstance\",\"rds:DeleteDBInstanceAutomatedBackup\",\"rds:DeleteDBParameterGroup\",\"rds:DeleteDBProxy\",\"rds:DeleteDBSecurityGroup\",\"rds:DeleteDBSnapshot\",\"rds:DeleteDBSubnetGroup\",\"rds:DeleteEventSubscription\",\"rds:DeleteGlobalCluster\",\"rds:DeleteOptionGroup\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyrds\"},{\"Action\":[\"elasticache:DeleteReplicationGroup\",\"elasticache:DeleteUser\",\"elasticache:DeleteCacheCluster\",\"elasticache:DeleteCacheParameterGroup\",\"elasticache:DeleteCacheSubnetGroup\",\"elasticache:DeleteCacheSecurityGroup\",\"elasticache:DeleteGlobalReplicationGroup\",\"elasticache:DeleteSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyredis\"},{\"Action\":[\"docdb-elastic:DeleteCluster\",\"docdb-elastic:DeleteClusterSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydocdbelastic\"},{\"Action\":[\"dms:DeleteConnection\",\"dms:DeleteReplicationTaskAssessmentRun\",\"dms:DeleteCertificate\",\"dms:DeleteReplicationTask\",\"dms:DeleteReplicationSubnetGroup\",\"dms:DeleteEventSubscription\",\"dms:DeleteEndpoint\",\"dms:DeleteReplicationInstance\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydms\"},{\"Action\":\"iam:PassRole\",\"Condition\":{\"StringEquals\":{\"iam:PassedToService\":[\"lambda.amazonaws.com\",\"iam.amazonaws.com\"]}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAallowlambdatimestream\"}],\"Version\":\"2012-10-17\"}",
-							"instance_arn":       "arn:aws:sso:::instance/ssoins-775839006e0c602a",
-							"permission_set_arn": "arn:aws:sso:::permissionSet/ssoins-775839006e0c602a/ps-26ac15e9aadfcf2b",
+							"name": "test-group",
+							"path": "/",
 						},
 						"destroy": false,
 						"diff": {
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
 							"id": {
-								"computed": false,
-								"new":      "arn:aws:sso:::permissionSet/ssoins-775839006e0c602a/ps-26ac15e9aadfcf2b,arn:aws:sso:::instance/ssoins-775839006e0c602a",
-								"old":      "arn:aws:sso:::permissionSet/ssoins-775839006e0c602a/ps-26ac15e9aadfcf2b,arn:aws:sso:::instance/ssoins-775839006e0c602a",
+								"computed": true,
+								"new":      "",
+								"old":      "",
 							},
-							"inline_policy": {
+							"name": {
 								"computed": false,
-								"new":      "{\"Statement\":[{\"Action\":[\"rds:*\",\"elasticache:*\",\"dms:*\",\"health:*\",\"pi:*\",\"cloudwatch:*\",\"logs:*\",\"servicequotas:*\",\"support:*\",\"sns:*\",\"lambda:*\",\"docdb-elastic:*\",\"timestream:*\",\"grafana:*\",\"kinesis:*\",\"dbqms:*\",\"ds:Get*\",\"ds:Describe*\",\"ds:List*\",\"ds:CheckAlias\",\"ds:VerifyTrust\",\"application-autoscaling:Describe*\",\"tag:GetResources\",\"tag:GetTagValues\",\"tag:DescribeReportCreation\",\"tag:GetTagKeys\",\"tag:GetComplianceSummary\",\"cloudformation:DescribeStacks\",\"cloudformation:ListStackResources\",\"ec2:Describe*\",\"ec2:Get*\",\"ec2:List*\",\"iam:GetPolicy\",\"iam:GetPolicyVersion\",\"iam:GetRole\",\"iam:GetRolePolicy\",\"iam:ListAttachedRolePolicies\",\"iam:ListRolePolicies\",\"iam:ListRoles\",\"states:DescribeStateMachine\",\"states:ListStateMachines\",\"xray:GetTraceSummaries\",\"xray:BatchGetTraces\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAfullaccess\"},{\"Action\":[\"secretsmanager:ListSecretVersionIds\",\"secretsmanager:ListSecrets\",\"secretsmanager:CreateSecret\",\"secretsmanager:GetRandomPassword\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrfull\"},{\"Action\":[\"secretsmanager:PutResourcePolicy\",\"secretsmanager:GetResourcePolicy\",\"secretsmanager:DescribeSecret\",\"secretsmanager:PutSecretValue\",\"secretsmanager:CancelRotateSecret\",\"secretsmanager:UpdateSecret\",\"secretsmanager:StopReplicationToReplica\",\"secretsmanager:ReplicateSecretToRegions\",\"secretsmanager:RotateSecret\",\"secretsmanager:UpdateSecretVersionStage\",\"secretsmanager:ValidateResourcePolicy\",\"secretsmanager:RemoveRegionsFromReplication\",\"secretsmanager:TagResource\",\"secretsmanager:UntagResource\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrlimit\"},{\"Action\":[\"kms:DescribeCustomKeyStores\",\"kms:List*\",\"kms:Get*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmsfull\"},{\"Action\":[\"kms:Decrypt\",\"kms:TagResource\",\"kms:UntagResource\",\"kms:Encrypt\",\"kms:DescribeKey\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmslimit\"},{\"Action\":[\"rds:DeleteDBCluster\",\"rds:DeleteDBClusterEndpoint\",\"rds:DeleteDBClusterParameterGroup\",\"rds:DeleteDBClusterSnapshot\",\"rds:DeleteDBInstance\",\"rds:DeleteDBInstanceAutomatedBackup\",\"rds:DeleteDBParameterGroup\",\"rds:DeleteDBProxy\",\"rds:DeleteDBSecurityGroup\",\"rds:DeleteDBSnapshot\",\"rds:DeleteDBSubnetGroup\",\"rds:DeleteEventSubscription\",\"rds:DeleteGlobalCluster\",\"rds:DeleteOptionGroup\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyrds\"},{\"Action\":[\"elasticache:DeleteReplicationGroup\",\"elasticache:DeleteUser\",\"elasticache:DeleteCacheCluster\",\"elasticache:DeleteCacheParameterGroup\",\"elasticache:DeleteCacheSubnetGroup\",\"elasticache:DeleteCacheSecurityGroup\",\"elasticache:DeleteGlobalReplicationGroup\",\"elasticache:DeleteSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyredis\"},{\"Action\":[\"docdb-elastic:DeleteCluster\",\"docdb-elastic:DeleteClusterSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydocdbelastic\"},{\"Action\":[\"dms:DeleteConnection\",\"dms:DeleteReplicationTaskAssessmentRun\",\"dms:DeleteCertificate\",\"dms:DeleteReplicationTask\",\"dms:DeleteReplicationSubnetGroup\",\"dms:DeleteEventSubscription\",\"dms:DeleteEndpoint\",\"dms:DeleteReplicationInstance\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydms\"},{\"Action\":\"iam:PassRole\",\"Condition\":{\"StringEquals\":{\"iam:PassedToService\":[\"lambda.amazonaws.com\",\"iam.amazonaws.com\"]}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAallowlambdatimestream\"}],\"Version\":\"2012-10-17\"}",
-								"old":      "{\"Statement\":[{\"Action\":[\"rds:*\",\"elasticache:*\",\"dms:*\",\"health:*\",\"pi:*\",\"cloudwatch:*\",\"logs:*\",\"servicequotas:*\",\"support:*\",\"sns:*\",\"lambda:*\",\"docdb-elastic:*\",\"timestream:*\",\"kinesis:*\",\"dbqms:*\",\"ds:Get*\",\"ds:Describe*\",\"ds:List*\",\"ds:CheckAlias\",\"ds:VerifyTrust\",\"application-autoscaling:Describe*\",\"tag:GetResources\",\"tag:GetTagValues\",\"tag:DescribeReportCreation\",\"tag:GetTagKeys\",\"tag:GetComplianceSummary\",\"cloudformation:DescribeStacks\",\"cloudformation:ListStackResources\",\"ec2:Describe*\",\"ec2:Get*\",\"ec2:List*\",\"iam:GetPolicy\",\"iam:GetPolicyVersion\",\"iam:GetRole\",\"iam:GetRolePolicy\",\"iam:ListAttachedRolePolicies\",\"iam:ListRolePolicies\",\"iam:ListRoles\",\"states:DescribeStateMachine\",\"states:ListStateMachines\",\"xray:GetTraceSummaries\",\"xray:BatchGetTraces\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAfullaccess\"},{\"Action\":[\"secretsmanager:ListSecretVersionIds\",\"secretsmanager:ListSecrets\",\"secretsmanager:CreateSecret\",\"secretsmanager:GetRandomPassword\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrfull\"},{\"Action\":[\"secretsmanager:PutResourcePolicy\",\"secretsmanager:GetResourcePolicy\",\"secretsmanager:DescribeSecret\",\"secretsmanager:PutSecretValue\",\"secretsmanager:CancelRotateSecret\",\"secretsmanager:UpdateSecret\",\"secretsmanager:StopReplicationToReplica\",\"secretsmanager:ReplicateSecretToRegions\",\"secretsmanager:RotateSecret\",\"secretsmanager:UpdateSecretVersionStage\",\"secretsmanager:ValidateResourcePolicy\",\"secretsmanager:RemoveRegionsFromReplication\",\"secretsmanager:TagResource\",\"secretsmanager:UntagResource\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrlimit\"},{\"Action\":[\"kms:DescribeCustomKeyStores\",\"kms:List*\",\"kms:Get*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmsfull\"},{\"Action\":[\"kms:Decrypt\",\"kms:TagResource\",\"kms:UntagResource\",\"kms:Encrypt\",\"kms:DescribeKey\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmslimit\"},{\"Action\":[\"rds:DeleteDBCluster\",\"rds:DeleteDBClusterEndpoint\",\"rds:DeleteDBClusterParameterGroup\",\"rds:DeleteDBClusterSnapshot\",\"rds:DeleteDBInstance\",\"rds:DeleteDBInstanceAutomatedBackup\",\"rds:DeleteDBParameterGroup\",\"rds:DeleteDBProxy\",\"rds:DeleteDBSecurityGroup\",\"rds:DeleteDBSnapshot\",\"rds:DeleteDBSubnetGroup\",\"rds:DeleteEventSubscription\",\"rds:DeleteGlobalCluster\",\"rds:DeleteOptionGroup\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyrds\"},{\"Action\":[\"elasticache:DeleteReplicationGroup\",\"elasticache:DeleteUser\",\"elasticache:DeleteCacheCluster\",\"elasticache:DeleteCacheParameterGroup\",\"elasticache:DeleteCacheSubnetGroup\",\"elasticache:DeleteCacheSecurityGroup\",\"elasticache:DeleteGlobalReplicationGroup\",\"elasticache:DeleteSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyredis\"},{\"Action\":[\"docdb-elastic:DeleteCluster\",\"docdb-elastic:DeleteClusterSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydocdbelastic\"},{\"Action\":[\"dms:DeleteConnection\",\"dms:DeleteReplicationTaskAssessmentRun\",\"dms:DeleteCertificate\",\"dms:DeleteReplicationTask\",\"dms:DeleteReplicationSubnetGroup\",\"dms:DeleteEventSubscription\",\"dms:DeleteEndpoint\",\"dms:DeleteReplicationInstance\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydms\"},{\"Action\":\"iam:PassRole\",\"Condition\":{\"StringEquals\":{\"iam:PassedToService\":[\"lambda.amazonaws.com\",\"iam.amazonaws.com\"]}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAallowlambdatimestream\"}],\"Version\":\"2012-10-17\"}",
+								"new":      "test-group",
+								"old":      "",
 							},
-							"instance_arn": {
+							"path": {
 								"computed": false,
-								"new":      "arn:aws:sso:::instance/ssoins-775839006e0c602a",
-								"old":      "arn:aws:sso:::instance/ssoins-775839006e0c602a",
+								"new":      "/",
+								"old":      "",
 							},
-							"permission_set_arn": {
-								"computed": false,
-								"new":      "arn:aws:sso:::permissionSet/ssoins-775839006e0c602a/ps-26ac15e9aadfcf2b",
-								"old":      "arn:aws:sso:::permissionSet/ssoins-775839006e0c602a/ps-26ac15e9aadfcf2b",
+							"unique_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
 							},
 						},
 						"requires_new": false,
 					},
 				},
-				"admin_access_dba_inline_891189580005": {
+			},
+			"aws_iam_group_policy_attachment": {
+				"test-attach": {
 					0: {
 						"applied": {
-							"id":                 "arn:aws:sso:::permissionSet/ssoins-77587689a0cde7ee/ps-aba4cfed425f096b,arn:aws:sso:::instance/ssoins-77587689a0cde7ee",
-							"inline_policy":      "{\"Statement\":[{\"Action\":[\"rds:*\",\"elasticache:*\",\"dms:*\",\"health:*\",\"pi:*\",\"cloudwatch:*\",\"logs:*\",\"servicequotas:*\",\"support:*\",\"sns:*\",\"lambda:*\",\"docdb-elastic:*\",\"timestream:*\",\"grafana:*\",\"kinesis:*\",\"dbqms:*\",\"ds:Get*\",\"ds:Describe*\",\"ds:List*\",\"ds:CheckAlias\",\"ds:VerifyTrust\",\"application-autoscaling:Describe*\",\"tag:GetResources\",\"tag:GetTagValues\",\"tag:DescribeReportCreation\",\"tag:GetTagKeys\",\"tag:GetComplianceSummary\",\"cloudformation:DescribeStacks\",\"cloudformation:ListStackResources\",\"ec2:Describe*\",\"ec2:Get*\",\"ec2:List*\",\"iam:GetPolicy\",\"iam:GetPolicyVersion\",\"iam:GetRole\",\"iam:GetRolePolicy\",\"iam:ListAttachedRolePolicies\",\"iam:ListRolePolicies\",\"iam:ListRoles\",\"states:DescribeStateMachine\",\"states:ListStateMachines\",\"xray:GetTraceSummaries\",\"xray:BatchGetTraces\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAfullaccess\"},{\"Action\":[\"secretsmanager:ListSecretVersionIds\",\"secretsmanager:ListSecrets\",\"secretsmanager:CreateSecret\",\"secretsmanager:GetRandomPassword\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrfull\"},{\"Action\":[\"secretsmanager:PutResourcePolicy\",\"secretsmanager:GetResourcePolicy\",\"secretsmanager:DescribeSecret\",\"secretsmanager:PutSecretValue\",\"secretsmanager:CancelRotateSecret\",\"secretsmanager:UpdateSecret\",\"secretsmanager:StopReplicationToReplica\",\"secretsmanager:ReplicateSecretToRegions\",\"secretsmanager:RotateSecret\",\"secretsmanager:UpdateSecretVersionStage\",\"secretsmanager:ValidateResourcePolicy\",\"secretsmanager:RemoveRegionsFromReplication\",\"secretsmanager:TagResource\",\"secretsmanager:UntagResource\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrlimit\"},{\"Action\":[\"kms:DescribeCustomKeyStores\",\"kms:List*\",\"kms:Get*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmsfull\"},{\"Action\":[\"kms:Decrypt\",\"kms:TagResource\",\"kms:UntagResource\",\"kms:Encrypt\",\"kms:DescribeKey\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmslimit\"},{\"Action\":[\"rds:DeleteDBCluster\",\"rds:DeleteDBClusterEndpoint\",\"rds:DeleteDBClusterParameterGroup\",\"rds:DeleteDBClusterSnapshot\",\"rds:DeleteDBInstance\",\"rds:DeleteDBInstanceAutomatedBackup\",\"rds:DeleteDBParameterGroup\",\"rds:DeleteDBProxy\",\"rds:DeleteDBSecurityGroup\",\"rds:DeleteDBSnapshot\",\"rds:DeleteDBSubnetGroup\",\"rds:DeleteEventSubscription\",\"rds:DeleteGlobalCluster\",\"rds:DeleteOptionGroup\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyrds\"},{\"Action\":[\"elasticache:DeleteReplicationGroup\",\"elasticache:DeleteUser\",\"elasticache:DeleteCacheCluster\",\"elasticache:DeleteCacheParameterGroup\",\"elasticache:DeleteCacheSubnetGroup\",\"elasticache:DeleteCacheSecurityGroup\",\"elasticache:DeleteGlobalReplicationGroup\",\"elasticache:DeleteSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyredis\"},{\"Action\":[\"docdb-elastic:DeleteCluster\",\"docdb-elastic:DeleteClusterSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydocdbelastic\"},{\"Action\":[\"dms:DeleteConnection\",\"dms:DeleteReplicationTaskAssessmentRun\",\"dms:DeleteCertificate\",\"dms:DeleteReplicationTask\",\"dms:DeleteReplicationSubnetGroup\",\"dms:DeleteEventSubscription\",\"dms:DeleteEndpoint\",\"dms:DeleteReplicationInstance\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydms\"},{\"Action\":\"iam:PassRole\",\"Condition\":{\"StringEquals\":{\"iam:PassedToService\":[\"lambda.amazonaws.com\",\"iam.amazonaws.com\"]}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAallowlambdatimestream\"}],\"Version\":\"2012-10-17\"}",
-							"instance_arn":       "arn:aws:sso:::instance/ssoins-77587689a0cde7ee",
-							"permission_set_arn": "arn:aws:sso:::permissionSet/ssoins-77587689a0cde7ee/ps-aba4cfed425f096b",
+							"group":      "test-group",
+							"policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess",
+						},
+						"destroy": false,
+						"diff": {
+							"group": {
+								"computed": false,
+								"new":      "test-group",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"policy_arn": {
+								"computed": false,
+								"new":      "arn:aws:iam::aws:policy/AdministratorAccess",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_iam_policy": {
+				"policy_one": {
+					0: {
+						"applied": {
+							"description": null,
+							"name":        "policy-618033",
+							"path":        "/",
+							"policy":      "{\"Statement\":[{\"Action\":[\"ec2:Describe*\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+							"tags":        null,
+						},
+						"destroy": false,
+						"diff": {
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "policy-618033",
+								"old":      "",
+							},
+							"name_prefix": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"path": {
+								"computed": false,
+								"new":      "/",
+								"old":      "",
+							},
+							"policy": {
+								"computed": false,
+								"new":      "{\"Statement\":[{\"Action\":[\"ec2:Describe*\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+								"old":      "",
+							},
+							"policy_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"policy_two": {
+					0: {
+						"applied": {
+							"description": null,
+							"name":        "policy-381966",
+							"path":        "/",
+							"policy":      "{\"Statement\":[{\"Action\":[\"s3:ListAllMyBuckets\",\"s3:ListBucket\",\"s3:HeadBucket\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+							"tags":        null,
+						},
+						"destroy": false,
+						"diff": {
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "policy-381966",
+								"old":      "",
+							},
+							"name_prefix": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"path": {
+								"computed": false,
+								"new":      "/",
+								"old":      "",
+							},
+							"policy": {
+								"computed": false,
+								"new":      "{\"Statement\":[{\"Action\":[\"s3:ListAllMyBuckets\",\"s3:ListBucket\",\"s3:HeadBucket\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}",
+								"old":      "",
+							},
+							"policy_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_iam_role": {
+				"adsdata": {
+					0: {
+						"applied": {
+							"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+							"description":           null,
+							"force_detach_policies": false,
+							"inline_policy": [
+								{
+									"name":   "my_inline_policy",
+									"policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"ec2:Describe*\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+								},
+								{
+									"name":   "policy-8675309",
+									"policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"ec2:DescribeAccountAttributes\",\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+								},
+							],
+							"max_session_duration": 3600,
+							"name":                 "yak_role",
+							"path":                 "/",
+							"permissions_boundary": null,
+							"tags":                 null,
+						},
+						"destroy": false,
+						"diff": {
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"assume_role_policy": {
+								"computed": false,
+								"new":      "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+								"old":      "",
+							},
+							"create_date": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"force_detach_policies": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"inline_policy.#": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"inline_policy.0.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"inline_policy.0.name": {
+								"computed": false,
+								"new":      "my_inline_policy",
+								"old":      "",
+							},
+							"inline_policy.0.policy": {
+								"computed": false,
+								"new":      "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"ec2:Describe*\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+								"old":      "",
+							},
+							"inline_policy.1.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"inline_policy.1.name": {
+								"computed": false,
+								"new":      "policy-8675309",
+								"old":      "",
+							},
+							"inline_policy.1.policy": {
+								"computed": false,
+								"new":      "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"ec2:DescribeAccountAttributes\",\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+								"old":      "",
+							},
+							"managed_policy_arns.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"max_session_duration": {
+								"computed": false,
+								"new":      "3600",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "yak_role",
+								"old":      "",
+							},
+							"name_prefix": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"path": {
+								"computed": false,
+								"new":      "/",
+								"old":      "",
+							},
+							"permissions_boundary": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"unique_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"example": {
+					0: {
+						"applied": {
+							"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+							"description":           null,
+							"force_detach_policies": false,
+							"managed_policy_arns": [
+								"arn:aws:iam::aws:policy/AdministratorAccess",
+							],
+							"max_session_duration": 3600,
+							"name":                 "yak_role",
+							"path":                 "/",
+							"permissions_boundary": null,
+							"tags":                 null,
+						},
+						"destroy": false,
+						"diff": {
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"assume_role_policy": {
+								"computed": false,
+								"new":      "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+								"old":      "",
+							},
+							"create_date": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"force_detach_policies": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"inline_policy.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"managed_policy_arns.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"managed_policy_arns.0": {
+								"computed": false,
+								"new":      "arn:aws:iam::aws:policy/AdministratorAccess",
+								"old":      "",
+							},
+							"max_session_duration": {
+								"computed": false,
+								"new":      "3600",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "yak_role",
+								"old":      "",
+							},
+							"name_prefix": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"path": {
+								"computed": false,
+								"new":      "/",
+								"old":      "",
+							},
+							"permissions_boundary": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"unique_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"jsonencode": {
+					0: {
+						"applied": {
+							"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"},\"Sid\":\"\"}],\"Version\":\"2012-10-17\"}",
+							"description":           null,
+							"force_detach_policies": false,
+							"max_session_duration":  3600,
+							"name":                  "jsonencode",
+							"path":                  "/",
+							"permissions_boundary":  null,
+							"tags": {
+								"tag-key": "tag-value",
+							},
+							"tags_all": {
+								"tag-key": "tag-value",
+							},
+						},
+						"destroy": false,
+						"diff": {
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"assume_role_policy": {
+								"computed": false,
+								"new":      "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"},\"Sid\":\"\"}],\"Version\":\"2012-10-17\"}",
+								"old":      "",
+							},
+							"create_date": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"force_detach_policies": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"inline_policy.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"managed_policy_arns.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"max_session_duration": {
+								"computed": false,
+								"new":      "3600",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "jsonencode",
+								"old":      "",
+							},
+							"name_prefix": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"path": {
+								"computed": false,
+								"new":      "/",
+								"old":      "",
+							},
+							"permissions_boundary": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"tags.tag-key": {
+								"computed": false,
+								"new":      "tag-value",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"tags_all.tag-key": {
+								"computed": false,
+								"new":      "tag-value",
+								"old":      "",
+							},
+							"unique_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_iam_user": {
+				"lb": {
+					0: {
+						"applied": {
+							"force_destroy":        false,
+							"name":                 "loadbalancer",
+							"path":                 "/system/",
+							"permissions_boundary": null,
+							"tags":                 null,
+						},
+						"destroy": false,
+						"diff": {
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"force_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "loadbalancer",
+								"old":      "",
+							},
+							"path": {
+								"computed": false,
+								"new":      "/system/",
+								"old":      "",
+							},
+							"permissions_boundary": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"unique_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_iam_user_policy": {
+				"lb_ro": {
+					0: {
+						"applied": {
+							"name":        "test",
+							"name_prefix": null,
+							"policy":      "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"ec2:Describe*\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+							"user":        "loadbalancer",
 						},
 						"destroy": false,
 						"diff": {
 							"id": {
-								"computed": false,
-								"new":      "arn:aws:sso:::permissionSet/ssoins-77587689a0cde7ee/ps-aba4cfed425f096b,arn:aws:sso:::instance/ssoins-77587689a0cde7ee",
-								"old":      "arn:aws:sso:::permissionSet/ssoins-77587689a0cde7ee/ps-aba4cfed425f096b,arn:aws:sso:::instance/ssoins-77587689a0cde7ee",
+								"computed": true,
+								"new":      "",
+								"old":      "",
 							},
-							"inline_policy": {
+							"name": {
 								"computed": false,
-								"new":      "{\"Statement\":[{\"Action\":[\"rds:*\",\"elasticache:*\",\"dms:*\",\"health:*\",\"pi:*\",\"cloudwatch:*\",\"logs:*\",\"servicequotas:*\",\"support:*\",\"sns:*\",\"lambda:*\",\"docdb-elastic:*\",\"timestream:*\",\"grafana:*\",\"kinesis:*\",\"dbqms:*\",\"ds:Get*\",\"ds:Describe*\",\"ds:List*\",\"ds:CheckAlias\",\"ds:VerifyTrust\",\"application-autoscaling:Describe*\",\"tag:GetResources\",\"tag:GetTagValues\",\"tag:DescribeReportCreation\",\"tag:GetTagKeys\",\"tag:GetComplianceSummary\",\"cloudformation:DescribeStacks\",\"cloudformation:ListStackResources\",\"ec2:Describe*\",\"ec2:Get*\",\"ec2:List*\",\"iam:GetPolicy\",\"iam:GetPolicyVersion\",\"iam:GetRole\",\"iam:GetRolePolicy\",\"iam:ListAttachedRolePolicies\",\"iam:ListRolePolicies\",\"iam:ListRoles\",\"states:DescribeStateMachine\",\"states:ListStateMachines\",\"xray:GetTraceSummaries\",\"xray:BatchGetTraces\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAfullaccess\"},{\"Action\":[\"secretsmanager:ListSecretVersionIds\",\"secretsmanager:ListSecrets\",\"secretsmanager:CreateSecret\",\"secretsmanager:GetRandomPassword\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrfull\"},{\"Action\":[\"secretsmanager:PutResourcePolicy\",\"secretsmanager:GetResourcePolicy\",\"secretsmanager:DescribeSecret\",\"secretsmanager:PutSecretValue\",\"secretsmanager:CancelRotateSecret\",\"secretsmanager:UpdateSecret\",\"secretsmanager:StopReplicationToReplica\",\"secretsmanager:ReplicateSecretToRegions\",\"secretsmanager:RotateSecret\",\"secretsmanager:UpdateSecretVersionStage\",\"secretsmanager:ValidateResourcePolicy\",\"secretsmanager:RemoveRegionsFromReplication\",\"secretsmanager:TagResource\",\"secretsmanager:UntagResource\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrlimit\"},{\"Action\":[\"kms:DescribeCustomKeyStores\",\"kms:List*\",\"kms:Get*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmsfull\"},{\"Action\":[\"kms:Decrypt\",\"kms:TagResource\",\"kms:UntagResource\",\"kms:Encrypt\",\"kms:DescribeKey\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmslimit\"},{\"Action\":[\"rds:DeleteDBCluster\",\"rds:DeleteDBClusterEndpoint\",\"rds:DeleteDBClusterParameterGroup\",\"rds:DeleteDBClusterSnapshot\",\"rds:DeleteDBInstance\",\"rds:DeleteDBInstanceAutomatedBackup\",\"rds:DeleteDBParameterGroup\",\"rds:DeleteDBProxy\",\"rds:DeleteDBSecurityGroup\",\"rds:DeleteDBSnapshot\",\"rds:DeleteDBSubnetGroup\",\"rds:DeleteEventSubscription\",\"rds:DeleteGlobalCluster\",\"rds:DeleteOptionGroup\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyrds\"},{\"Action\":[\"elasticache:DeleteReplicationGroup\",\"elasticache:DeleteUser\",\"elasticache:DeleteCacheCluster\",\"elasticache:DeleteCacheParameterGroup\",\"elasticache:DeleteCacheSubnetGroup\",\"elasticache:DeleteCacheSecurityGroup\",\"elasticache:DeleteGlobalReplicationGroup\",\"elasticache:DeleteSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyredis\"},{\"Action\":[\"docdb-elastic:DeleteCluster\",\"docdb-elastic:DeleteClusterSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydocdbelastic\"},{\"Action\":[\"dms:DeleteConnection\",\"dms:DeleteReplicationTaskAssessmentRun\",\"dms:DeleteCertificate\",\"dms:DeleteReplicationTask\",\"dms:DeleteReplicationSubnetGroup\",\"dms:DeleteEventSubscription\",\"dms:DeleteEndpoint\",\"dms:DeleteReplicationInstance\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydms\"},{\"Action\":\"iam:PassRole\",\"Condition\":{\"StringEquals\":{\"iam:PassedToService\":[\"lambda.amazonaws.com\",\"iam.amazonaws.com\"]}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAallowlambdatimestream\"}],\"Version\":\"2012-10-17\"}",
-								"old":      "{\"Statement\":[{\"Action\":[\"rds:*\",\"elasticache:*\",\"dms:*\",\"health:*\",\"pi:*\",\"cloudwatch:*\",\"logs:*\",\"servicequotas:*\",\"support:*\",\"sns:*\",\"lambda:*\",\"docdb-elastic:*\",\"timestream:*\",\"kinesis:*\",\"dbqms:*\",\"ds:Get*\",\"ds:Describe*\",\"ds:List*\",\"ds:CheckAlias\",\"ds:VerifyTrust\",\"application-autoscaling:Describe*\",\"tag:GetResources\",\"tag:GetTagValues\",\"tag:DescribeReportCreation\",\"tag:GetTagKeys\",\"tag:GetComplianceSummary\",\"cloudformation:DescribeStacks\",\"cloudformation:ListStackResources\",\"ec2:Describe*\",\"ec2:Get*\",\"ec2:List*\",\"iam:GetPolicy\",\"iam:GetPolicyVersion\",\"iam:GetRole\",\"iam:GetRolePolicy\",\"iam:ListAttachedRolePolicies\",\"iam:ListRolePolicies\",\"iam:ListRoles\",\"states:DescribeStateMachine\",\"states:ListStateMachines\",\"xray:GetTraceSummaries\",\"xray:BatchGetTraces\",\"s3:ListAllMyBuckets\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAfullaccess\"},{\"Action\":[\"secretsmanager:ListSecretVersionIds\",\"secretsmanager:ListSecrets\",\"secretsmanager:CreateSecret\",\"secretsmanager:GetRandomPassword\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrfull\"},{\"Action\":[\"secretsmanager:PutResourcePolicy\",\"secretsmanager:GetResourcePolicy\",\"secretsmanager:DescribeSecret\",\"secretsmanager:PutSecretValue\",\"secretsmanager:CancelRotateSecret\",\"secretsmanager:UpdateSecret\",\"secretsmanager:StopReplicationToReplica\",\"secretsmanager:ReplicateSecretToRegions\",\"secretsmanager:RotateSecret\",\"secretsmanager:UpdateSecretVersionStage\",\"secretsmanager:ValidateResourcePolicy\",\"secretsmanager:RemoveRegionsFromReplication\",\"secretsmanager:TagResource\",\"secretsmanager:UntagResource\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAsecrectmgrlimit\"},{\"Action\":[\"kms:DescribeCustomKeyStores\",\"kms:List*\",\"kms:Get*\"],\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmsfull\"},{\"Action\":[\"kms:Decrypt\",\"kms:TagResource\",\"kms:UntagResource\",\"kms:Encrypt\",\"kms:DescribeKey\"],\"Condition\":{\"StringEquals\":{\"aws:ResourceTag/role\":\"dba\"}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAkmslimit\"},{\"Action\":[\"rds:DeleteDBCluster\",\"rds:DeleteDBClusterEndpoint\",\"rds:DeleteDBClusterParameterGroup\",\"rds:DeleteDBClusterSnapshot\",\"rds:DeleteDBInstance\",\"rds:DeleteDBInstanceAutomatedBackup\",\"rds:DeleteDBParameterGroup\",\"rds:DeleteDBProxy\",\"rds:DeleteDBSecurityGroup\",\"rds:DeleteDBSnapshot\",\"rds:DeleteDBSubnetGroup\",\"rds:DeleteEventSubscription\",\"rds:DeleteGlobalCluster\",\"rds:DeleteOptionGroup\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyrds\"},{\"Action\":[\"elasticache:DeleteReplicationGroup\",\"elasticache:DeleteUser\",\"elasticache:DeleteCacheCluster\",\"elasticache:DeleteCacheParameterGroup\",\"elasticache:DeleteCacheSubnetGroup\",\"elasticache:DeleteCacheSecurityGroup\",\"elasticache:DeleteGlobalReplicationGroup\",\"elasticache:DeleteSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenyredis\"},{\"Action\":[\"docdb-elastic:DeleteCluster\",\"docdb-elastic:DeleteClusterSnapshot\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydocdbelastic\"},{\"Action\":[\"dms:DeleteConnection\",\"dms:DeleteReplicationTaskAssessmentRun\",\"dms:DeleteCertificate\",\"dms:DeleteReplicationTask\",\"dms:DeleteReplicationSubnetGroup\",\"dms:DeleteEventSubscription\",\"dms:DeleteEndpoint\",\"dms:DeleteReplicationInstance\"],\"Effect\":\"Deny\",\"Resource\":\"*\",\"Sid\":\"DBAdenydms\"},{\"Action\":\"iam:PassRole\",\"Condition\":{\"StringEquals\":{\"iam:PassedToService\":[\"lambda.amazonaws.com\",\"iam.amazonaws.com\"]}},\"Effect\":\"Allow\",\"Resource\":\"*\",\"Sid\":\"DBAallowlambdatimestream\"}],\"Version\":\"2012-10-17\"}",
+								"new":      "test",
+								"old":      "",
 							},
-							"instance_arn": {
+							"name_prefix": {
 								"computed": false,
-								"new":      "arn:aws:sso:::instance/ssoins-77587689a0cde7ee",
-								"old":      "arn:aws:sso:::instance/ssoins-77587689a0cde7ee",
+								"new":      "",
+								"old":      "",
 							},
-							"permission_set_arn": {
+							"policy": {
 								"computed": false,
-								"new":      "arn:aws:sso:::permissionSet/ssoins-77587689a0cde7ee/ps-aba4cfed425f096b",
-								"old":      "arn:aws:sso:::permissionSet/ssoins-77587689a0cde7ee/ps-aba4cfed425f096b",
+								"new":      "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"ec2:Describe*\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+								"old":      "",
+							},
+							"user": {
+								"computed": false,
+								"new":      "loadbalancer",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_lambda_function": {
+				"test_lambda": {
+					0: {
+						"applied": {
+							"code_signing_config_arn": null,
+							"dead_letter_config":      [],
+							"description":             null,
+							"environment": [
+								{
+									"variables": {
+										"foo": "bar",
+									},
+								},
+							],
+							"file_system_config": [],
+							"filename":           "lambda_function_payload.zip",
+							"function_name":      "lambda_function_name",
+							"handler":            "index.test",
+							"image_config":       [],
+							"image_uri":          null,
+							"kms_key_arn":        null,
+							"layers":             null,
+							"memory_size":        128,
+							"package_type":       "Zip",
+							"publish":            false,
+							"replace_security_groups_on_destroy": null,
+							"replacement_security_group_ids":     null,
+							"reserved_concurrent_executions":     -1,
+							"runtime":                            "nodejs18.x",
+							"s3_bucket":                          null,
+							"s3_key":                             null,
+							"s3_object_version":                  null,
+							"skip_destroy":                       false,
+							"snap_start":                         [],
+							"tags":                               null,
+							"timeout":                            3,
+							"timeouts":                           null,
+							"vpc_config":                         [],
+						},
+						"destroy": false,
+						"diff": {
+							"architectures.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"code_signing_config_arn": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"dead_letter_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"environment.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"environment.0.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"environment.0.variables.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"environment.0.variables.foo": {
+								"computed": false,
+								"new":      "bar",
+								"old":      "",
+							},
+							"ephemeral_storage.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"file_system_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"filename": {
+								"computed": false,
+								"new":      "lambda_function_payload.zip",
+								"old":      "",
+							},
+							"function_name": {
+								"computed": false,
+								"new":      "lambda_function_name",
+								"old":      "",
+							},
+							"handler": {
+								"computed": false,
+								"new":      "index.test",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"image_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"image_uri": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"invoke_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"kms_key_arn": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"last_modified": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"layers": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"memory_size": {
+								"computed": false,
+								"new":      "128",
+								"old":      "",
+							},
+							"package_type": {
+								"computed": false,
+								"new":      "Zip",
+								"old":      "",
+							},
+							"publish": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"qualified_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"qualified_invoke_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"replace_security_groups_on_destroy": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"replacement_security_group_ids": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"reserved_concurrent_executions": {
+								"computed": false,
+								"new":      "-1",
+								"old":      "",
+							},
+							"role": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"runtime": {
+								"computed": false,
+								"new":      "nodejs18.x",
+								"old":      "",
+							},
+							"s3_bucket": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"s3_key": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"s3_object_version": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"signing_job_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"signing_profile_version_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"skip_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"snap_start.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"source_code_hash": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"source_code_size": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeout": {
+								"computed": false,
+								"new":      "3",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tracing_config.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"version": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"vpc_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"test_lambda_2": {
+					0: {
+						"applied": {
+							"code_signing_config_arn": null,
+							"dead_letter_config":      [],
+							"description":             null,
+							"environment":             [],
+							"file_system_config":      [],
+							"filename":                "lambda_function_payload.zip",
+							"function_name":           "lambda_function_name",
+							"handler":                 "index.test",
+							"image_config":            [],
+							"image_uri":               null,
+							"kms_key_arn":             null,
+							"layers":                  null,
+							"memory_size":             128,
+							"package_type":            "Zip",
+							"publish":                 false,
+							"replace_security_groups_on_destroy": null,
+							"replacement_security_group_ids":     null,
+							"reserved_concurrent_executions":     -1,
+							"runtime":                            "nodejs18.x",
+							"s3_bucket":                          null,
+							"s3_key":                             null,
+							"s3_object_version":                  null,
+							"skip_destroy":                       false,
+							"snap_start":                         [],
+							"tags":                               null,
+							"timeout":                            3,
+							"timeouts":                           null,
+							"vpc_config":                         [],
+						},
+						"destroy": false,
+						"diff": {
+							"architectures.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"code_signing_config_arn": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"dead_letter_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"environment.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"ephemeral_storage.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"file_system_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"filename": {
+								"computed": false,
+								"new":      "lambda_function_payload.zip",
+								"old":      "",
+							},
+							"function_name": {
+								"computed": false,
+								"new":      "lambda_function_name",
+								"old":      "",
+							},
+							"handler": {
+								"computed": false,
+								"new":      "index.test",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"image_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"image_uri": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"invoke_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"kms_key_arn": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"last_modified": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"layers": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"memory_size": {
+								"computed": false,
+								"new":      "128",
+								"old":      "",
+							},
+							"package_type": {
+								"computed": false,
+								"new":      "Zip",
+								"old":      "",
+							},
+							"publish": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"qualified_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"qualified_invoke_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"replace_security_groups_on_destroy": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"replacement_security_group_ids": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"reserved_concurrent_executions": {
+								"computed": false,
+								"new":      "-1",
+								"old":      "",
+							},
+							"role": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"runtime": {
+								"computed": false,
+								"new":      "nodejs18.x",
+								"old":      "",
+							},
+							"s3_bucket": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"s3_key": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"s3_object_version": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"signing_job_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"signing_profile_version_arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"skip_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"snap_start.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"source_code_hash": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"source_code_size": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeout": {
+								"computed": false,
+								"new":      "3",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tracing_config.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"version": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"vpc_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_s3_bucket": {
+				"Ellventestssakvnkasicsk19230dklsc": {
+					0: {
+						"applied": {
+							"bucket":        "Ellventestssakvnkasicsk19230dklsc",
+							"force_destroy": false,
+							"tags":          null,
+							"timeouts":      null,
+						},
+						"destroy": false,
+						"diff": {
+							"acceleration_status": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"acl": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket": {
+								"computed": false,
+								"new":      "Ellventestssakvnkasicsk19230dklsc",
+								"old":      "",
+							},
+							"bucket_domain_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket_prefix": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket_regional_domain_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cors_rule.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"force_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"grant.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"hosted_zone_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"lifecycle_rule.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"logging.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"object_lock_configuration.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"object_lock_enabled": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"policy": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"region": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"replication_configuration.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"request_payer": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"server_side_encryption_configuration.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"versioning.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website_domain": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_s3_bucket_policy": {
+				"Ellventestssakvnkasicsk19230dklsc": {
+					0: {
+						"applied": {
+							"policy": "{\"Id\":\"S3-Console-Auto-Gen-Policy-1670678796275\",\"Statement\":[{\"Action\":[\"s3:GetBucketVersioning\",\"s3:PutBucketVersioning\",\"s3:ReplicateObject\",\"s3:ReplicateDelete\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":[\"arn:aws:iam::891189580005:root\",\"arn:aws:iam::875537689616:root\",\"arn:aws:iam::555625778301:root\"]},\"Resource\":[\"arn:aws:s3:::kucoin-cloudtrail-central\",\"arn:aws:s3:::kucoin-cloudtrail-central/*\"],\"Sid\":\"S3PolicyStmt-DO-NOT-MODIFY-1670678792895\"},{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::kucoin-cloudtrail-central\",\"Sid\":\"AWSCloudTrailAclCheck20131101\"},{\"Action\":\"s3:PutObject\",\"Condition\":{\"StringEquals\":{\"aws:SourceArn\":[\"arn:aws:cloudtrail:ap-northeast-1:875537689616:trail/management-events-write-875537689616\",\"arn:aws:cloudtrail:ap-northeast-1:875537689616:trail/management-events-read-875537689616\",\"arn:aws:cloudtrail:ap-northeast-1:555625778301:trail/management-events-write-555625778301\",\"arn:aws:cloudtrail:ap-northeast-1:555625778301:trail/management-events-read-555625778301\",\"arn:aws:cloudtrail:ap-northeast-1:891189580005:trail/management-events-write-891189580005\",\"arn:aws:cloudtrail:ap-northeast-1:891189580005:trail/management-events-read-891189580005\"],\"s3:x-amz-acl\":\"bucket-owner-full-control\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::kucoin-cloudtrail-central/write/AWSLogs/*\",\"arn:aws:s3:::kucoin-cloudtrail-central/read/AWSLogs/*\"],\"Sid\":\"AWSCloudTrailWrite20131101\"},{\"Action\":\"s3:PutObject\",\"Condition\":{\"StringEquals\":{\"aws:SourceArn\":[\"arn:aws:cloudtrail:ap-northeast-1:875537689616:trail/s3-events-write-875537689616\",\"arn:aws:cloudtrail:ap-northeast-1:875537689616:trail/s3-events-read-875537689616\",\"arn:aws:cloudtrail:ap-northeast-1:555625778301:trail/s3-events-write-555625778301\",\"arn:aws:cloudtrail:ap-northeast-1:555625778301:trail/s3-events-read-555625778301\",\"arn:aws:cloudtrail:ap-northeast-1:891189580005:trail/s3-events-write-891189580005\",\"arn:aws:cloudtrail:ap-northeast-1:891189580005:trail/s3-events-read-891189580005\"],\"s3:x-amz-acl\":\"bucket-owner-full-control\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::kucoin-cloudtrail-central/s3write/AWSLogs/*\",\"arn:aws:s3:::kucoin-cloudtrail-central/s3read/AWSLogs/*\"],\"Sid\":\"AWSCloudTrailS3Write20131101\"},{\"Action\":[\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::892535148939:role/arron\"},\"Resource\":[\"arn:aws:s3:::kucoin-cloudtrail-central\",\"arn:aws:s3:::kucoin-cloudtrail-central/*\"],\"Sid\":\"AWSCloudTrailReadOnly20230506\"}],\"Version\":\"2012-10-17\"}",
+						},
+						"destroy": false,
+						"diff": {
+							"bucket": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"policy": {
+								"computed": false,
+								"new":      "{\"Id\":\"S3-Console-Auto-Gen-Policy-1670678796275\",\"Statement\":[{\"Action\":[\"s3:GetBucketVersioning\",\"s3:PutBucketVersioning\",\"s3:ReplicateObject\",\"s3:ReplicateDelete\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":[\"arn:aws:iam::891189580005:root\",\"arn:aws:iam::875537689616:root\",\"arn:aws:iam::555625778301:root\"]},\"Resource\":[\"arn:aws:s3:::kucoin-cloudtrail-central\",\"arn:aws:s3:::kucoin-cloudtrail-central/*\"],\"Sid\":\"S3PolicyStmt-DO-NOT-MODIFY-1670678792895\"},{\"Action\":\"s3:GetBucketAcl\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":\"arn:aws:s3:::kucoin-cloudtrail-central\",\"Sid\":\"AWSCloudTrailAclCheck20131101\"},{\"Action\":\"s3:PutObject\",\"Condition\":{\"StringEquals\":{\"aws:SourceArn\":[\"arn:aws:cloudtrail:ap-northeast-1:875537689616:trail/management-events-write-875537689616\",\"arn:aws:cloudtrail:ap-northeast-1:875537689616:trail/management-events-read-875537689616\",\"arn:aws:cloudtrail:ap-northeast-1:555625778301:trail/management-events-write-555625778301\",\"arn:aws:cloudtrail:ap-northeast-1:555625778301:trail/management-events-read-555625778301\",\"arn:aws:cloudtrail:ap-northeast-1:891189580005:trail/management-events-write-891189580005\",\"arn:aws:cloudtrail:ap-northeast-1:891189580005:trail/management-events-read-891189580005\"],\"s3:x-amz-acl\":\"bucket-owner-full-control\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::kucoin-cloudtrail-central/write/AWSLogs/*\",\"arn:aws:s3:::kucoin-cloudtrail-central/read/AWSLogs/*\"],\"Sid\":\"AWSCloudTrailWrite20131101\"},{\"Action\":\"s3:PutObject\",\"Condition\":{\"StringEquals\":{\"aws:SourceArn\":[\"arn:aws:cloudtrail:ap-northeast-1:875537689616:trail/s3-events-write-875537689616\",\"arn:aws:cloudtrail:ap-northeast-1:875537689616:trail/s3-events-read-875537689616\",\"arn:aws:cloudtrail:ap-northeast-1:555625778301:trail/s3-events-write-555625778301\",\"arn:aws:cloudtrail:ap-northeast-1:555625778301:trail/s3-events-read-555625778301\",\"arn:aws:cloudtrail:ap-northeast-1:891189580005:trail/s3-events-write-891189580005\",\"arn:aws:cloudtrail:ap-northeast-1:891189580005:trail/s3-events-read-891189580005\"],\"s3:x-amz-acl\":\"bucket-owner-full-control\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"cloudtrail.amazonaws.com\"},\"Resource\":[\"arn:aws:s3:::kucoin-cloudtrail-central/s3write/AWSLogs/*\",\"arn:aws:s3:::kucoin-cloudtrail-central/s3read/AWSLogs/*\"],\"Sid\":\"AWSCloudTrailS3Write20131101\"},{\"Action\":[\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::892535148939:role/arron\"},\"Resource\":[\"arn:aws:s3:::kucoin-cloudtrail-central\",\"arn:aws:s3:::kucoin-cloudtrail-central/*\"],\"Sid\":\"AWSCloudTrailReadOnly20230506\"}],\"Version\":\"2012-10-17\"}",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"mytestssakvnkasicsk19230dklsc": {
+					0: {
+						"applied": {
+							"bucket": "mytestssakvnkasicsk19230dklsc",
+							"id":     "mytestssakvnkasicsk19230dklsc",
+							"policy": "{\"Id\":\"MYBUCKETPOLICY\",\"Statement\":[{\"Action\":[\"s3:GetBucketVersioning\",\"s3:PutBucketVersioning\",\"s3:ReplicateObject\",\"s3:ReplicateDelete\"],\"Condition\":{\"IpAddress\":{\"aws:SourceIp\":\"8.8.8.8/32\"}},\"Effect\":\"Deny\",\"Principal\":\"*\",\"Resource\":\"arn:aws:s3:::mytestssakvnkasicsk19230dklsc/*\",\"Sid\":\"IPAllow\"}],\"Version\":\"2012-10-17\"}",
+						},
+						"destroy": false,
+						"diff": {
+							"bucket": {
+								"computed": false,
+								"new":      "mytestssakvnkasicsk19230dklsc",
+								"old":      "mytestssakvnkasicsk19230dklsc",
+							},
+							"id": {
+								"computed": false,
+								"new":      "mytestssakvnkasicsk19230dklsc",
+								"old":      "mytestssakvnkasicsk19230dklsc",
+							},
+							"policy": {
+								"computed": false,
+								"new":      "{\"Id\":\"MYBUCKETPOLICY\",\"Statement\":[{\"Action\":[\"s3:GetBucketVersioning\",\"s3:PutBucketVersioning\",\"s3:ReplicateObject\",\"s3:ReplicateDelete\"],\"Condition\":{\"IpAddress\":{\"aws:SourceIp\":\"8.8.8.8/32\"}},\"Effect\":\"Deny\",\"Principal\":\"*\",\"Resource\":\"arn:aws:s3:::mytestssakvnkasicsk19230dklsc/*\",\"Sid\":\"IPAllow\"}],\"Version\":\"2012-10-17\"}",
+								"old":      "{\"Id\":\"MYBUCKETPOLICY\",\"Statement\":[{\"Action\":\"s3:*\",\"Condition\":{\"IpAddress\":{\"aws:SourceIp\":\"8.8.8.8/32\"}},\"Effect\":\"Deny\",\"Principal\":\"*\",\"Resource\":\"arn:aws:s3:::mytestssakvnkasicsk19230dklsc/*\",\"Sid\":\"IPAllow\"}],\"Version\":\"2012-10-17\"}",
 							},
 						},
 						"requires_new": false,
@@ -118,9 +1492,14 @@ module_paths = [
 	[],
 ]
 
-terraform_version = "1.4.0"
+terraform_version = "1.4.6"
 
-variables = {}
+variables = {
+	"aws":                      "ap-east-1",
+	"aws_region":               "ap-east-1",
+	"awsvpc_service_subnetids": [],
+	"region":                   "ap-east-1",
+}
 
 module = func(path) {
 	if types.type_of(path) is not "list" {
