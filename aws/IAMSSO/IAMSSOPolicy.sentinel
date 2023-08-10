@@ -1,0 +1,57 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+import "json"
+aws_iam_role_policy = filter tfplan.resource_changes as _, resource_changes {
+    resource_changes.mode is "managed" and
+        resource_changes.type is "aws_iam_role_policy" and
+        (resource_changes.change.actions contains "create" or
+            resource_changes.change.actions is ["update"])
+}
+
+iamRolePolicyCheck = func(aws_iam_role_policys) {
+    iamRolePolicyList = []
+    for aws_iam_role_policys as _, aws_iam_role_policy {
+        print(aws_iam_role_policy)
+        PolicyLine = aws_iam_role_policy.change.after.policy
+        PolicyName = aws_iam_role_policy.change.after.name
+        //print(types.type_of(aws_iam_role_policy.change.after.policy))
+        PolicyJsons = json.unmarshal(PolicyLine)
+        PolicyStatements = (PolicyJsons.Statement)
+        for PolicyStatements as _, PolicyStatement {
+            if "Resource" in (keys(PolicyStatement)) and "Effect" in (keys(PolicyStatement)) and "Action" in (keys(PolicyStatement)) {
+                if PolicyStatement.Effect is "Allow" and PolicyStatement.Resource is "*" {
+                   for PolicyStatement.Action as _, action {
+                        if action is "*" {
+                            append(iamRolePolicyList,PolicyName)
+                            print("This IAM Role Policy ARN", PolicyName , "can not grant full administrative privileges as action is * && resource is *")
+ 
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if length(iamRolePolicyList) != 0 {
+        print("")
+        print("// --------------------------------------------------------")
+        print("// Name:        Ensure full administrative privileges are not created ")
+        print("//              and are attached to a role using AWS IAM Role Policy")
+        print("// Category:    IAM")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_iam_role_policy")
+        print("// Check:       IAM Role Policy CAN NOT grant full administrative privileges ")
+        print("// Check:       as action is * && resource is *")
+        print("// --------------------------------------------------------")
+        print("// Ensure full administrative privileges are not created and are attached to a ")
+        print("// role using AWS IAM Role Policy.")
+        print("// --------------------------------------------------------")       
+    }
+ 
+    //return 1
+    return length(iamRolePolicyList)
+}
+main = rule {
+    iamRolePolicyCheck(aws_iam_role_policy) == 0
+}
+ 
