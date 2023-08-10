@@ -1,0 +1,47 @@
+import "tfplan/v2" as tfplan
+import "types"
+import "strings"
+import "json"
+
+aws_iam_role_policy = filter tfplan.resource_changes as _, resource_changes {
+	resource_changes.mode is "managed" and
+		resource_changes.type is "aws_iam_role_policy" and
+		(resource_changes.change.actions contains "create" or
+			resource_changes.change.actions is ["update"]) 
+}
+
+iamRolePolicyCheck = func(aws_iam_role_policys) {
+    iamRolePolicyList = []
+
+    for aws_iam_role_policys as _, aws_iam_role_policy {
+        PolicyLine = aws_iam_role_policy.change.after.policy
+        PolicyName = aws_iam_role_policy.change.after.name
+        PolicyJsons = json.unmarshal(PolicyLine)
+        PolicyStatements = (PolicyJsons.Statement)
+        for PolicyStatements as _, PolicyStatement {
+            if "NotAction" in (keys(PolicyStatement)) or "NotResource" in (keys(PolicyStatement)) {
+                append(iamRolePolicyList,PolicyName)
+                print("This IAM Policy ARN", PolicyName , "can not using NotAction or NotResource")
+            }
+        }
+    }
+    if length(iamRolePolicyList) !=0 {
+        print("")
+        print("// --------------------------------------------------------")
+        print("// Name:        Ensure IAM policies with NotAction and NotResource")
+        print("//              are not attached or used")
+        print("// Category:    IAM")
+        print("// Provider:    kc/cybersec")
+        print("// Resource:    aws_iam_role_policy")
+        print("// Check:       IAM Policy CAN NOT using NotResource or NotAction'")
+        print("// --------------------------------------------------------")
+        print("// Ensure IAM policies with NotAction and NotResource are not ")
+        print("// attached or used")
+        print("// --------------------------------------------------------")        
+    }
+    return length(iamRolePolicyList)
+}
+
+main = rule{
+    iamRolePolicyCheck(aws_iam_role_policy) == 0 
+}

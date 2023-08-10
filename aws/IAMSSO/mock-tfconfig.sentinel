@@ -160,6 +160,21 @@ _modules = {
 				},
 			},
 			"aws_iam_policy": {
+				"policy123OOL": {
+					"config": {
+						"description": "My test policy",
+						"name":        "test_policy",
+						"path":        "/",
+						"policy":      "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": [\n        \"ec2:Describe*\"\n      ],\n      \"Effect\": \"Allow\",\n      \"Resource\": \"*\"\n    }\n  ]\n}\n",
+					},
+					"provisioners": null,
+					"references": {
+						"description": [],
+						"name":        [],
+						"path":        [],
+						"policy":      [],
+					},
+				},
 				"policy_one": {
 					"config": {
 						"name":   "policy-618033",
@@ -249,6 +264,34 @@ _modules = {
 						"assume_role_policy": [],
 						"name":               [],
 						"tags":               [],
+					},
+				},
+				"test_role": {
+					"config": {
+						"assume_role_policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"ec2.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\n",
+						"name":               "test_role",
+					},
+					"provisioners": null,
+					"references": {
+						"assume_role_policy": [],
+						"name":               [],
+					},
+				},
+			},
+			"aws_iam_role_policy": {
+				"test_policy": {
+					"config": {
+						"name":   "test_policy",
+						"policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": [\n        \"ec2:Describe*\"\n      ],\n      \"Effect\": \"Allow\",\n      \"Resource\": \"*\"\n    }\n  ]\n}\n",
+					},
+					"provisioners": null,
+					"references": {
+						"name":   [],
+						"policy": [],
+						"role": [
+							"aws_iam_role.test_role.id",
+							"aws_iam_role.test_role",
+						],
 					},
 				},
 			},
