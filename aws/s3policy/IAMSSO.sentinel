@@ -11,6 +11,8 @@ aws_iam_policy_document = filter tfplan.resource_changes as _, resource_changes 
 			resource_changes.change.actions contains "read"
 }
 
+
+//asdad
 aws_s3_bucket_policy = filter tfplan.resource_changes as _, resource_changes {
 	resource_changes.mode is "managed" and
 		resource_changes.type is "aws_s3_bucket_policy" and
